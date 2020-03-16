@@ -12,8 +12,8 @@
     <div class="dark-blue-text mb-xl description">
       « Nous changeons nos habitudes pour protéger nos aînés et les personnes
       vulnérables. Mais <b>confinement ne doit pas rimer avec isolement</b> !
-      Soyons solidaires avec les personnes âgées et vulnérables et
-      mobilisons-nous dans le respect des consignes. »
+      Soyons solidaires avec les personnes âgées et vulnérables, mobilisons-nous
+      dans le respect des consignes. »
     </div>
     <div class="green-background punchline mb-xl">
       <div class="punchline-text">
