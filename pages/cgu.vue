@@ -4,24 +4,26 @@
       <img class="logo mb-sm" src="~/assets/logo.png" />
     </nuxt-link>
     <div class="big-title dark-blue-text">Mentions légales & RGPD</div>
-    <span class="title green-text"
-      >Le site Internet nosvieux est édité par :
+    <span class="title green-text">
+      Le site Internet nosvieux est édité par :
     </span>
     <span> Alenvi SAS </span>
     <span> RCS : 834 937 781 </span>
     <span> 37 rue de Ponthieu 75008 Paris </span>
     <span> support@alenvi.io </span>
 
-    <span> Directeur de la rédaction : Thibault de Saint Blancard </span>
-    <span class="title green-blue-text"
-      >Le site Internet nosvieux est hébergé par :
+    <span class="mt-sm">
+      Directeur de la rédaction : Thibault de Saint Blancard
+    </span>
+    <span class="title green-blue-text">
+      Le site Internet nosvieux est hébergé par :
     </span>
     <span> Coordonnées de l’hébergeur </span>
     <span class="title blue-text">
       Modalités d’utilisation de vos données par le site nosvieux
     </span>
     <span>
-      Conformément à la règlementation en vigueur, et en particulier au
+      Conformément à la réglementation en vigueur, et en particulier au
       règlement général sur la protection des données n° 2016/679 du 27 avril
       2016 et à la loi « Informatique et Libertés » du 6 janvier 1978 modifiée,
       le présent document a pour objet de décrire comment sont utilisées les
@@ -37,7 +39,7 @@
     <span> - cookies pour suivre le trafic et l’utilisation du site </span>
     <span>
       - nom, prénom, adresse, téléphone de personnes physiques ou morales
-      souhaitant se mobiliser ou souhaitant bénéficier de la modélisation
+      souhaitant se mobiliser ou souhaitant bénéficier de la mobilisation
     </span>
     <span class="mt-sm">
       L’ensemble de ces données seront conservées tant que des mesures seront en
@@ -54,16 +56,17 @@
       données :
     </span>
     <span>
-      - l’accès à et/ou l’envoi d’une copie de certaines de vos données
+      - l’accès à et/ou l’envoi d’une copie de certaines de vos données ;
     </span>
     <span>
       - la rectification ou la mise à jour des données obsolètes ou incorrectes
+      ;
     </span>
     <span>
-      - la suppression de certaines données que nous détenons sur vous
+      - la suppression de certaines données que nous détenons sur vous ;
     </span>
     <span>
-      - la limitation de la façon dont nous traitons certaines de vos données
+      - la limitation de la façon dont nous traitons certaines de vos données ;
     </span>
     <span>
       - le retrait de votre consentement à l’utilisation ou à la transmission de

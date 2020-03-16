@@ -2,7 +2,7 @@
   <div class="bloc">
     <div class="step-bloc">
       <div class="dark-blue-text mb-sm">
-        En 3 etapes, c'est facile :
+        En 3 étapes, c'est facile :
       </div>
       <div class="steps">
         <div class="steps-container">
@@ -19,7 +19,7 @@
           <div class="container ml-sm">
             <div class="grey-text steps-title">Capture l'instant</div>
             <div class="green-text">
-              Prend une photo ou une vidéo pour raconter ton histoire.
+              Prends une photo ou une vidéo pour raconter ton histoire.
             </div>
           </div>
         </div>
