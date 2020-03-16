@@ -1,7 +1,7 @@
 <template>
   <div class="bloc">
     <img class="logo mb-sm" src="~/assets/logo.png" />
-    <div class="hashtag-container mb-lg">
+    <div class="hashtag-container mb-xl">
       <div class="hashtag">
         <div class="blue-text">#</div>
         <div class="green-text">Nos</div>
@@ -9,16 +9,14 @@
         <div class="blue-text">eux</div>
       </div>
     </div>
-    <div class="description-container">
-      <div class="center dark-blue-text mb-lg description">
-        « Nous changeons nos habitudes pour protéger nos aînés et les personnes
-        vulnérables. Mais confinement ne doit pas rimer avec isolement : pas de
-        poignées de main, faisons plus de création de liens ! »
-      </div>
-      <div class="green-background punchline mb-lg">
-        <div class="punchline-text">
-          Lavons nous les mains mais ne nous tournons pas les pouces !
-        </div>
+    <div class="center dark-blue-text mb-xl description">
+      « Nous changeons nos habitudes pour protéger nos aînés et les personnes
+      vulnérables. Mais confinement ne doit pas rimer avec isolement : pas de
+      poignées de main, faisons plus de création de liens ! »
+    </div>
+    <div class="green-background punchline mb-xl">
+      <div class="punchline-text">
+        Lavons nous les mains mais ne nous tournons pas les pouces !
       </div>
     </div>
   </div>
@@ -52,16 +50,11 @@
   .hashtag {
     font-size: 90px;
   }
-  .description-container {
-    display: flex;
-    flex-direction: row;
-    font-size: 22px;
-  }
   .description {
     display: flex;
     justify-content: center;
-    width: 50%;
-    margin: 20px 50px;
+    width: 800px;
+    margin: 0 auto 60px;
     line-height: 35px;
   }
   .punchline {

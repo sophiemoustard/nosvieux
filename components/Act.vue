@@ -1,10 +1,10 @@
 <template>
   <div class="bloc">
-    <div class="dark-blue-text three-steps-title">
-      En 3 etapes, c'est facile :
-    </div>
-    <div class="steps">
-      <div class="first-steps">
+    <div class="step-bloc">
+      <div class="dark-blue-text mb-sm">
+        En 3 etapes, c'est facile :
+      </div>
+      <div class="steps">
         <div class="steps-container">
           <img class="steps-image" src="~/assets/step1.png" />
           <div class="container ml-sm">
@@ -14,21 +14,24 @@
             </div>
           </div>
         </div>
-        <div class="steps-container">
+        <div class="steps-container" style="align-self: flex-end">
           <img class="steps-image" src="~/assets/step2.png" />
           <div class="container ml-sm">
             <div class="grey-text steps-title">Capture l'instant</div>
-            <div class="green-text">Prend une photo ou une vidéo.</div>
+            <div class="green-text">
+              Prend une photo ou une vidéo pour raconter ton histoire.
+            </div>
           </div>
         </div>
-      </div>
-      <div class="steps-container">
-        <img class="steps-image" src="~/assets/step3.png" />
-        <div class="container ml-sm">
-          <div class="grey-text steps-title">Partage</div>
-          <div class="green-text">
-            Raconte ton histoire sur les réseaux sociaux avec #NosVieux et défie
-            deux amis de passer à l’action.
+        <div class="steps-container">
+          <img class="steps-image" src="~/assets/step3.png" />
+          <div class="container ml-sm">
+            <div class="grey-text steps-title">Partage</div>
+            <div class="green-text">
+              Poste la sur les réseaux sociaux avec
+              <span class="blue-text">#NosVieux</span>
+              et défie deux amis de passer à l’action.
+            </div>
           </div>
         </div>
       </div>
@@ -52,24 +55,22 @@
 }
 
 @media screen and (min-width: 768px) {
-  .three-steps-title {
-    text-align: center;
-    font-size: 20px;
-  }
-  .steps {
+  .step-bloc {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    font-size: 18px;
   }
-  .first-steps {
+  .steps {
+    width: 750px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
   .steps-container {
-    width: 350px;
-    margin: 10px 20px;
-    padding: 10px 20px;
+    width: 45%;
+    margin: 10px 0;
+    padding: 10px;
+    box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 1);
   }
 }
 </style>
