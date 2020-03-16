@@ -40,9 +40,15 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'Act'
+}
+</script>
+
 <style scoped>
 .steps-image {
-  height: 42px;
+  height: 50px;
 }
 .steps-container {
   display: flex;

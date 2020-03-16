@@ -7,6 +7,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'Footer'
+}
+</script>
+
 <style scoped>
 .footer-container {
   display: flex;
