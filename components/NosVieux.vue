@@ -11,8 +11,8 @@
     </div>
     <div class="dark-blue-text mb-xl description">
       « Nous changeons nos habitudes pour protéger nos aînés et les personnes
-      vulnérables. Mais confinement ne doit pas rimer avec isolement : pas de
-      poignée de main mais créons plus de liens ! »
+      vulnérables. Mais <b>confinement ne doit pas rimer avec isolement</b> :
+      pas de poignée de main mais créons plus de liens ! »
     </div>
     <div class="green-background punchline mb-xl">
       <div class="punchline-text">
@@ -60,8 +60,6 @@ export default {
     font-size: 90px;
   }
   .description {
-    display: flex;
-    justify-content: center;
     width: 780px;
     margin: 0 auto 60px;
     line-height: 35px;

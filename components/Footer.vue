@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="bloc blue-background footer-container">
-      <div>#NosVieux 2020</div>
+      <div>#NosVieux</div>
       <nuxt-link to="/cgu">Mentions Légales</nuxt-link>
-      <a href="mailto:contact@nosvieux.com">contact@nosvieux.com</a>
+      <div><a href="mailto:contact@nosvieux.com">contact@nosvieux.org</a></div>
     </div>
   </div>
 </template>
@@ -17,8 +17,16 @@ export default {
 <style scoped>
 .footer-container {
   display: flex;
-  justify-content: space-around;
-  flex-direction: row;
+  align-items: center;
+  flex-direction: column;
   color: white;
+}
+@media screen and (min-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-around;
+    flex-direction: row;
+    color: white;
+  }
 }
 </style>
