@@ -13,7 +13,7 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/logo.png' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon-32x32.png' }]
   },
   loading: { color: '#fff' },
   css: ['~/css/main.css'],
