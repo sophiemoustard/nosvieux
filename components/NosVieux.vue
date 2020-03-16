@@ -1,5 +1,6 @@
 <template>
   <div class="bloc">
+    <img class="logo mb-sm" src="~/assets/logo.png" />
     <div class="hashtag-container mb-lg">
       <div class="hashtag">
         <div class="blue-text">#</div>
@@ -8,21 +9,29 @@
         <div class="blue-text">eux</div>
       </div>
     </div>
-    <div class="center dark-blue-text mb-lg">
-      « Nous changeons nos habitudes pour protéger nos aînés et les personnes
-      vulnérables. Mais confinement ne doit pas rimer avec isolement : pas de
-      poignées de main, faisons plus de création de liens ! »
-    </div>
-    <div class="green-background punchline mb-lg">
-      Lavons nous les mains mais ne nous tournons pas les pouces !
+    <div class="description-container">
+      <div class="center dark-blue-text mb-lg description">
+        « Nous changeons nos habitudes pour protéger nos aînés et les personnes
+        vulnérables. Mais confinement ne doit pas rimer avec isolement : pas de
+        poignées de main, faisons plus de création de liens ! »
+      </div>
+      <div class="green-background punchline mb-lg">
+        <div class="punchline-text">
+          Lavons nous les mains mais ne nous tournons pas les pouces !
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.logo {
+  width: 60px;
+}
 .hashtag-container {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .hashtag {
   font-size: 42px;
@@ -35,5 +44,37 @@
   font-weight: 500;
   line-height: 27px;
   padding: 8px 4px;
+}
+@media screen and (min-width: 768px) {
+  .logo {
+    width: 100px;
+  }
+  .hashtag {
+    font-size: 90px;
+  }
+  .description-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 22px;
+  }
+  .description {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    margin: 20px 50px;
+    line-height: 35px;
+  }
+  .punchline {
+    width: 50%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .punchline-text {
+    width: 70%;
+    text-align: center;
+    line-height: 35px;
+  }
 }
 </style>
