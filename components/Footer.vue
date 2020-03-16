@@ -3,6 +3,7 @@
     <div class="bloc blue-background footer-container">
       <div>#NosVieux 2020</div>
       <nuxt-link to="/cgu">Mentions Légales</nuxt-link>
+      <a href="mailto:contact@nosvieux.com">Contact</a>
     </div>
   </div>
 </template>
