@@ -12,7 +12,7 @@
     <div class="center dark-blue-text mb-xl description">
       « Nous changeons nos habitudes pour protéger nos aînés et les personnes
       vulnérables. Mais confinement ne doit pas rimer avec isolement : pas de
-      poignées de main, faisons plus de création de liens ! »
+      poignée de main, faisons plus de créations de liens ! »
     </div>
     <div class="green-background punchline mb-xl">
       <div class="punchline-text">
