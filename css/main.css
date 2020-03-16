@@ -20,6 +20,10 @@ body {
   text-align: center;
 }
 
+.mg-sm {
+  margin-left: 10px;
+}
+
 .blue-text {
   color: #00B8F1
 }
@@ -34,4 +38,7 @@ body {
 }
 .green-background {
   background-color: #87C846
+}
+.grey-text {
+  color: #515151
 }
