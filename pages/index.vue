@@ -22,19 +22,12 @@ export default {
     NosVieux,
     Social
   },
-  mounted() {
-    this.getPosts()
-  },
-  methods: {
-    getPosts() {
-      butter.category
-        .retrieve('test', { include: 'recent_posts' })
-        .then((res) => {
-          // eslint-disable-next-line no-console
-          console.log(res.data)
-          this.posts = res.data.data
-        })
-    }
+  asyncData() {
+    return butter.category.list().then((res) => {
+      return {
+        categories: res.data.data
+      }
+    })
   }
 }
 </script>
