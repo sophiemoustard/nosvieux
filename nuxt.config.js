@@ -18,6 +18,9 @@ export default {
   loading: { color: '#fff' },
   css: ['~/css/main.css'],
   plugins: [],
+  env: {
+    API_KEY: process.env.API_KEY
+  },
   buildModules: [
     '@nuxtjs/eslint-module',
     [
