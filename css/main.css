@@ -12,3 +12,23 @@ body {
 .bloc {
   margin: 10px 25px;
 }
+
+.center {
+  text-align: center;
+}
+
+.blue-text {
+  color: #00B8F1
+}
+.dark-blue-text {
+  color: #0073C0
+}
+.green-blue-text {
+  color: #23BEB9
+}
+.green-text {
+  color: #87C846
+}
+.green-background {
+  background-color: #87C846
+}
