@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   mode: 'universal',
   head: {
@@ -16,7 +18,20 @@ export default {
   loading: { color: '#fff' },
   css: ['~/css/main.css'],
   plugins: [],
-  buildModules: ['@nuxtjs/eslint-module'],
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: process.env.GA_TRACKING_ID,
+        dev: process.env.NODE_ENV === 'development',
+        debug:
+          process.env.NODE_ENV === 'development'
+            ? { enabled: true, sendHitTask: true }
+            : {}
+      }
+    ]
+  ],
   modules: [
     '@nuxtjs/axios', // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/dotenv' // Doc: https://github.com/nuxt-community/dotenv-module
