@@ -1,0 +1,14 @@
+body {
+  font-family: 'Source Sans Pro', 'Roboto', 'Helvetica', 'Arial';
+  font-size: 16px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.bloc {
+  margin: 10px 25px;
+}
