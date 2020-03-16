@@ -1,17 +1,23 @@
 <template>
   <div class="container bloc">
-    <nuxt-link class="close-button" to="/">x</nuxt-link>
-    <div class="big-title">Mentions légales & RGPD</div>
-    <span class="title">Le site Internet nosvieux est édité par : </span>
+    <nuxt-link to="/">
+      <img class="logo mb-sm" src="~/assets/logo.png" />
+    </nuxt-link>
+    <div class="big-title dark-blue-text">Mentions légales & RGPD</div>
+    <span class="title green-text"
+      >Le site Internet nosvieux est édité par :
+    </span>
     <span> Alenvi SAS </span>
     <span> RCS : 834 937 781 </span>
     <span> 37 rue de Ponthieu 75008 Paris </span>
     <span> support@alenvi.io </span>
 
     <span> Directeur de la rédaction : Thibault de Saint Blancard </span>
-    <span class="title">Le site Internet nosvieux est hébergé par : </span>
+    <span class="title green-blue-text"
+      >Le site Internet nosvieux est hébergé par :
+    </span>
     <span> Coordonnées de l’hébergeur </span>
-    <span class="title">
+    <span class="title blue-text">
       Modalités d’utilisation de vos données par le site nosvieux
     </span>
     <span>
@@ -39,7 +45,9 @@
       70 ans. Sauf avis contraire des propriétaires des données, elles seront
       effacées par Alenvi SAS à la fin des mesures.
     </span>
-    <span class="title"> Modalités d’exercice de vos droits : </span>
+    <span class="title dark-blue-text">
+      Modalités d’exercice de vos droits :
+    </span>
     <span>
       Conformément à la réglementation en vigueur, vous bénéficiez des droits
       suivants en fonction des objectifs pour lesquels nous utilisons vos
@@ -86,12 +94,18 @@
 </template>
 
 <style>
+a:-webkit-any-link {
+  color: white;
+  text-decoration: none;
+}
+.logo {
+  width: 100px;
+}
 .big-title {
   display: flex;
   justify-content: center;
   font-weight: bold;
   margin-bottom: 10px;
-  font-size: 16px;
 }
 
 .title {
@@ -100,10 +114,5 @@
   font-weight: bold;
   margin-top: 20px;
   margin-bottom: 10px;
-}
-
-.close-button {
-  display: flex;
-  justify-content: flex-end;
 }
 </style>
