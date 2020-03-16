@@ -1,8 +1,10 @@
 <template>
-  <div class="bloc blue-background footer-container">
-    <div>#NosVieux 2020</div>
-    <div>Mentions Légales</div>
-    <div>Contact</div>
+  <div>
+    <div class="bloc blue-background footer-container">
+      <div>#NosVieux 2020</div>
+      <nuxt-link to="/cgu">Mentions Légales</nuxt-link>
+      <div>Contact</div>
+    </div>
   </div>
 </template>
 

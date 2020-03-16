@@ -26,6 +26,9 @@ body {
 .mb-lg {
   margin-bottom: 40px;
 }
+.mt-sm {
+  margin-top: 10px;
+}
 
 .blue-text {
   color: #00B8F1
