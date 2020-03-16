@@ -51,7 +51,8 @@ export default {
   font-size: 20px;
   font-weight: 500;
   line-height: 27px;
-  padding: 8px;
+  padding: 8px 15px;
+  text-align: center;
 }
 @media screen and (min-width: 768px) {
   .logo {
@@ -66,15 +67,14 @@ export default {
     line-height: 35px;
   }
   .punchline {
-    width: 50%;
+    width: 40%;
     margin: 20px auto;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .punchline-text {
-    width: 70%;
-    text-align: center;
+    width: 80%;
     line-height: 35px;
   }
 }
