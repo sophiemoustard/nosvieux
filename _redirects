@@ -1,0 +1,4 @@
+# Redirect default Netlify subdomain to primary domain
+https://nosvieux.netlify.com/* https://nosvieux.org/:splat 301!
+# Redirect www.nosvieux.org to nosvieux.org
+https://www.nosvieux.org/* https://nosvieux.org/:splat 301!

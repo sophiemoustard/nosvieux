@@ -34,7 +34,8 @@ export default {
   ],
   modules: [
     '@nuxtjs/axios', // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/dotenv' // Doc: https://github.com/nuxt-community/dotenv-module
+    '@nuxtjs/dotenv', // Doc: https://github.com/nuxt-community/dotenv-module
+    '@nuxtjs/netlify-files'
   ],
   axios: {},
   build: {
