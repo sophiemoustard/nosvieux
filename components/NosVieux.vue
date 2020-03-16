@@ -22,6 +22,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'NosVieux'
+}
+</script>
+
 <style scoped>
 .logo {
   width: 60px;
