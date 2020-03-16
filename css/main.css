@@ -28,10 +28,6 @@ body {
   }
 }
 
-.center {
-  text-align: center;
-}
-
 .ml-sm {
   margin-left: 10px;
 }
@@ -39,10 +35,16 @@ body {
   margin-bottom: 10px;
 }
 .mb-xl {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 .mt-sm {
   margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .mb-xl {
+    margin-bottom: 60px;
+  }
 }
 
 .blue-text {

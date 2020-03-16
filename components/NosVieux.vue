@@ -9,7 +9,7 @@
         <div class="blue-text">eux</div>
       </div>
     </div>
-    <div class="center dark-blue-text mb-xl description">
+    <div class="dark-blue-text mb-xl description">
       « Nous changeons nos habitudes pour protéger nos aînés et les personnes
       vulnérables. Mais confinement ne doit pas rimer avec isolement : pas de
       poignée de main mais créons plus de liens ! »
@@ -36,12 +36,15 @@
   line-height: 57px;
   display: flex;
 }
+.description {
+  text-align: center;
+}
 .punchline {
   color: white;
   font-size: 20px;
   font-weight: 500;
   line-height: 27px;
-  padding: 8px 4px;
+  padding: 8px;
 }
 @media screen and (min-width: 768px) {
   .logo {
@@ -53,7 +56,7 @@
   .description {
     display: flex;
     justify-content: center;
-    width: 800px;
+    width: 780px;
     margin: 0 auto 60px;
     line-height: 35px;
   }

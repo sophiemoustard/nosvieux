@@ -10,7 +10,8 @@
           <div class="container ml-sm">
             <div class="grey-text steps-title">Agis</div>
             <div class="green-text">
-              Réalise une action de solidarité pour une personne âgée.
+              Réalise une action de solidarité en respect des consignes en
+              vigueur.
             </div>
           </div>
         </div>
