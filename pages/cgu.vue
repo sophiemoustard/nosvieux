@@ -18,7 +18,7 @@
     <span class="title green-blue-text">
       Le site Internet nosvieux est hébergé par :
     </span>
-    <span> Coordonnées de l’hébergeur </span>
+    <span> netlify.com </span>
     <span class="title blue-text">
       Modalités d’utilisation de vos données par le site nosvieux
     </span>
