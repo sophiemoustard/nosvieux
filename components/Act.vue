@@ -1,29 +1,29 @@
 <template>
-  <div class="container bloc">
-    <div class="dark-blue-text">En 3 etapes, c'est facile:</div>
+  <div class="bloc">
+    <div class="dark-blue-text">En 3 etapes, c'est facile :</div>
     <div class="steps-container">
-      <img class="steps-image" src="../static/img1.png" />
-      <div class="container mg-sm">
+      <img class="steps-image" src="~/static/step1.png" />
+      <div class="container ml-sm">
         <div class="grey-text steps-title">Agis</div>
         <div class="green-text">
-          Réalise une action de solidarité pour une personne âgée
+          Réalise une action de solidarité pour une personne âgée.
         </div>
       </div>
     </div>
     <div class="steps-container">
-      <img class="steps-image" src="../static/img2.png" />
-      <div class="container mg-sm">
+      <img class="steps-image" src="~/static/step2.png" />
+      <div class="container ml-sm">
         <div class="grey-text steps-title">Capture l'instant</div>
-        <div class="green-text">Prend une photo ou une vidéo</div>
+        <div class="green-text">Prend une photo ou une vidéo.</div>
       </div>
     </div>
     <div class="steps-container">
-      <img class="steps-image" src="../static/img3.png" />
-      <div class="container mg-sm">
+      <img class="steps-image" src="~/static/step3.png" />
+      <div class="container ml-sm">
         <div class="grey-text steps-title">Partage</div>
         <div class="green-text">
           Raconte ton histoire sur les réseaux sociaux avec #NosVieux et défie
-          deux amis de passer à l’action
+          deux amis de passer à l’action.
         </div>
       </div>
     </div>
@@ -38,7 +38,8 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  margin-top: 10px;
+  margin: 10px 0;
+  padding: 10px 0;
 }
 .steps-title {
   text-decoration: underline #0073c0;

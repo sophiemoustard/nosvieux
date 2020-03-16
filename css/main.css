@@ -12,7 +12,7 @@ body {
 }
 
 .bloc {
-  padding: 10px 30px;
+  padding: 20px 30px;
   box-shadow: 0 5px 12px 0 rgba(217,226,233,0.5);
 }
 
@@ -20,8 +20,11 @@ body {
   text-align: center;
 }
 
-.mg-sm {
+.ml-sm {
   margin-left: 10px;
+}
+.mb-lg {
+  margin-bottom: 40px;
 }
 
 .blue-text {
