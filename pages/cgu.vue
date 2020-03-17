@@ -96,10 +96,9 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 a:-webkit-any-link {
   color: white;
-  text-decoration: none;
 }
 .logo {
   width: 100px;

@@ -2,24 +2,26 @@
   <div>
     <div class="idea-box-header mb-sm">
       <div class="dark-blue-background idea-box-title">La boîte à idées</div>
+    </div>
+    <div class="idea-box-container">
       <div class="idea-box-subtitle">
         Tu veux agir mais ne sais pas encore comment ? Cette boite à idée est
         faite pour toi ! N'oublie pas de bien respecter les consignes en
         vigueur.
       </div>
-    </div>
-    <div class="idea-box-container">
       <div v-for="(idea, index) of ideas" :key="idea.id">
-        <div class="idea-tag" :class="getbackgroundClass(index)">
-          {{ idea.tags[0].name }}
-        </div>
-        <div class="idea-description mb-sm">
-          <img class="idea-logo" :src="idea.featured_image" />
-          <div>
-            <div>{{ idea.title }}</div>
-            <div class="idea-summary grey-text">{{ idea.summary }}</div>
+        <nuxt-link :to="`idee/${idea.slug}`">
+          <div class="idea-tag" :class="getbackgroundClass(index)">
+            {{ idea.tags[0].name }}
           </div>
-        </div>
+          <div class="idea-description mb-sm">
+            <img class="idea-logo" :src="idea.featured_image" />
+            <div>
+              <div>{{ idea.title }}</div>
+              <div class="idea-summary grey-text">{{ idea.summary }}</div>
+            </div>
+          </div>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -54,6 +56,9 @@ export default {
 </script>
 
 <style scoped>
+a:-webkit-any-link {
+  color: black;
+}
 .idea-box-header {
   text-align: center;
 }
@@ -63,7 +68,8 @@ export default {
   padding: 10px 0;
 }
 .idea-box-subtitle {
-  padding: 10px;
+  padding: 20px 0;
+  text-align: center;
   font-style: italic;
 }
 .idea-tag {
@@ -81,7 +87,6 @@ export default {
 .idea-logo {
   width: 50px;
   height: 50px;
-  flex-grow: 1;
   margin-right: 15px;
 }
 .idea-summary {

@@ -27,7 +27,7 @@ export default {
   async asyncData({ app }) {
     const ideas = await app.butter.post.list()
     return {
-      ideas: [...ideas.data.data, ...ideas.data.data, ...ideas.data.data]
+      ideas: ideas.data.data
     }
   }
 }
