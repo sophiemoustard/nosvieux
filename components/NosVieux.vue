@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import NiHeader from '~/components/header'
+import NiHeader from '~/components/Header'
 
 export default {
   name: 'NosVieux',

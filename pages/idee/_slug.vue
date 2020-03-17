@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import NiHeader from '~/components/header'
+import NiHeader from '~/components/Header'
 import NiFooter from '~/components/Footer'
 
 export default {
