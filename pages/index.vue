@@ -2,6 +2,7 @@
   <div class="container">
     <nos-vieux />
     <act />
+    <idea-box :ideas="ideas" />
     <social />
     <ni-footer />
   </div>
@@ -12,6 +13,7 @@ import Act from '~/components/Act'
 import NiFooter from '~/components/Footer'
 import NosVieux from '~/components/NosVieux'
 import Social from '~/components/Social'
+import IdeaBox from '~/components/IdeaBox'
 
 export default {
   name: 'Index',
@@ -19,11 +21,12 @@ export default {
     Act,
     NiFooter,
     NosVieux,
-    Social
+    Social,
+    IdeaBox
   },
   async asyncData({ app }) {
-    const posts = await app.butter.post.list()
-    return { posts: posts.data.data }
+    const ideas = await app.butter.post.list()
+    return { ideas: ideas.data.data }
   }
 }
 </script>

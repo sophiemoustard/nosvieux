@@ -59,10 +59,13 @@ body {
 .green-text {
   color: #87C846
 }
+.grey-text {
+  color: #4A4A4A;
+}
 .green-background {
   background-color: #87C846
 }
-.blue-background {
+.dark-blue-background {
   background-color: #0073C0
 }
 .grey-text {
