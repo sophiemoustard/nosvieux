@@ -3,7 +3,7 @@
     <div class="bloc">
       <ni-header />
       <div class="idea-container">
-        <div class="idea-title mb-sm">
+        <div class="idea-title mb-md">
           <h1>{{ idea.title }}</h1>
           <img
             class="idea-logo"
