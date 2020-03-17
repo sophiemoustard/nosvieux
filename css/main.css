@@ -5,13 +5,27 @@ body {
   margin: 0;
   background-color: #F5F5F5;
 }
+
+h1 {
+  font-weight: 500;
+  font-size: 20px;
+}
+
 @media screen and (min-width: 768px) {
   body {
     font-size: 20px;
     line-height: 27px;
   }
+
+  h1 {
+    font-size: 26px;
+  }
 }
 
+a:-webkit-any-link {
+  text-decoration: none;
+  color: #515151;
+}
 .container {
   display: flex;
   justify-content: center;

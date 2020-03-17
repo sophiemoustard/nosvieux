@@ -15,6 +15,9 @@ export default {
 </script>
 
 <style scoped>
+a:-webkit-any-link {
+  color: white;
+}
 .footer-container {
   display: flex;
   align-items: center;
