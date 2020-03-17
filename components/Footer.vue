@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bloc blue-background footer-container">
+    <div class="bloc dark-blue-background footer-container">
       <div>#NosVieux</div>
       <nuxt-link to="/cgu">Mentions Légales</nuxt-link>
       <div><a href="mailto:contact@nosvieux.com">contact@nosvieux.org</a></div>
