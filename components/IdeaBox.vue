@@ -3,15 +3,15 @@
     <div class="idea-box-header mb-sm">
       <div class="dark-blue-background idea-box-title">La boîte à idées</div>
       <div class="idea-box-subtitle">
-        Vous voulez agir mais vous ne savez pas encore comment ? Cette boite à
-        idée est faite pour vous !
+        Tu veux agir mais ne sais pass encore comment ? Cette boite à idée est
+        faite pour toi !
       </div>
     </div>
-    <div class="">
-      <div v-for="idea of ideas" :key="idea.id">
+    <div class="idea-box-container">
+      <div v-for="idea of ideas" :key="idea.id" class="idea-container">
         <div class="idea-tag green-background">{{ idea.tags[0].name }}</div>
-        <div class="idea-container">
-          <img class="idea-logo mb-sm" src="~/assets/send love.png" />
+        <div class="idea-description mb-sm">
+          <img class="idea-logo mr-sm" src="~/assets/send love.png" />
           <div>
             <div>{{ idea.title }}</div>
             <div class="idea-summary grey-text">{{ idea.summary }}</div>
@@ -27,6 +27,13 @@ export default {
   name: 'IdeaBox',
   props: {
     ideas: { type: Array, default: () => [] }
+  },
+  methods: {
+    getMainTag(idea) {
+      return idea.tags && idea.tags[0] && idea.tags[0].name
+        ? idea.tags[0].name
+        : 'Citoyen concerné'
+    }
   }
 }
 </script>
@@ -49,7 +56,7 @@ export default {
   width: fit-content;
   padding: 3px 8px;
 }
-.idea-container {
+.idea-description {
   display: flex;
   align-items: center;
   padding: 10px 30px 20px;
@@ -59,9 +66,21 @@ export default {
   width: 50px;
   height: 50px;
   flex-grow: 1;
-  margin-right: 15px;
 }
 .idea-summary {
   font-size: 14px;
+}
+@media screen and (min-width: 768px) {
+  .idea-tag {
+    font-size: 14px;
+  }
+  .idea-box-subtitle {
+    font-size: 18px;
+  }
+  .idea-box-container {
+    width: 700px;
+    margin: auto;
+    font-size: 18px;
+  }
 }
 </style>

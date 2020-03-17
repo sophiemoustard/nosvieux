@@ -31,6 +31,9 @@ body {
 .ml-sm {
   margin-left: 10px;
 }
+.mr-sm {
+  margin-right: 10px;
+}
 .mb-sm {
   margin-bottom: 10px;
 }
