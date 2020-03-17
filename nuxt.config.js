@@ -20,17 +20,7 @@ export default {
   plugins: [],
   buildModules: [
     '@nuxtjs/eslint-module',
-    [
-      '@nuxtjs/google-analytics',
-      {
-        id: process.env.GA_TRACKING_ID,
-        dev: process.env.NODE_ENV === 'development',
-        debug:
-          process.env.NODE_ENV === 'development'
-            ? { enabled: true, sendHitTask: true }
-            : {}
-      }
-    ]
+    ['@nuxtjs/google-analytics', { id: process.env.GA_TRACKING_ID }]
   ],
   modules: [
     '@nuxtjs/axios', // Doc: https://axios.nuxtjs.org/usage
