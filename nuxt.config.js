@@ -31,6 +31,12 @@ export default {
     '@nuxtjs/dotenv', // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/netlify-files'
   ],
+  generate: {
+    routes({ app }) {
+      const ideas = app.butter.post.list()
+      return ideas.data.data.map((id) => `/idee/${id.slug}`)
+    }
+  },
   axios: {},
   build: {
     /*
