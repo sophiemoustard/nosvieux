@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import { butter } from '../buttercms'
 import Act from '~/components/Act'
 import NiFooter from '~/components/Footer'
 import NosVieux from '~/components/NosVieux'
@@ -22,8 +21,8 @@ export default {
     NosVieux,
     Social
   },
-  async asyncData() {
-    const posts = await butter.post.list()
+  async asyncData({ app }) {
+    const posts = await app.butter.post.list()
     return { posts: posts.data.data }
   }
 }

@@ -17,7 +17,7 @@ export default {
   },
   loading: { color: '#fff' },
   css: ['~/css/main.css'],
-  plugins: [],
+  plugins: ['~/plugins/buttercms.js'],
   env: {
     API_KEY: process.env.API_KEY
   },
