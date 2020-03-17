@@ -1,3 +1,4 @@
+import Butter from 'buttercms'
 require('dotenv').config()
 
 export default {
@@ -32,8 +33,9 @@ export default {
     '@nuxtjs/netlify-files'
   ],
   generate: {
-    routes({ app }) {
-      const ideas = app.butter.post.list()
+    async routes() {
+      const butter = Butter(process.env.BUTTER_CMS_TOKEN)
+      const ideas = await butter.post.list()
       return ideas.data.data.map((id) => `/idee/${id.slug}`)
     }
   },
