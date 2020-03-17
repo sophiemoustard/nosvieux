@@ -27,7 +27,9 @@ export default {
   async asyncData({ app }) {
     const ideas = await app.butter.post.list()
     return {
-      ideas: ideas.data.data
+      ideas: ideas.data.data.sort(
+        (a, b) => new Date(a.published) - new Date(b.published)
+      )
     }
   }
 }
