@@ -1,6 +1,8 @@
 <template>
   <div>
-    <img class="logo mb-sm" src="~/assets/logo.png" />
+    <nuxt-link to="/">
+      <img class="logo mb-sm" src="~/assets/logo.png" />
+    </nuxt-link>
     <div class="hashtag-container mb-xl">
       <div class="hashtag">
         <div class="blue-text">#</div>
