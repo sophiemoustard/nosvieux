@@ -14,7 +14,7 @@
           {{ idea.tags[0].name }}
         </div>
         <div class="idea-description mb-sm">
-          <img class="idea-logo mr-sm" src="~/assets/send love.png" />
+          <img class="idea-logo mr-sm" :src="idea.featured_image" />
           <div>
             <div>{{ idea.title }}</div>
             <div class="idea-summary grey-text">{{ idea.summary }}</div>
