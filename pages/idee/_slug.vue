@@ -51,6 +51,8 @@ export default {
 }
 .idea-container {
   font-size: 18px;
+  padding: 20px;
+  box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
 }
 .idea-title {
   text-align: center;
