@@ -1,14 +1,6 @@
 <template>
   <div class="bloc">
-    <img class="logo mb-sm" src="~/assets/logo.png" />
-    <div class="hashtag-container mb-xl">
-      <div class="hashtag">
-        <div class="blue-text">#</div>
-        <div class="green-text">Nos</div>
-        <div class="green-blue-text">Vi</div>
-        <div class="blue-text">eux</div>
-      </div>
-    </div>
+    <ni-header />
     <div class="dark-blue-text mb-xl description">
       « Nous changeons nos habitudes pour protéger nos aînés et les personnes
       vulnérables. Mais <b>confinement ne doit pas rimer avec isolement</b> !
@@ -24,25 +16,15 @@
 </template>
 
 <script>
+import NiHeader from '~/components/header'
+
 export default {
-  name: 'NosVieux'
+  name: 'NosVieux',
+  components: { NiHeader }
 }
 </script>
 
 <style scoped>
-.logo {
-  width: 60px;
-}
-.hashtag-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.hashtag {
-  font-size: 42px;
-  line-height: 57px;
-  display: flex;
-}
 .description {
   text-align: center;
 }
@@ -55,12 +37,6 @@ export default {
   text-align: center;
 }
 @media screen and (min-width: 768px) {
-  .logo {
-    width: 100px;
-  }
-  .hashtag {
-    font-size: 90px;
-  }
   .description {
     width: 780px;
     margin: 0 auto 60px;
