@@ -81,18 +81,25 @@ a:-webkit-any-link {
 .idea-description {
   display: flex;
   align-items: center;
-  padding: 10px 30px 20px;
+  padding: 10px 20px 20px;
   box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
 }
 .idea-logo {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   margin-right: 15px;
 }
 .idea-summary {
   font-size: 14px;
 }
 @media screen and (min-width: 768px) {
+  .idea-logo {
+    width: 50px;
+    height: 50px;
+  }
+  .idea-description {
+    padding: 10px 30px 20px;
+  }
   .idea-box-subtitle {
     font-size: 18px;
   }
