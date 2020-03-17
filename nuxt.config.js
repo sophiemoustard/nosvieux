@@ -17,7 +17,10 @@ export default {
   },
   loading: { color: '#fff' },
   css: ['~/css/main.css'],
-  plugins: [],
+  plugins: ['~/plugins/buttercms.js'],
+  env: {
+    API_KEY: process.env.API_KEY
+  },
   buildModules: [
     '@nuxtjs/eslint-module',
     ['@nuxtjs/google-analytics', { id: process.env.GA_TRACKING_ID }]

@@ -20,6 +20,10 @@ export default {
     NiFooter,
     NosVieux,
     Social
+  },
+  async asyncData({ app }) {
+    const posts = await app.butter.post.list()
+    return { posts: posts.data.data }
   }
 }
 </script>
