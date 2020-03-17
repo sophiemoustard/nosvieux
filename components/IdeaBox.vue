@@ -5,7 +5,7 @@
     </div>
     <div class="idea-box-container">
       <div class="idea-box-subtitle">
-        Tu veux agir mais ne sais pas encore comment ? Cette boite à idée est
+        Tu veux agir mais ne sais pas encore comment ? Cette boite à idées est
         faite pour toi ! N'oublie pas de bien respecter les consignes en
         vigueur.
       </div>
