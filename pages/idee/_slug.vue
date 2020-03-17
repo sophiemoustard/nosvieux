@@ -7,6 +7,7 @@
           <h1>{{ idea.title }}</h1>
           <img class="idea-logo" :src="idea.featured_image" />
         </div>
+        <div class="dark-blue-text">{{ idea.summary }}</div>
         <!-- eslint-disable-next-line vue/no-v-html -->
         <div v-html="idea.body" />
       </div>
