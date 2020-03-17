@@ -9,12 +9,12 @@
       </div>
     </div>
     <div class="idea-box-container">
-      <div v-for="(idea, index) of ideas" :key="idea.id" class="idea-container">
+      <div v-for="(idea, index) of ideas" :key="idea.id">
         <div class="idea-tag" :class="getbackgroundClass(index)">
           {{ idea.tags[0].name }}
         </div>
         <div class="idea-description mb-sm">
-          <img class="idea-logo mr-sm" :src="idea.featured_image" />
+          <img class="idea-logo" :src="idea.featured_image" />
           <div>
             <div>{{ idea.title }}</div>
             <div class="idea-summary grey-text">{{ idea.summary }}</div>
@@ -82,6 +82,7 @@ export default {
   width: 50px;
   height: 50px;
   flex-grow: 1;
+  margin-right: 15px;
 }
 .idea-summary {
   font-size: 14px;
