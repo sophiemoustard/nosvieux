@@ -22,12 +22,9 @@ export default {
     NosVieux,
     Social
   },
-  asyncData() {
-    return butter.category.list().then((res) => {
-      return {
-        categories: res.data.data
-      }
-    })
+  async asyncData() {
+    const posts = await butter.post.list()
+    return { posts: posts.data.data }
   }
 }
 </script>
