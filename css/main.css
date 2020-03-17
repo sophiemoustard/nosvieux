@@ -1,7 +1,7 @@
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 24px;
   margin: 0;
   background-color: #F5F5F5;
 }
@@ -33,7 +33,7 @@ a:-webkit-any-link {
 }
 
 .bloc {
-  padding: 20px 30px;
+  padding: 20px;
   box-shadow: 0 5px 12px 0 rgba(217,226,233,0.5);
 }
 @media screen and (min-width: 768px) {
@@ -50,6 +50,9 @@ a:-webkit-any-link {
 }
 .mb-sm {
   margin-bottom: 10px;
+}
+.mb-md {
+  margin-bottom: 20px;
 }
 .mb-xl {
   margin-bottom: 30px;
