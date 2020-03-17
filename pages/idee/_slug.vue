@@ -5,7 +5,11 @@
       <div class="idea-container">
         <div class="idea-title mb-sm">
           <h1>{{ idea.title }}</h1>
-          <img class="idea-logo" :src="idea.featured_image" />
+          <img
+            class="idea-logo"
+            :src="idea.featured_image"
+            :alt="idea.featured_image_alt"
+          />
         </div>
         <div class="dark-blue-text">{{ idea.summary }}</div>
         <!-- eslint-disable-next-line vue/no-v-html -->
@@ -65,6 +69,7 @@ export default {
   .idea-logo {
     width: 60px;
     height: 60px;
+    margin-left: 10px;
   }
   .idea-container {
     width: 700px;
