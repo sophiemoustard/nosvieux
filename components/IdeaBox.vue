@@ -3,13 +3,16 @@
     <div class="idea-box-header mb-sm">
       <div class="dark-blue-background idea-box-title">La boîte à idées</div>
       <div class="idea-box-subtitle">
-        Tu veux agir mais ne sais pass encore comment ? Cette boite à idée est
-        faite pour toi !
+        Tu veux agir mais ne sais pas encore comment ? Cette boite à idée est
+        faite pour toi ! N'oublie pas de bien respecter les consignes en
+        vigueur.
       </div>
     </div>
     <div class="idea-box-container">
-      <div v-for="idea of ideas" :key="idea.id" class="idea-container">
-        <div class="idea-tag green-background">{{ idea.tags[0].name }}</div>
+      <div v-for="(idea, index) of ideas" :key="idea.id" class="idea-container">
+        <div class="idea-tag" :class="getbackgroundClass(index)">
+          {{ idea.tags[0].name }}
+        </div>
         <div class="idea-description mb-sm">
           <img class="idea-logo mr-sm" src="~/assets/send love.png" />
           <div>
@@ -29,6 +32,18 @@ export default {
     ideas: { type: Array, default: () => [] }
   },
   methods: {
+    getbackgroundClass(index) {
+      switch (index % 4) {
+        case 0:
+          return 'green-background'
+        case 1:
+          return 'blue-background'
+        case 2:
+          return 'green-blue-background'
+        case 3:
+          return 'dark-blue-background'
+      }
+    },
     getMainTag(idea) {
       return idea.tags && idea.tags[0] && idea.tags[0].name
         ? idea.tags[0].name
@@ -54,7 +69,8 @@ export default {
 .idea-tag {
   color: white;
   width: fit-content;
-  padding: 3px 8px;
+  padding: 2px 10px;
+  font-size: 14px;
 }
 .idea-description {
   display: flex;
@@ -71,9 +87,6 @@ export default {
   font-size: 14px;
 }
 @media screen and (min-width: 768px) {
-  .idea-tag {
-    font-size: 14px;
-  }
   .idea-box-subtitle {
     font-size: 18px;
   }
