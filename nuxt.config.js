@@ -19,7 +19,8 @@ export default {
   css: ['~/css/main.css'],
   plugins: ['~/plugins/buttercms.js'],
   env: {
-    API_KEY: process.env.API_KEY
+    GA_TRACKING_ID: process.env.GA_TRACKING_ID,
+    BUTTER_CMS_TOKEN: process.env.BUTTER_CMS_TOKEN
   },
   buildModules: [
     '@nuxtjs/eslint-module',
