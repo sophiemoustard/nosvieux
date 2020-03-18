@@ -25,8 +25,11 @@
         </nuxt-link>
       </div>
     </div>
-    <div class="container">
-      <div class="light-green-background more-ideas-button container">
+    <div v-if="!showAll" class="container">
+      <div
+        class="light-green-background more-ideas-button container"
+        @click="getAllPosts()"
+      >
         VOIR PLUS D'IDÉES
       </div>
     </div>
@@ -52,6 +55,7 @@ export default {
       [MAIN_TAG_ACTIVITE]: 'green-blue-background'
     }
     return {
+      showAll: false,
       tagColors,
       defaultMainTag: {
         name: 'Garder contact',
@@ -70,6 +74,10 @@ export default {
         ...mainTag,
         color: this.tagColors[mainTag.slug] || 'dark-blue-background'
       }
+    },
+    getAllPosts() {
+      this.showAll = true
+      this.$emit('allPost')
     }
   }
 }
@@ -126,6 +134,7 @@ a:-webkit-any-link {
   flex-direction: row;
 }
 .more-ideas-button {
+  cursor: pointer;
   align-items: center;
   border-radius: 4px;
   opacity: 0.6;
