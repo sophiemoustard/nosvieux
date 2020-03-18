@@ -9,7 +9,7 @@
         faite pour toi ! N'oublie pas de bien respecter les consignes en
         vigueur.
       </div>
-      <div v-for="idea of ideas" :key="idea.id">
+      <div v-for="idea of ideasArray" :key="idea.id">
         <nuxt-link :to="`idee/${idea.slug}`" class="idea-container">
           <div class="idea-tag" :class="getMainTag(idea).color">
             {{ getMainTag(idea).name }}
@@ -71,6 +71,11 @@ export default {
       }
     }
   },
+  computed: {
+    ideasArray() {
+      return this.showAll ? this.ideas : this.ideas.slice(0, 6)
+    }
+  },
   methods: {
     getMainTag(idea) {
       if (!idea.tags || idea.tags.length === 0) return this.defaultMainTag
@@ -88,7 +93,6 @@ export default {
       this.$emit('allIdeas')
     },
     getSomeIdeas() {
-      this.ideas = this.ideas.slice(0, 6)
       this.showAll = false
     }
   }
