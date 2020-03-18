@@ -25,6 +25,11 @@
         </nuxt-link>
       </div>
     </div>
+    <div class="container">
+      <div class="light-green-background more-ideas-button container">
+        VOIR PLUS D'IDÉES
+      </div>
+    </div>
   </div>
 </template>
 
@@ -117,6 +122,21 @@ a:-webkit-any-link {
   height: 10px;
   padding-left: 5px;
 }
+.container {
+  flex-direction: row;
+}
+.more-ideas-button {
+  align-items: center;
+  border-radius: 4px;
+  opacity: 0.6;
+  color: white;
+  width: 150px;
+  height: 40px;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 1.5px;
+}
+
 @media screen and (min-width: 768px) {
   .idea-logo {
     width: 50px;
