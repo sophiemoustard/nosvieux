@@ -25,11 +25,12 @@ export default {
     IdeaBox
   },
   async asyncData({ app }) {
-    const ideas = await app.butter.post.list()
+    const posts = await app.butter.post.list()
+    const ideas = posts.data.data.filter((id) =>
+      id.categories.some((cat) => cat.slug === 'boite-a-idee')
+    )
     return {
-      ideas: ideas.data.data.sort(
-        (a, b) => new Date(a.published) - new Date(b.published)
-      )
+      ideas: ideas.sort((a, b) => new Date(a.published) - new Date(b.published))
     }
   }
 }
