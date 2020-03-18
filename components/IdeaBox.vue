@@ -27,8 +27,8 @@
     </div>
     <div v-if="!showAll" class="container">
       <div
-        class="light-green-background more-ideas-button container"
-        @click="getAllPosts()"
+        class="dark-blue-background more-ideas-button container"
+        @click="getAllIdeas()"
       >
         VOIR PLUS D'IDÉES
       </div>
@@ -75,9 +75,9 @@ export default {
         color: this.tagColors[mainTag.slug] || 'dark-blue-background'
       }
     },
-    getAllPosts() {
+    getAllIdeas() {
       this.showAll = true
-      this.$emit('allPost')
+      this.$emit('allIdeas')
     }
   }
 }

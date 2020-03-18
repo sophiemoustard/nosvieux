@@ -2,7 +2,7 @@
   <div class="container">
     <nos-vieux />
     <act />
-    <idea-box :ideas="ideas" @allPost="getAllPosts()" />
+    <idea-box :ideas="ideas" @allIdeas="getAllIdeas()" />
     <social />
     <ni-footer />
   </div>
@@ -36,7 +36,7 @@ export default {
     }
   },
   methods: {
-    async getAllPosts() {
+    async getAllIdeas() {
       const ideas = await this.$butter.post.list({
         category_slug: CAT_BOITE_A_IDEE
       })
