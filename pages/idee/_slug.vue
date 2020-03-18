@@ -3,17 +3,24 @@
     <div class="bloc">
       <ni-header />
       <div class="idea-container">
-        <div class="idea-title mb-md">
-          <h1>{{ idea.title }}</h1>
-          <img
-            class="idea-logo"
-            :src="idea.featured_image"
-            :alt="idea.featured_image_alt"
-          />
+        <div v-for="tag of idea.tags" :key="tag.name">
+          <div class="idea-tag" :class="getTagColor(tag.slug)">
+            {{ tag.name }}
+          </div>
         </div>
-        <div class="dark-blue-text">{{ idea.summary }}</div>
-        <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-html="idea.body" />
+        <div class="idea-content">
+          <div class="idea-title mb-md">
+            <h1>{{ idea.title }}</h1>
+            <img
+              class="idea-logo"
+              :src="idea.featured_image"
+              :alt="idea.featured_image_alt"
+            />
+          </div>
+          <div class="dark-blue-text">{{ idea.summary }}</div>
+          <!-- eslint-disable-next-line vue/no-v-html -->
+          <div v-html="idea.body" />
+        </div>
       </div>
     </div>
     <ni-footer />
@@ -23,6 +30,11 @@
 <script>
 import NiHeader from '~/components/Header'
 import NiFooter from '~/components/Footer'
+import {
+  MAIN_TAG_AIDE,
+  MAIN_TAG_CONTACT,
+  MAIN_TAG_ACTIVITE
+} from '~/helpers/constants'
 
 export default {
   name: 'IdeaProfile',
@@ -33,6 +45,21 @@ export default {
   async asyncData({ app, params }) {
     const idea = await app.$butter.post.retrieve(params.slug)
     return { idea: idea.data.data }
+  },
+  data() {
+    const tagColors = {
+      [MAIN_TAG_AIDE]: 'green-background',
+      [MAIN_TAG_CONTACT]: 'blue-background',
+      [MAIN_TAG_ACTIVITE]: 'green-blue-background'
+    }
+    return {
+      tagColors
+    }
+  },
+  methods: {
+    getTagColor(slug) {
+      return this.tagColors[slug] || 'dark-blue-background'
+    }
   },
   head() {
     return {
@@ -55,9 +82,11 @@ export default {
   height: 50px;
 }
 .idea-container {
-  font-size: 18px;
-  padding: 20px;
   box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
+}
+.idea-content {
+  padding: 20px;
+  font-size: 18px;
 }
 .idea-title {
   text-align: center;
