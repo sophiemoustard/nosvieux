@@ -14,6 +14,7 @@ import NiFooter from '~/components/Footer'
 import NosVieux from '~/components/NosVieux'
 import Social from '~/components/Social'
 import IdeaBox from '~/components/IdeaBox'
+import { CAT_BOITE_A_IDEE } from '~/helpers/constants'
 
 export default {
   name: 'Index',
@@ -25,7 +26,9 @@ export default {
     IdeaBox
   },
   async asyncData({ app }) {
-    const ideas = await app.butter.post.list()
+    const ideas = await app.butter.post.list({
+      category_slug: CAT_BOITE_A_IDEE
+    })
     return {
       ideas: ideas.data.data.sort(
         (a, b) => new Date(a.published) - new Date(b.published)

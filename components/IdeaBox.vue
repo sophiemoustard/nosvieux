@@ -9,10 +9,10 @@
         faite pour toi ! N'oublie pas de bien respecter les consignes en
         vigueur.
       </div>
-      <div v-for="(idea, index) of ideas" :key="idea.id">
+      <div v-for="idea of ideas" :key="idea.id">
         <nuxt-link :to="`idee/${idea.slug}`">
-          <div class="idea-tag" :class="getbackgroundClass(index)">
-            {{ idea.tags[0].name }}
+          <div class="idea-tag" :class="getMainTag(idea).color">
+            {{ getMainTag(idea).name }}
           </div>
           <div class="idea-description mb-sm">
             <img class="idea-logo" :src="idea.featured_image" />
@@ -28,28 +28,42 @@
 </template>
 
 <script>
+import {
+  MAIN_TAG_AIDE,
+  MAIN_TAG_CONTACT,
+  MAIN_TAG_ACTIVITE
+} from '~/helpers/constants'
+
 export default {
   name: 'IdeaBox',
   props: {
     ideas: { type: Array, default: () => [] }
   },
-  methods: {
-    getbackgroundClass(index) {
-      switch (index % 4) {
-        case 0:
-          return 'green-background'
-        case 1:
-          return 'blue-background'
-        case 2:
-          return 'green-blue-background'
-        case 3:
-          return 'dark-blue-background'
+  data() {
+    const tagColors = {
+      [MAIN_TAG_AIDE]: 'green-background',
+      [MAIN_TAG_CONTACT]: 'blue-background',
+      [MAIN_TAG_ACTIVITE]: 'green-blue-background'
+    }
+    return {
+      tagColors,
+      defaultMainTag: {
+        name: 'Garder contact',
+        color: tagColors[MAIN_TAG_CONTACT]
       }
-    },
+    }
+  },
+  methods: {
     getMainTag(idea) {
-      return idea.tags && idea.tags[0] && idea.tags[0].name
-        ? idea.tags[0].name
-        : 'Citoyen concerné'
+      if (!idea.tags || idea.tags.length === 0) return this.defaultMainTag
+
+      const mainTag = idea.tags.find((tg) => tg.slug.startsWith('main-'))
+      if (!mainTag) return this.defaultMainTag
+
+      return {
+        ...mainTag,
+        color: this.tagColors[mainTag.slug] || 'dark-blue-background'
+      }
     }
   }
 }

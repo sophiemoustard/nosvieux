@@ -41,9 +41,6 @@ export default {
   },
   axios: {},
   build: {
-    /*
-     ** You can extend webpack config here
-     */
     extend(config, ctx) {}
   }
 }
