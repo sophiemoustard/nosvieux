@@ -9,7 +9,7 @@
         faite pour toi ! N'oublie pas de bien respecter les consignes en
         vigueur.
       </div>
-      <div v-for="idea of ideas" :key="idea.id">
+      <div v-for="idea of ideasArray" :key="idea.id">
         <nuxt-link :to="`idee/${idea.slug}`" class="idea-container">
           <div class="idea-tag" :class="getMainTag(idea).color">
             {{ getMainTag(idea).name }}
@@ -24,6 +24,22 @@
           </div>
         </nuxt-link>
       </div>
+    </div>
+    <div v-if="!showAll" class="container">
+      <button
+        class="dark-blue-background more-ideas-button"
+        @click="getAllIdeas()"
+      >
+        VOIR PLUS D'IDÉES
+      </button>
+    </div>
+    <div v-else class="container">
+      <button
+        class="dark-blue-background more-ideas-button"
+        @click="getSomeIdeas()"
+      >
+        VOIR MOINS D'IDÉES
+      </button>
     </div>
   </div>
 </template>
@@ -47,11 +63,17 @@ export default {
       [MAIN_TAG_ACTIVITE]: 'green-blue-background'
     }
     return {
+      showAll: false,
       tagColors,
       defaultMainTag: {
         name: 'Garder contact',
         color: tagColors[MAIN_TAG_CONTACT]
       }
+    }
+  },
+  computed: {
+    ideasArray() {
+      return this.showAll ? this.ideas : this.ideas.slice(0, 6)
     }
   },
   methods: {
@@ -65,6 +87,13 @@ export default {
         ...mainTag,
         color: this.tagColors[mainTag.slug] || 'dark-blue-background'
       }
+    },
+    getAllIdeas() {
+      this.showAll = true
+      this.$emit('allIdeas')
+    },
+    getSomeIdeas() {
+      this.showAll = false
     }
   }
 }
@@ -117,6 +146,25 @@ a:-webkit-any-link {
   height: 10px;
   padding-left: 5px;
 }
+.container {
+  flex-direction: row;
+}
+.more-ideas-button {
+  margin-top: 15px;
+  cursor: pointer;
+  align-items: center;
+  border-radius: 4px;
+  color: white;
+  width: 170px;
+  height: 40px;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 1.5px;
+}
+.more-ideas-button:focus {
+  outline: 0;
+}
+
 @media screen and (min-width: 768px) {
   .idea-logo {
     width: 50px;

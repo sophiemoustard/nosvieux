@@ -2,7 +2,7 @@
   <div class="container">
     <nos-vieux />
     <act />
-    <idea-box :ideas="ideas" />
+    <idea-box :ideas="ideas" @allIdeas="getAllIdeas()" />
     <social />
     <ni-footer />
   </div>
@@ -26,11 +26,21 @@ export default {
     IdeaBox
   },
   async asyncData({ app }) {
-    const ideas = await app.butter.post.list({
+    const ideas = await app.$butter.post.list({
       category_slug: CAT_BOITE_A_IDEE
     })
     return {
-      ideas: ideas.data.data.sort(
+      ideas: ideas.data.data
+        .sort((a, b) => new Date(a.published) - new Date(b.published))
+        .slice(0, 6)
+    }
+  },
+  methods: {
+    async getAllIdeas() {
+      const ideas = await this.$butter.post.list({
+        category_slug: CAT_BOITE_A_IDEE
+      })
+      this.ideas = ideas.data.data.sort(
         (a, b) => new Date(a.published) - new Date(b.published)
       )
     }

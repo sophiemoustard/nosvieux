@@ -31,7 +31,7 @@ export default {
     NiFooter
   },
   async asyncData({ app, params }) {
-    const idea = await app.butter.post.retrieve(params.slug)
+    const idea = await app.$butter.post.retrieve(params.slug)
     return { idea: idea.data.data }
   },
   head() {
