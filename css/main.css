@@ -105,5 +105,7 @@ a:-webkit-any-link {
   color: white;
   width: fit-content;
   padding: 2px 10px;
+  display: inline-block;
+  height: 27px;
   font-size: 14px;
 }

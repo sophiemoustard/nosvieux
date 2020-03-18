@@ -3,10 +3,13 @@
     <div class="bloc">
       <ni-header />
       <div class="idea-container">
-        <div v-for="tag of idea.tags" :key="tag.name">
-          <div class="idea-tag" :class="getTagColor(tag.slug)">
-            {{ tag.name }}
-          </div>
+        <div
+          v-for="tag of idea.tags"
+          :key="tag.name"
+          class="idea-tag"
+          :class="getTagColor(tag.slug)"
+        >
+          {{ tag.name }}
         </div>
         <div class="idea-content">
           <div class="idea-title mb-md">
@@ -33,7 +36,14 @@ import NiFooter from '~/components/Footer'
 import {
   MAIN_TAG_AIDE,
   MAIN_TAG_CONTACT,
-  MAIN_TAG_ACTIVITE
+  MAIN_TAG_ACTIVITE,
+  TAG_1_HOUR,
+  TAG_HALF_DAY,
+  TAG_FEW_HOURS,
+  TAG_ALL_MY_TIME,
+  TAG_CITOYEN,
+  TAG_CHILD,
+  TAG_RELATIVE
 } from '~/helpers/constants'
 
 export default {
@@ -50,7 +60,14 @@ export default {
     const tagColors = {
       [MAIN_TAG_AIDE]: 'green-background',
       [MAIN_TAG_CONTACT]: 'blue-background',
-      [MAIN_TAG_ACTIVITE]: 'green-blue-background'
+      [MAIN_TAG_ACTIVITE]: 'green-blue-background',
+      [TAG_1_HOUR]: 'green-background',
+      [TAG_HALF_DAY]: 'blue-background',
+      [TAG_FEW_HOURS]: 'green-blue-background',
+      [TAG_ALL_MY_TIME]: 'dark-blue-background',
+      [TAG_CITOYEN]: 'green-background',
+      [TAG_CHILD]: 'blue-background',
+      [TAG_RELATIVE]: 'green-blue-background'
     }
     return {
       tagColors
@@ -94,6 +111,7 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+
 @media screen and (min-width: 768px) {
   .idea-logo {
     width: 60px;
