@@ -33,6 +33,14 @@
         VOIR PLUS D'IDÉES
       </div>
     </div>
+    <div v-else class="container">
+      <div
+        class="dark-blue-background more-ideas-button container"
+        @click="getSomeIdeas()"
+      >
+        VOIR MOINS D'IDÉES
+      </div>
+    </div>
   </div>
 </template>
 
@@ -78,6 +86,10 @@ export default {
     getAllIdeas() {
       this.showAll = true
       this.$emit('allIdeas')
+    },
+    getSomeIdeas() {
+      this.ideas = this.ideas.slice(0, 6)
+      this.showAll = false
     }
   }
 }
@@ -134,10 +146,10 @@ a:-webkit-any-link {
   flex-direction: row;
 }
 .more-ideas-button {
+  margin-top: 15px;
   cursor: pointer;
   align-items: center;
   border-radius: 4px;
-  opacity: 0.6;
   color: white;
   width: 150px;
   height: 40px;
