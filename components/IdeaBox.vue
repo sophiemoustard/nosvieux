@@ -26,20 +26,20 @@
       </div>
     </div>
     <div v-if="!showAll" class="container">
-      <div
-        class="dark-blue-background more-ideas-button container"
+      <button
+        class="dark-blue-background more-ideas-button"
         @click="getAllIdeas()"
       >
         VOIR PLUS D'IDÉES
-      </div>
+      </button>
     </div>
     <div v-else class="container">
-      <div
-        class="dark-blue-background more-ideas-button container"
+      <button
+        class="dark-blue-background more-ideas-button"
         @click="getSomeIdeas()"
       >
         VOIR MOINS D'IDÉES
-      </div>
+      </button>
     </div>
   </div>
 </template>
@@ -151,11 +151,14 @@ a:-webkit-any-link {
   align-items: center;
   border-radius: 4px;
   color: white;
-  width: 150px;
+  width: 170px;
   height: 40px;
   font-size: 12px;
   line-height: 18px;
   letter-spacing: 1.5px;
+}
+.more-ideas-button:focus {
+  outline: 0;
 }
 
 @media screen and (min-width: 768px) {
