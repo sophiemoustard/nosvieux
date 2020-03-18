@@ -10,16 +10,17 @@
         vigueur.
       </div>
       <div v-for="idea of ideas" :key="idea.id">
-        <nuxt-link :to="`idee/${idea.slug}`">
+        <nuxt-link :to="`idee/${idea.slug}`" class="idea-container">
           <div class="idea-tag" :class="getMainTag(idea).color">
             {{ getMainTag(idea).name }}
           </div>
-          <div class="idea-description mb-sm">
+          <div class="idea-description">
             <img class="idea-logo" :src="idea.featured_image" />
             <div>
               <div>{{ idea.title }}</div>
               <div class="idea-summary grey-text">{{ idea.summary }}</div>
             </div>
+            <img src="~/assets/chevron_right.png" class="chevron" />
           </div>
         </nuxt-link>
       </div>
@@ -92,11 +93,16 @@ a:-webkit-any-link {
   padding: 2px 10px;
   font-size: 14px;
 }
+.idea-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 12px 0 rgba(217, 226, 233);
+  margin: 10px 0 20px 0;
+}
 .idea-description {
   display: flex;
   align-items: center;
-  padding: 10px 20px 20px;
-  box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
+  padding: 10px 15px 20px 20px;
 }
 .idea-logo {
   width: 40px;
@@ -106,10 +112,18 @@ a:-webkit-any-link {
 .idea-summary {
   font-size: 14px;
 }
+.chevron {
+  width: 5px;
+  height: 10px;
+  padding-left: 5px;
+}
 @media screen and (min-width: 768px) {
   .idea-logo {
     width: 50px;
     height: 50px;
+  }
+  .idea-container:hover {
+    background-color: #efefef;
   }
   .idea-description {
     padding: 10px 30px 20px;
@@ -121,6 +135,9 @@ a:-webkit-any-link {
     width: 700px;
     margin: auto;
     font-size: 18px;
+  }
+  .chevron {
+    display: none;
   }
 }
 </style>
