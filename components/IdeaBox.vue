@@ -28,6 +28,12 @@
 </template>
 
 <script>
+import {
+  MAIN_TAG_AIDE,
+  MAIN_TAG_CONTACT,
+  MAIN_TAG_ACTIVITE
+} from '~/helpers/constants'
+
 export default {
   name: 'IdeaBox',
   props: {
@@ -35,15 +41,15 @@ export default {
   },
   data() {
     const tagColors = {
-      'main-aide-organisationnelle': 'green-background',
-      'main-garder-le-contact': 'blue-background',
-      'main-activite': 'green-blue-background'
+      [MAIN_TAG_AIDE]: 'green-background',
+      [MAIN_TAG_CONTACT]: 'blue-background',
+      [MAIN_TAG_ACTIVITE]: 'green-blue-background'
     }
     return {
       tagColors,
       defaultMainTag: {
         name: 'Garder contact',
-        color: tagColors['main-garder-le-contact']
+        color: tagColors[MAIN_TAG_CONTACT]
       }
     }
   },
