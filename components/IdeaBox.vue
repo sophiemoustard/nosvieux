@@ -57,7 +57,7 @@ export default {
     getMainTag(idea) {
       if (!idea.tags || idea.tags.length === 0) return this.defaultMainTag
 
-      const mainTag = idea.tags.find((tg) => tg.slug.match(/main-/))
+      const mainTag = idea.tags.find((tg) => tg.slug.startsWith('main-'))
       if (!mainTag) return this.defaultMainTag
 
       return {
