@@ -6,7 +6,7 @@
     <div>
       <a
         target="_blank"
-        href="https://www.facebook.com/Nos-Vieux-104914367810701/?modal=admin_todo_tour"
+        href="https://www.facebook.com/search/posts/?q=%23nosvieux&epa=SERP_TAB"
       >
         <img class="social-logo mb-sm" src="~/assets/facebook.png" />
       </a>
@@ -18,6 +18,9 @@
       </a>
       <a target="_blank" href="https://www.instagram.com/nos_vieux/?hl=fr">
         <img class="social-logo mb-sm" src="~/assets/instagram.png" />
+      </a>
+      <a target="_blank" href="https://www.linkedin.com/feed/hashtag/nosvieux/">
+        <img class="social-logo mb-sm" src="~/assets/linkedin.png" />
       </a>
     </div>
   </div>
