@@ -12,7 +12,7 @@
       </a>
       <a
         target="_blank"
-        href="https://twitter.com/search?q=%23NosVieux&src=typed_query"
+        href="https://twitter.com/search?q=%23NosVieux&src=typed_query&f=live"
       >
         <img class="social-logo mb-sm" src="~/assets/twitter.png" />
       </a>
