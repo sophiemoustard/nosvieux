@@ -2,27 +2,31 @@
   <div class="container">
     <div class="bloc">
       <ni-header />
-      <div class="idea-container">
-        <div
-          v-for="tag of idea.tags"
-          :key="tag.name"
-          class="idea-tag"
-          :class="getTagColor(tag.slug)"
-        >
-          {{ tag.name }}
-        </div>
-        <div class="idea-content">
-          <div class="idea-title mb-md">
-            <h1>{{ idea.title }}</h1>
-            <img
-              class="idea-logo"
-              :src="idea.featured_image"
-              :alt="idea.featured_image_alt"
-            />
+      <div class="main_container">
+        <div class="idea-container">
+          <div class="idea-content">
+            <div class="idea-title mb-md">
+              <h1>{{ idea.title }}</h1>
+              <img
+                class="idea-logo"
+                :src="idea.featured_image"
+                :alt="idea.featured_image_alt"
+              />
+            </div>
+            <div class="dark-blue-text">{{ idea.summary }}</div>
+            <!-- eslint-disable-next-line vue/no-v-html -->
+            <div v-html="idea.body" />
           </div>
-          <div class="dark-blue-text">{{ idea.summary }}</div>
-          <!-- eslint-disable-next-line vue/no-v-html -->
-          <div v-html="idea.body" />
+        </div>
+        <div class="tags_container">
+          <div
+            v-for="tag of idea.tags"
+            :key="tag.name"
+            class="idea-tag"
+            :class="getTagColor(tag.slug)"
+          >
+            {{ tag.name }}
+          </div>
         </div>
       </div>
     </div>
@@ -116,12 +120,24 @@ export default {
   box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
   margin: 5px;
 }
-
+.main_container {
+  display: flex;
+  flex-direction: column;
+}
+.tags_container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-top: 37px;
+}
 @media screen and (min-width: 768px) {
   .idea-logo {
     width: 60px;
     height: 60px;
     margin-left: 10px;
+  }
+  .main_container {
+    flex-direction: row-reverse;
   }
   .idea-container {
     width: 700px;
