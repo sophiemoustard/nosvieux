@@ -1,12 +1,12 @@
 <template>
   <div>
     <nuxt-link :to="{ path: '/', hash: CAT_BOITE_A_IDEE }">
-      <div :id="CAT_BOITE_A_IDEE" class="idea-box-header mb-sm">
-        <div class="dark-blue-background idea-box-title">La boîte à idées</div>
+      <div :id="CAT_BOITE_A_IDEE" class="section-header mb-sm">
+        <div class="dark-blue-background section-title">La boîte à idées</div>
       </div>
     </nuxt-link>
-    <div class="idea-box-container">
-      <div class="idea-box-subtitle">
+    <div class="section-container">
+      <div class="section-subtitle">
         Tu veux agir mais ne sais pas encore comment ? Cette boite à idées est
         faite pour toi ! N'oublie pas de bien respecter les consignes en
         vigueur.
@@ -113,21 +113,6 @@ a:-webkit-any-link {
   color: black;
 }
 .idea {
-  &-box {
-    &-header {
-      text-align: center;
-    }
-    &-title {
-      color: white;
-      font-weight: bold;
-      padding: 10px 0;
-    }
-    &-subtitle {
-      padding: 20px 0;
-      text-align: center;
-      font-style: italic;
-    }
-  }
   &-tag {
     color: white;
     width: fit-content;
@@ -154,11 +139,6 @@ a:-webkit-any-link {
     font-size: 14px;
   }
 }
-.chevron {
-  width: 10px;
-  height: 10px;
-  padding-left: 5px;
-}
 .nv-container {
   padding-top: 15px;
   flex-direction: row;
@@ -176,19 +156,6 @@ a:-webkit-any-link {
     &-description {
       padding: 10px 30px 20px;
     }
-    &-box {
-      &-subtitle {
-        font-size: 18px;
-      }
-      &-container {
-        width: 700px;
-        margin: auto;
-        font-size: 18px;
-      }
-    }
-  }
-  .chevron {
-    display: none;
   }
 }
 </style>
