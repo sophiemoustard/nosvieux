@@ -1,3 +1,38 @@
+@import '~bulma';
+
+$primary: hsl(242, 100%, 76%);
+$primary-invert: findColorInvert($primary);
+
+$info: hsl(337, 55%, 58%);
+$info-invert: findColorInvert($info);
+
+$light: hsl(275, 20%, 83%);
+$light-invert: findColorInvert($light);
+
+$dark: hsl(0, 0%, 15%);
+$dark-invert: findColorInvert($dark);
+
+$link: hsl(242, 100%, 76%);
+$link-invert: findColorInvert($link);
+
+$link-hover: hsl(229, 19%, 66%);
+$link-focus: hsl(229, 19%, 66%);
+
+$strong-color: hsl(229, 19%, 66%);
+
+$colors: (
+    "white": ($white, $black),
+    "black": ($black, $white),
+    "link": ($link, $link-invert),
+    "light": ($light, $light-invert),
+    "dark": ($dark, $dark-invert),
+    "primary": ($primary, $primary-invert),
+    "info": ($info, $info-invert),
+    "success": ($success, $success-invert),
+    "warning": ($warning, $warning-invert),
+    "danger": ($danger, $danger-invert)
+);
+
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
   font-size: 16px;

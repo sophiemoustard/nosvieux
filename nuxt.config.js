@@ -17,7 +17,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon-32x32.png' }]
   },
   loading: { color: '#fff' },
-  css: ['~/css/main.css'],
+  css: ['~/scss/main.scss'],
   plugins: ['~/plugins/buttercms.js'],
   env: {
     GA_TRACKING_ID: process.env.GA_TRACKING_ID,
@@ -30,7 +30,9 @@ export default {
   modules: [
     '@nuxtjs/axios', // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/dotenv', // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/netlify-files'
+    '@nuxtjs/netlify-files',
+    '@nuxtjs/bulma',
+    '@nuxtjs/style-resources'
   ],
   generate: {
     async routes() {
