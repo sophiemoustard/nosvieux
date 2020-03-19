@@ -19,14 +19,13 @@
           </div>
         </div>
         <div class="tags_container">
-          <div
+          <button
             v-for="tag of idea.tags"
             :key="tag.name"
-            class="idea-tag"
-            :class="getTagColor(tag.slug)"
+            :class="['button', 'is-rounded', 'is-small', getTagColor(tag.slug)]"
           >
             {{ tag.name }}
-          </div>
+          </button>
         </div>
       </div>
     </div>
@@ -62,16 +61,16 @@ export default {
   },
   data() {
     const tagColors = {
-      [MAIN_TAG_AIDE]: 'green-background',
-      [MAIN_TAG_CONTACT]: 'blue-background',
-      [MAIN_TAG_ACTIVITE]: 'green-blue-background',
-      [TAG_1_HOUR]: 'green-background',
-      [TAG_HALF_DAY]: 'blue-background',
-      [TAG_FEW_HOURS]: 'green-blue-background',
-      [TAG_ALL_MY_TIME]: 'dark-blue-background',
-      [TAG_CITOYEN]: 'green-background',
-      [TAG_CHILD]: 'blue-background',
-      [TAG_RELATIVE]: 'green-blue-background'
+      [MAIN_TAG_AIDE]: 'is-green',
+      [MAIN_TAG_CONTACT]: 'is-blue',
+      [MAIN_TAG_ACTIVITE]: 'is-green-blue',
+      [TAG_1_HOUR]: 'is-green',
+      [TAG_HALF_DAY]: 'is-blue',
+      [TAG_FEW_HOURS]: 'is-green-blue',
+      [TAG_ALL_MY_TIME]: 'is-dark-blue',
+      [TAG_CITOYEN]: 'is-green',
+      [TAG_CHILD]: 'is-blue',
+      [TAG_RELATIVE]: 'is-green-blue'
     }
     return {
       tagColors
@@ -79,7 +78,7 @@ export default {
   },
   methods: {
     getTagColor(slug) {
-      return this.tagColors[slug] || 'dark-blue-background'
+      return this.tagColors[slug] || 'is-dark-blue'
     }
   },
   head() {
