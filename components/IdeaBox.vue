@@ -26,19 +26,13 @@
       </div>
     </div>
     <div v-if="!showAll" class="nv-container">
-      <button
-        class="dark-blue-background more-ideas-button"
-        @click="getAllIdeas()"
-      >
-        VOIR PLUS D'IDÉES
+      <button class="button is-dark-blue is-normal" @click="getAllIdeas()">
+        Voir plus d'idées
       </button>
     </div>
     <div v-else class="nv-container">
-      <button
-        class="dark-blue-background more-ideas-button"
-        @click="getSomeIdeas()"
-      >
-        VOIR MOINS D'IDÉES
+      <button class="button is-dark-blue" @click="getSomeIdeas()">
+        Voir moins d'idées
       </button>
     </div>
   </div>
@@ -151,6 +145,7 @@ a:-webkit-any-link {
   padding-left: 5px;
 }
 .nv-container {
+  padding-top: 15px;
   flex-direction: row;
 }
 .more-ideas-button {
