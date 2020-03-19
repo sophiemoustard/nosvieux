@@ -5,7 +5,7 @@
         En 3 étapes, c'est facile :
       </div>
       <div class="steps">
-        <div class="steps-nv-container">
+        <div class="steps-container">
           <img class="steps-image" src="~/assets/step1.png" />
           <div class="nv-container ml-sm">
             <div class="grey-text steps-title">Agis</div>
@@ -15,7 +15,7 @@
             </div>
           </div>
         </div>
-        <div class="steps-nv-container" style="align-self: flex-end">
+        <div class="steps-container" style="align-self: flex-end">
           <img class="steps-image" src="~/assets/step2.png" />
           <div class="nv-container ml-sm">
             <div class="grey-text steps-title">Capture l'instant</div>
@@ -24,7 +24,7 @@
             </div>
           </div>
         </div>
-        <div class="steps-nv-container">
+        <div class="steps-container">
           <img class="steps-image" src="~/assets/step3.png" />
           <div class="nv-container ml-sm">
             <div class="grey-text steps-title">Partage</div>
@@ -50,7 +50,7 @@ export default {
 .steps-image {
   height: 50px;
 }
-.steps-nv-container {
+.steps-container {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -73,7 +73,7 @@ export default {
     display: flex;
     flex-direction: column;
   }
-  .steps-nv-container {
+  .steps-container {
     width: 45%;
     margin: 10px 0;
     padding: 10px;

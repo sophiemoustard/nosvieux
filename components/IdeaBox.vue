@@ -3,7 +3,7 @@
     <div id="boite-a-idees" class="idea-box-header mb-sm">
       <div class="dark-blue-background idea-box-title">La boîte à idées</div>
     </div>
-    <div class="idea-box-nv-container">
+    <div class="idea-box-container">
       <div class="idea-box-subtitle">
         Tu veux agir mais ne sais pas encore comment ? Cette boite à idées est
         faite pour toi ! N'oublie pas de bien respecter les consignes en
@@ -179,7 +179,7 @@ a:-webkit-any-link {
   .idea-box-subtitle {
     font-size: 18px;
   }
-  .idea-box-nv-container {
+  .idea-box-container {
     width: 700px;
     margin: auto;
     font-size: 18px;
