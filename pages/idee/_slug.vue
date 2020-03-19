@@ -119,6 +119,7 @@ export default {
   border-radius: 15px;
   box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
   margin: 5px;
+  display: flex;
 }
 .main_container {
   display: flex;
@@ -126,18 +127,17 @@ export default {
 }
 .tags_container {
   display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
+  justify-content: center;
+  flex-direction: row;
   margin-top: 37px;
+  flex-wrap: wrap;
+  height: -webkit-fill-available;
 }
 @media screen and (min-width: 768px) {
   .idea-logo {
     width: 60px;
     height: 60px;
     margin-left: 10px;
-  }
-  .main_container {
-    flex-direction: row-reverse;
   }
   .idea-container {
     width: 700px;
