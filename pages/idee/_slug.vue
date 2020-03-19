@@ -2,18 +2,32 @@
   <div class="container">
     <div class="bloc">
       <ni-header />
-      <div class="idea-container">
-        <div class="idea-title mb-md">
-          <h1>{{ idea.title }}</h1>
-          <img
-            class="idea-logo"
-            :src="idea.featured_image"
-            :alt="idea.featured_image_alt"
-          />
+      <div class="main_container">
+        <div class="idea-container">
+          <div class="idea-content">
+            <div class="idea-title mb-md">
+              <h1>{{ idea.title }}</h1>
+              <img
+                class="idea-logo"
+                :src="idea.featured_image"
+                :alt="idea.featured_image_alt"
+              />
+            </div>
+            <div class="dark-blue-text">{{ idea.summary }}</div>
+            <!-- eslint-disable-next-line vue/no-v-html -->
+            <div v-html="idea.body" />
+          </div>
         </div>
-        <div class="dark-blue-text">{{ idea.summary }}</div>
-        <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-html="idea.body" />
+        <div class="tags_container">
+          <div
+            v-for="tag of idea.tags"
+            :key="tag.name"
+            class="idea-tag"
+            :class="getTagColor(tag.slug)"
+          >
+            {{ tag.name }}
+          </div>
+        </div>
       </div>
     </div>
     <ni-footer />
@@ -23,6 +37,18 @@
 <script>
 import NiHeader from '~/components/Header'
 import NiFooter from '~/components/Footer'
+import {
+  MAIN_TAG_AIDE,
+  MAIN_TAG_CONTACT,
+  MAIN_TAG_ACTIVITE,
+  TAG_1_HOUR,
+  TAG_HALF_DAY,
+  TAG_FEW_HOURS,
+  TAG_ALL_MY_TIME,
+  TAG_CITOYEN,
+  TAG_CHILD,
+  TAG_RELATIVE
+} from '~/helpers/constants'
 
 export default {
   name: 'IdeaProfile',
@@ -33,6 +59,28 @@ export default {
   async asyncData({ app, params }) {
     const idea = await app.$butter.post.retrieve(params.slug)
     return { idea: idea.data.data }
+  },
+  data() {
+    const tagColors = {
+      [MAIN_TAG_AIDE]: 'green-background',
+      [MAIN_TAG_CONTACT]: 'blue-background',
+      [MAIN_TAG_ACTIVITE]: 'green-blue-background',
+      [TAG_1_HOUR]: 'green-background',
+      [TAG_HALF_DAY]: 'blue-background',
+      [TAG_FEW_HOURS]: 'green-blue-background',
+      [TAG_ALL_MY_TIME]: 'dark-blue-background',
+      [TAG_CITOYEN]: 'green-background',
+      [TAG_CHILD]: 'blue-background',
+      [TAG_RELATIVE]: 'green-blue-background'
+    }
+    return {
+      tagColors
+    }
+  },
+  methods: {
+    getTagColor(slug) {
+      return this.tagColors[slug] || 'dark-blue-background'
+    }
   },
   head() {
     return {
@@ -55,15 +103,35 @@ export default {
   height: 50px;
 }
 .idea-container {
-  font-size: 18px;
-  padding: 20px;
   box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
+}
+.idea-content {
+  padding: 20px;
+  font-size: 18px;
 }
 .idea-title {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.idea-tag {
+  border-radius: 15px;
+  box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
+  margin: 5px;
+  display: flex;
+}
+.main_container {
+  display: flex;
+  flex-direction: column;
+}
+.tags_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 37px;
+  flex-wrap: wrap;
+  height: -webkit-fill-available;
 }
 @media screen and (min-width: 768px) {
   .idea-logo {
