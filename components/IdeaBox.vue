@@ -148,21 +148,6 @@ a:-webkit-any-link {
   padding-top: 15px;
   flex-direction: row;
 }
-.more-ideas-button {
-  margin-top: 15px;
-  cursor: pointer;
-  align-items: center;
-  border-radius: 4px;
-  color: white;
-  width: 170px;
-  height: 40px;
-  font-size: 12px;
-  line-height: 18px;
-  letter-spacing: 1.5px;
-  &:focus {
-    outline: 0;
-  }
-}
 
 @media screen and (min-width: 768px) {
   .idea {

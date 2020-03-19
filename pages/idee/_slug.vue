@@ -130,12 +130,6 @@ export default {
     padding: 20px;
     font-size: 18px;
   }
-  &-tag {
-    border-radius: 15px;
-    box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
-    margin: 5px;
-    display: flex;
-  }
 }
 
 @media screen and (min-width: 768px) {
