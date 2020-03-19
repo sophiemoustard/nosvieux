@@ -14,7 +14,7 @@
     </div>
     <div class="daily-challenge-button-container">
       <nuxt-link :to="`idee/${dailyChallenge.slug}`">
-        <button class="nv-button blue-text">
+        <button class="nv-button social-network-color-text">
           VOIR LE DÉFI DU JOUR
         </button>
       </nuxt-link>
@@ -52,7 +52,7 @@ export default {
 }
 .nv-button {
   background-color: transparent;
-  border: solid 1px #00b8f1;
+  border: solid 1px #4baaa4;
 }
 .nv-button:focus {
   outline: 0;
