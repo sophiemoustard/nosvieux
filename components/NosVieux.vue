@@ -12,6 +12,13 @@
         Lavons nous les mains mais ne nous tournons pas les pouces !
       </div>
     </div>
+    <div class="daily-challenge-button-container">
+      <nuxt-link :to="`idee/${dailyChallenge.slug}`">
+        <button class="nv-button blue-text">
+          VOIR LE DÉFI DU JOUR
+        </button>
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -20,7 +27,10 @@ import NiHeader from '~/components/Header'
 
 export default {
   name: 'NosVieux',
-  components: { NiHeader }
+  components: { NiHeader },
+  props: {
+    dailyChallenge: { type: Object, default: () => ({}) }
+  }
 }
 </script>
 
@@ -35,6 +45,17 @@ export default {
   line-height: 27px;
   padding: 8px 15px;
   text-align: center;
+}
+.daily-challenge-button-container {
+  display: flex;
+  justify-content: center;
+}
+.nv-button {
+  background-color: transparent;
+  border: solid 1px #00b8f1;
+}
+.nv-button:focus {
+  outline: 0;
 }
 @media screen and (min-width: 768px) {
   .description {

@@ -51,7 +51,8 @@ import {
 export default {
   name: 'IdeaBox',
   props: {
-    ideas: { type: Array, default: () => [] }
+    ideas: { type: Array, default: () => [] },
+    dailyChallenge: { type: Object, default: () => ({}) }
   },
   data() {
     const tagColors = {

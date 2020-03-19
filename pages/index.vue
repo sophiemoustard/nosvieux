@@ -2,7 +2,11 @@
   <div class="nv-container">
     <nos-vieux />
     <act />
-    <idea-box :ideas="ideas" @allIdeas="getAllIdeas()" />
+    <idea-box
+      :ideas="ideas"
+      :daily-challenge="dailyChallenge"
+      @allIdeas="getAllIdeas()"
+    />
     <social />
     <ni-footer />
   </div>
@@ -32,7 +36,12 @@ export default {
     return {
       ideas: ideas.data.data
         .sort((a, b) => new Date(a.published) - new Date(b.published))
-        .slice(0, 6)
+        .slice(0, 6),
+      dailyChallenge: ideas.data.data.find((el) =>
+        el.tags.some((tag) => {
+          return tag.slug === 'defi-du-jour'
+        })
+      )
     }
   },
   methods: {
