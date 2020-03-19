@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="idea-box-header mb-sm">
+    <div id="boite-a-idees" class="idea-box-header mb-sm">
       <div class="dark-blue-background idea-box-title">La boîte à idées</div>
     </div>
     <div class="idea-box-container">

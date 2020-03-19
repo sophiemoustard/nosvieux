@@ -6,6 +6,11 @@
 
 <script>
 export default {
+  async mounted() {
+    const anchor = this.$router.currentRoute.hash
+    await this.$nextTick()
+    if (anchor && document.querySelector(anchor)) location.href = anchor
+  },
   head() {
     return {
       titleTemplate: '#NosVieux',

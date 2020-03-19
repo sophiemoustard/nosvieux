@@ -1,7 +1,7 @@
 <template>
   <div class="bloc">
     <div class="step-bloc">
-      <div class="dark-blue-text mb-sm">
+      <div id="act" class="dark-blue-text mb-sm">
         En 3 étapes, c'est facile :
       </div>
       <div class="steps">
