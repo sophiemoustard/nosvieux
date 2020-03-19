@@ -20,19 +20,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .logo {
   width: 60px;
-}
-.hashtag-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .hashtag {
   font-size: 42px;
   line-height: 57px;
   display: flex;
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media screen and (min-width: 768px) {

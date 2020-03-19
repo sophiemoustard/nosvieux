@@ -33,6 +33,9 @@ export default {
     '@nuxtjs/netlify-files',
     '@nuxtjs/style-resources'
   ],
+  styleResources: {
+    scss: ['~/scss/main.scss', '~/scss/variables.scss']
+  },
   generate: {
     async routes() {
       const butter = Butter(process.env.BUTTER_CMS_TOKEN)

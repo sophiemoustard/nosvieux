@@ -96,7 +96,7 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 a:-webkit-any-link {
   color: white;
 }

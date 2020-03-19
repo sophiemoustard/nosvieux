@@ -1,39 +1,7 @@
 @import '~bulma/sass/utilities/initial-variables';
 @import '~bulma/sass/utilities/functions';
 @import '~bulma';
-
-$primary: hsl(242, 100%, 76%);
-$primary-invert: findColorInvert($primary);
-
-$info: hsl(337, 55%, 58%);
-$info-invert: findColorInvert($info);
-
-$light: hsl(275, 20%, 83%);
-$light-invert: findColorInvert($light);
-
-$dark: hsl(0, 0%, 15%);
-$dark-invert: findColorInvert($dark);
-
-$link: hsl(242, 100%, 76%);
-$link-invert: findColorInvert($link);
-
-$link-hover: hsl(229, 19%, 66%);
-$link-focus: hsl(229, 19%, 66%);
-
-$strong-color: hsl(229, 19%, 66%);
-
-$colors: (
-    "white": ($white, $black),
-    "black": ($black, $white),
-    "link": ($link, $link-invert),
-    "light": ($light, $light-invert),
-    "dark": ($dark, $dark-invert),
-    "primary": ($primary, $primary-invert),
-    "info": ($info, $info-invert),
-    "success": ($success, $success-invert),
-    "warning": ($warning, $warning-invert),
-    "danger": ($danger, $danger-invert)
-);
+@import 'variables.scss';
 
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
@@ -80,7 +48,7 @@ strong {
 
 a:-webkit-any-link {
   text-decoration: none;
-  color: #515151;
+  color: $grey;
 }
 .nv-container {
   display: flex;
@@ -124,37 +92,34 @@ a:-webkit-any-link {
 }
 
 .blue-text {
-  color: #00B8F1
+  color: $blue;
 }
 .dark-blue-text {
-  color: #0073C0
+  color: $dark-blue;
 }
 .green-blue-text {
-  color: #23BEB9
+  color: $green-blue;
 }
 .green-text {
-  color: #87C846
+  color: $green;
 }
 .grey-text {
-  color: #4A4A4A;
+  color: $grey;
 }
 .light-green-background {
-  background-color: #00CA9D
+  background-color: $light-green;
 }
 .green-background {
-  background-color: #87C846
+  background-color: $green;
 }
 .blue-background {
-  background-color: #00B8F1
+  background-color: $blue;
 }
 .green-blue-background {
-  background-color: #23BEB9
+  background-color: $green-blue;
 }
 .dark-blue-background {
-  background-color: #0073C0
-}
-.grey-text {
-  color: #515151
+  background-color: $dark-blue;
 }
 
 .idea-tag {

@@ -97,30 +97,7 @@ export default {
 }
 </script>
 
-<style scoped>
-.idea-logo {
-  width: 50px;
-  height: 50px;
-}
-.idea-container {
-  box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
-}
-.idea-content {
-  padding: 20px;
-  font-size: 18px;
-}
-.idea-title {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.idea-tag {
-  border-radius: 15px;
-  box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
-  margin: 5px;
-  display: flex;
-}
+<style lang="scss" scoped>
 .main_container {
   display: flex;
   flex-direction: column;
@@ -133,23 +110,51 @@ export default {
   flex-wrap: wrap;
   height: -webkit-fill-available;
 }
-@media screen and (min-width: 768px) {
-  .idea-logo {
-    width: 60px;
-    height: 60px;
-    margin-left: 10px;
+.idea {
+  &-logo {
+    width: 50px;
+    height: 50px;
   }
-  .idea-container {
-    width: 700px;
-    margin: auto;
-    font-size: 18px;
+  &-container {
+    box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
   }
-  .idea-title {
+  &-title {
     text-align: center;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+  }
+  &-content {
+    padding: 20px;
+    font-size: 18px;
+  }
+  &-tag {
+    border-radius: 15px;
+    box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
+    margin: 5px;
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .idea {
+    &-logo {
+      width: 60px;
+      height: 60px;
+      margin-left: 10px;
+    }
+    &-container {
+      width: 700px;
+      margin: auto;
+      font-size: 18px;
+    }
+    &-title {
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 }
 </style>

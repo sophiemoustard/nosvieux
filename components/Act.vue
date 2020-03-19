@@ -46,19 +46,21 @@ export default {
 }
 </script>
 
-<style scoped>
-.steps-image {
-  height: 50px;
-}
-.steps-container {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  margin: 10px 0;
-  padding: 10px 0;
-}
-.steps-title {
-  text-decoration: underline #0073c0;
+<style lang="scss" scoped>
+.steps {
+  &-image {
+    height: 50px;
+  }
+  &-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 10px 0;
+    padding: 10px 0;
+  }
+  &-title {
+    text-decoration: underline $dark-blue;
+  }
 }
 
 @media screen and (min-width: 768px) {
