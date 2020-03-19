@@ -108,6 +108,9 @@ export default {
   margin-top: 37px;
   flex-wrap: wrap;
   height: -webkit-fill-available;
+  :not(:last-child) {
+    margin-right: 10px;
+  }
 }
 .idea {
   &-logo {
