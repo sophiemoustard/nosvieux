@@ -1,3 +1,5 @@
+@import '~bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/functions';
 @import '~bulma';
 
 $primary: hsl(242, 100%, 76%);
@@ -44,7 +46,22 @@ body {
 h1 {
   font-weight: 500;
   font-size: 20px;
+  margin: 13px 0;
 }
+
+p {
+  margin: 18px 0;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 40px;
+  margin: 18px 0;
+  li {
+    display: list-item;
+  }
+}
+
 
 @media screen and (min-width: 768px) {
   body {
@@ -61,7 +78,7 @@ a:-webkit-any-link {
   text-decoration: none;
   color: #515151;
 }
-.container {
+.nv-container {
   display: flex;
   justify-content: center;
   flex-direction: column;

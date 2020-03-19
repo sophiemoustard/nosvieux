@@ -31,7 +31,6 @@ export default {
     '@nuxtjs/axios', // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/dotenv', // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/netlify-files',
-    '@nuxtjs/bulma',
     '@nuxtjs/style-resources'
   ],
   generate: {

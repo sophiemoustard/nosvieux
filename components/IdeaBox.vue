@@ -3,7 +3,7 @@
     <div id="boite-a-idees" class="idea-box-header mb-sm">
       <div class="dark-blue-background idea-box-title">La boîte à idées</div>
     </div>
-    <div class="idea-box-container">
+    <div class="idea-box-nv-container">
       <div class="idea-box-subtitle">
         Tu veux agir mais ne sais pas encore comment ? Cette boite à idées est
         faite pour toi ! N'oublie pas de bien respecter les consignes en
@@ -25,7 +25,7 @@
         </nuxt-link>
       </div>
     </div>
-    <div v-if="!showAll" class="container">
+    <div v-if="!showAll" class="nv-container">
       <button
         class="dark-blue-background more-ideas-button"
         @click="getAllIdeas()"
@@ -33,7 +33,7 @@
         VOIR PLUS D'IDÉES
       </button>
     </div>
-    <div v-else class="container">
+    <div v-else class="nv-container">
       <button
         class="dark-blue-background more-ideas-button"
         @click="getSomeIdeas()"
@@ -142,11 +142,11 @@ a:-webkit-any-link {
   font-size: 14px;
 }
 .chevron {
-  width: 5px;
+  width: 10px;
   height: 10px;
   padding-left: 5px;
 }
-.container {
+.nv-container {
   flex-direction: row;
 }
 .more-ideas-button {
@@ -179,7 +179,7 @@ a:-webkit-any-link {
   .idea-box-subtitle {
     font-size: 18px;
   }
-  .idea-box-container {
+  .idea-box-nv-container {
     width: 700px;
     margin: auto;
     font-size: 18px;

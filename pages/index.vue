@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="nv-container">
     <nos-vieux />
     <act />
     <idea-box :ideas="ideas" @allIdeas="getAllIdeas()" />

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="nv-container">
     <div class="bloc">
       <ni-header />
       <div class="main_container">

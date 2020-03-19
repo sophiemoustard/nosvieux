@@ -3,7 +3,7 @@
     <nuxt-link to="/">
       <img class="logo mb-sm" src="~/assets/logo.png" />
     </nuxt-link>
-    <div class="hashtag-container mb-xl">
+    <div class="hashtag-nv-container mb-xl">
       <div class="hashtag">
         <div class="blue-text">#</div>
         <div class="green-text">Nos</div>
@@ -24,7 +24,7 @@ export default {
 .logo {
   width: 60px;
 }
-.hashtag-container {
+.hashtag-nv-container {
   display: flex;
   justify-content: center;
   align-items: center;

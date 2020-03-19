@@ -54,7 +54,7 @@ export default {
 a:-webkit-any-link {
   color: white;
 }
-.footer-container {
+.footer-nv-container {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -80,7 +80,7 @@ a:-webkit-any-link {
   padding-bottom: 20px;
 }
 @media screen and (min-width: 768px) {
-  .footer-container {
+  .footer-nv-container {
     flex-direction: row;
     justify-content: space-around;
     flex-direction: row;

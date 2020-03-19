@@ -5,9 +5,9 @@
         En 3 étapes, c'est facile :
       </div>
       <div class="steps">
-        <div class="steps-container">
+        <div class="steps-nv-container">
           <img class="steps-image" src="~/assets/step1.png" />
-          <div class="container ml-sm">
+          <div class="nv-container ml-sm">
             <div class="grey-text steps-title">Agis</div>
             <div class="green-text">
               Réalise une action de solidarité en respect des consignes en
@@ -15,18 +15,18 @@
             </div>
           </div>
         </div>
-        <div class="steps-container" style="align-self: flex-end">
+        <div class="steps-nv-container" style="align-self: flex-end">
           <img class="steps-image" src="~/assets/step2.png" />
-          <div class="container ml-sm">
+          <div class="nv-container ml-sm">
             <div class="grey-text steps-title">Capture l'instant</div>
             <div class="green-text">
               Prends une photo ou une vidéo pour raconter ton histoire.
             </div>
           </div>
         </div>
-        <div class="steps-container">
+        <div class="steps-nv-container">
           <img class="steps-image" src="~/assets/step3.png" />
-          <div class="container ml-sm">
+          <div class="nv-container ml-sm">
             <div class="grey-text steps-title">Partage</div>
             <div class="green-text">
               Poste la sur les réseaux sociaux avec
@@ -50,7 +50,7 @@ export default {
 .steps-image {
   height: 50px;
 }
-.steps-container {
+.steps-nv-container {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -73,7 +73,7 @@ export default {
     display: flex;
     flex-direction: column;
   }
-  .steps-container {
+  .steps-nv-container {
     width: 45%;
     margin: 10px 0;
     padding: 10px;
