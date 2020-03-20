@@ -11,6 +11,18 @@
         faite pour toi ! N'oublie pas de bien respecter les consignes en
         vigueur.
       </div>
+      <div class="columns idea-box-filter">
+        <div class="column is-2">Je suis</div>
+        <nv-select
+          v-model="personTag"
+          class="is-2"
+          :options="filter.personOptions"
+        />
+        <div>,&nbsp;j' ai</div>
+        <nv-select v-model="timeTag" :options="filter.timeOptions" />
+        <div>j'ai besoin de&nbsp;</div>
+        <nv-select v-model="needTag" :options="filter.needsOptions" />
+      </div>
       <card
         v-for="idea of ideasArray"
         :key="idea.id"
@@ -38,14 +50,35 @@ import {
   MAIN_TAG_AIDE,
   MAIN_TAG_CONTACT,
   MAIN_TAG_ACTIVITE,
+  MAIN_TAG_TRAINING,
   CAT_BOITE_A_IDEE,
-  DAILY_CHALLENGE
+  DAILY_CHALLENGE,
+  AIDE,
+  CONTACT,
+  ACTIVITE,
+  TRAINING,
+  CITIZEN,
+  RELATIVE,
+  HEALTH_CARE_PROVIDER,
+  FEW_MINUTES,
+  HALF_DAY,
+  ALL_MY_TIME,
+  ONE_HOUR,
+  TAG_FEW_MINUTES,
+  TAG_HALF_DAY,
+  TAG_ALL_MY_TIME,
+  TAG_ONE_HOUR,
+  TAG_CITIZEN,
+  TAG_RELATIVE,
+  TAG_HEALTH_CARE_PROVIDER
 } from '~/helpers/constants'
+import NvSelect from '~/components/form/Select'
 
 export default {
   name: 'IdeaBox',
   components: {
-    Card
+    Card,
+    NvSelect
   },
   props: {
     ideas: { type: Array, default: () => [] }
@@ -64,7 +97,29 @@ export default {
         name: 'Garder contact',
         color: tagColors[MAIN_TAG_CONTACT]
       },
-      CAT_BOITE_A_IDEE
+      CAT_BOITE_A_IDEE,
+      personTag: '',
+      timeTag: '',
+      needTag: '',
+      filter: {
+        personOptions: [
+          { label: CITIZEN, value: TAG_CITIZEN },
+          { label: RELATIVE, value: TAG_RELATIVE },
+          { label: HEALTH_CARE_PROVIDER, value: TAG_HEALTH_CARE_PROVIDER }
+        ],
+        timeOptions: [
+          { label: FEW_MINUTES, value: TAG_FEW_MINUTES },
+          { label: ONE_HOUR, value: TAG_ONE_HOUR },
+          { label: HALF_DAY, value: TAG_HALF_DAY },
+          { label: ALL_MY_TIME, value: TAG_ALL_MY_TIME }
+        ],
+        needsOptions: [
+          { label: TRAINING, value: MAIN_TAG_TRAINING },
+          { label: ACTIVITE, value: MAIN_TAG_ACTIVITE },
+          { label: AIDE, value: MAIN_TAG_AIDE },
+          { label: CONTACT, value: MAIN_TAG_CONTACT }
+        ]
+      }
     }
   },
   computed: {
