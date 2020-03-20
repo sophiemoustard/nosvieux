@@ -27,7 +27,8 @@ export default {
   },
   async asyncData({ app }) {
     const ideas = await app.$butter.post.list({
-      category_slug: CAT_BOITE_A_IDEE
+      category_slug: CAT_BOITE_A_IDEE,
+      page_size: 30
     })
     return {
       ideas: ideas.data.data
@@ -38,7 +39,8 @@ export default {
   methods: {
     async getAllIdeas() {
       const ideas = await this.$butter.post.list({
-        category_slug: CAT_BOITE_A_IDEE
+        category_slug: CAT_BOITE_A_IDEE,
+        page_size: 30
       })
       this.ideas = ideas.data.data.sort(
         (a, b) => new Date(a.published) - new Date(b.published)
