@@ -34,11 +34,19 @@ button {
     &:hover {
       background-color: $blue;
     }
-  }&.is-green {
+  }
+  &.is-green {
     @extend %button-shared;
     background-color: $green;
     &:hover {
       background-color: $green;
+    }
+  }
+  &.is-light-grey {
+    @extend %button-shared;
+    background-color: $light-grey;
+    &:hover {
+      background-color: $light-grey;
     }
   }
 }
