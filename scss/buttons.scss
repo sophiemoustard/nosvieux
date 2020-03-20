@@ -49,4 +49,11 @@ button {
       background-color: $light-grey;
     }
   }
+  &.is-social-network-color {
+    @extend %button-shared;
+    background-color: $social-network-color;
+    &:hover {
+      background-color: $social-network-color;
+    }
+  }
 }

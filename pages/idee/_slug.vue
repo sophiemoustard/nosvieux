@@ -4,6 +4,12 @@
       <ni-header />
       <div class="main_container">
         <div class="idea-container">
+          <div
+            v-if="isDailyChallenge"
+            class="idea-tag social-network-color-background"
+          >
+            {{ getDailyChallengeName() }}
+          </div>
           <div class="idea-content">
             <div class="idea-title mb-md">
               <h1>{{ idea.title }}</h1>
@@ -46,7 +52,8 @@ import {
   TAG_ALL_MY_TIME,
   TAG_CITOYEN,
   TAG_CHILD,
-  TAG_RELATIVE
+  TAG_RELATIVE,
+  DAILY_CHALLENGE
 } from '~/helpers/constants'
 
 export default {
@@ -70,15 +77,28 @@ export default {
       [TAG_ALL_MY_TIME]: 'is-green',
       [TAG_CITOYEN]: 'is-blue',
       [TAG_CHILD]: 'is-blue',
-      [TAG_RELATIVE]: 'is-blue'
+      [TAG_RELATIVE]: 'is-blue',
+      [DAILY_CHALLENGE]: 'is-social-network-color'
     }
     return {
+      DAILY_CHALLENGE,
       tagColors
+    }
+  },
+  computed: {
+    isDailyChallenge() {
+      return this.idea.tags.some((tag) => tag.slug === DAILY_CHALLENGE)
     }
   },
   methods: {
     getTagColor(slug) {
       return this.tagColors[slug] || 'is-dark-blue'
+    },
+    getDailyChallengeName() {
+      const dailyChallengeTag = this.idea.tags.find(
+        (tag) => tag.slug === DAILY_CHALLENGE
+      )
+      return dailyChallengeTag.name || ''
     }
   },
   head() {

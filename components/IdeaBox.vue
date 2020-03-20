@@ -52,8 +52,7 @@ import {
 export default {
   name: 'IdeaBox',
   props: {
-    ideas: { type: Array, default: () => [] },
-    dailyChallenge: { type: Object, default: () => ({}) }
+    ideas: { type: Array, default: () => [] }
   },
   data() {
     const tagColors = {
@@ -69,11 +68,7 @@ export default {
         name: 'Garder contact',
         color: tagColors[MAIN_TAG_CONTACT]
       },
-      CAT_BOITE_A_IDEE,
-      dailyChallengeTag: {
-        name: 'Défi du jour',
-        color: tagColors[DAILY_CHALLENGE]
-      }
+      CAT_BOITE_A_IDEE
     }
   },
   computed: {
@@ -85,8 +80,15 @@ export default {
     getMainTag(idea) {
       if (!idea.tags || idea.tags.length === 0) return this.defaultMainTag
 
-      if (idea.tags.find((tag) => tag.slug === DAILY_CHALLENGE))
-        return this.dailyChallengeTag
+      const dailyChallengeTag = idea.tags.find(
+        (tag) => tag.slug === DAILY_CHALLENGE
+      )
+      if (dailyChallengeTag) {
+        return {
+          name: dailyChallengeTag.name,
+          color: this.tagColors[DAILY_CHALLENGE]
+        }
+      }
       const mainTag = idea.tags.find((tag) => tag.slug.startsWith('main-'))
       if (!mainTag) return this.defaultMainTag
 
