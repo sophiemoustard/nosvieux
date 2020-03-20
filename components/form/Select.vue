@@ -1,5 +1,5 @@
 <template>
-  <div class="select">
+  <div :class="['select', { 'is-small': small }]">
     <select :value="value" @input="$emit('input', $event.target.value)">
       <option value="">...</option>
       <option
@@ -18,7 +18,8 @@ export default {
   name: 'Select',
   props: {
     value: { type: String, default: '' },
-    options: { type: Array, default: () => [] }
+    options: { type: Array, default: () => [] },
+    small: { type: Boolean, default: false }
   }
 }
 </script>

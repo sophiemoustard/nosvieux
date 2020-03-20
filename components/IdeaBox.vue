@@ -11,17 +11,33 @@
         faite pour toi ! N'oublie pas de bien respecter les consignes en
         vigueur.
       </div>
-      <div class="columns idea-box-filter">
-        <div class="column is-2">Je suis</div>
-        <nv-select
-          v-model="tags.person"
-          class="is-2"
-          :options="filter.personOptions"
-        />
-        <div>,&nbsp;j' ai</div>
-        <nv-select v-model="tags.time" :options="filter.timeOptions" />
-        <div>j'ai besoin de&nbsp;</div>
-        <nv-select v-model="tags.need" :options="filter.needsOptions" />
+      <div class="idea-box-filter">
+        <div class="columns is-multiline is-mobile is-centered">
+          <div class="column is-narrow">
+            <div class="mb-xs">Je suis</div>
+            <nv-select
+              v-model="tags.person"
+              :options="filter.personOptions"
+              small
+            />
+          </div>
+          <div class="column is-narrow">
+            <div class="mb-xs">J'ai</div>
+            <nv-select
+              v-model="tags.time"
+              :options="filter.timeOptions"
+              small
+            />
+          </div>
+          <div class="column is-narrow">
+            <div class="mb-xs">J'ai besoin de</div>
+            <nv-select
+              v-model="tags.need"
+              :options="filter.needsOptions"
+              small
+            />
+          </div>
+        </div>
       </div>
       <card
         v-for="idea of ideasArray"
