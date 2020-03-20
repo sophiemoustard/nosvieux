@@ -2,7 +2,7 @@
   <div class="bloc">
     <div class="step-bloc">
       <nuxt-link :to="{ path: '/', hash: 'agir' }">
-        <div id="act" class="dark-blue-text mb-sm">
+        <div id="agir" class="dark-blue-text mb-sm">
           En 3 étapes, c'est facile :
         </div>
       </nuxt-link>
