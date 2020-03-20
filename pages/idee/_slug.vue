@@ -8,7 +8,7 @@
             v-if="isDailyChallenge"
             class="idea-tag social-network-color-background"
           >
-            {{ getDailyChallengeName() }}
+            {{ getDailyChallengeName }}
           </div>
           <div class="idea-content">
             <div class="idea-title mb-md">
@@ -88,17 +88,17 @@ export default {
   computed: {
     isDailyChallenge() {
       return this.idea.tags.some((tag) => tag.slug === DAILY_CHALLENGE)
-    }
-  },
-  methods: {
-    getTagColor(slug) {
-      return this.tagColors[slug] || 'is-dark-blue'
     },
     getDailyChallengeName() {
       const dailyChallengeTag = this.idea.tags.find(
         (tag) => tag.slug === DAILY_CHALLENGE
       )
       return dailyChallengeTag.name || ''
+    }
+  },
+  methods: {
+    getTagColor(slug) {
+      return this.tagColors[slug] || 'is-dark-blue'
     }
   },
   head() {
