@@ -52,9 +52,13 @@ button {
   }
   &.is-social-network-color {
     @extend %button-shared;
-    background-color: $social-network-color;
+    border: solid 1px $social-network-color;
+    color: $social-network-color;
+    background-color: transparent;
     &:hover {
-      background-color: $social-network-color;
+      border: solid 1px $social-network-color;
+      color: $social-network-color;
+      background-color: transparent;
     }
   }
 }

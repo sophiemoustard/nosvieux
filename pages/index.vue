@@ -1,7 +1,7 @@
 <template>
   <div class="nv-container">
-    <nos-vieux :daily-challenge="dailyChallenge" />
-    <act />
+    <nos-vieux />
+    <act :daily-challenge="dailyChallenge" />
     <idea-box :ideas="ideas" @allIdeas="getAllIdeas()" />
     <social />
     <ni-footer />

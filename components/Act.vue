@@ -37,6 +37,13 @@
             </div>
           </div>
         </div>
+        <div v-if="dailyChallenge" class="daily-challenge-button-container">
+          <nuxt-link :to="`idee/${dailyChallenge.slug}`">
+            <button class="button is-normal is-social-network-color">
+              Passe à l'action !
+            </button>
+          </nuxt-link>
+        </div>
       </div>
     </div>
   </div>
@@ -44,11 +51,19 @@
 
 <script>
 export default {
-  name: 'Act'
+  name: 'Act',
+  props: {
+    dailyChallenge: { type: Object, default: () => null }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+.daily-challenge-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
 .steps {
   &-image {
     height: 50px;
