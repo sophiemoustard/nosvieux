@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="nv-container">
     <div class="bloc">
       <ni-header />
       <div class="main_container">
@@ -19,14 +19,13 @@
           </div>
         </div>
         <div class="tags_container">
-          <div
+          <button
             v-for="tag of idea.tags"
             :key="tag.name"
-            class="idea-tag"
-            :class="getTagColor(tag.slug)"
+            :class="['button', 'is-rounded', 'is-small', getTagColor(tag.slug)]"
           >
             {{ tag.name }}
-          </div>
+          </button>
         </div>
       </div>
     </div>
@@ -62,16 +61,16 @@ export default {
   },
   data() {
     const tagColors = {
-      [MAIN_TAG_AIDE]: 'green-background',
-      [MAIN_TAG_CONTACT]: 'blue-background',
-      [MAIN_TAG_ACTIVITE]: 'green-blue-background',
-      [TAG_1_HOUR]: 'green-background',
-      [TAG_HALF_DAY]: 'blue-background',
-      [TAG_FEW_HOURS]: 'green-blue-background',
-      [TAG_ALL_MY_TIME]: 'dark-blue-background',
-      [TAG_CITOYEN]: 'green-background',
-      [TAG_CHILD]: 'blue-background',
-      [TAG_RELATIVE]: 'green-blue-background'
+      [MAIN_TAG_AIDE]: 'is-green',
+      [MAIN_TAG_CONTACT]: 'is-blue',
+      [MAIN_TAG_ACTIVITE]: 'is-green-blue',
+      [TAG_1_HOUR]: 'is-green',
+      [TAG_HALF_DAY]: 'is-blue',
+      [TAG_FEW_HOURS]: 'is-green-blue',
+      [TAG_ALL_MY_TIME]: 'is-dark-blue',
+      [TAG_CITOYEN]: 'is-green',
+      [TAG_CHILD]: 'is-blue',
+      [TAG_RELATIVE]: 'is-green-blue'
     }
     return {
       tagColors
@@ -79,7 +78,7 @@ export default {
   },
   methods: {
     getTagColor(slug) {
-      return this.tagColors[slug] || 'dark-blue-background'
+      return this.tagColors[slug] || 'is-dark-blue'
     }
   },
   head() {
@@ -97,30 +96,7 @@ export default {
 }
 </script>
 
-<style scoped>
-.idea-logo {
-  width: 50px;
-  height: 50px;
-}
-.idea-container {
-  box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
-}
-.idea-content {
-  padding: 20px;
-  font-size: 18px;
-}
-.idea-title {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.idea-tag {
-  border-radius: 15px;
-  box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
-  margin: 5px;
-  display: flex;
-}
+<style lang="scss" scoped>
 .main_container {
   display: flex;
   flex-direction: column;
@@ -132,24 +108,49 @@ export default {
   margin-top: 37px;
   flex-wrap: wrap;
   height: -webkit-fill-available;
+  :not(:last-child) {
+    margin-right: 10px;
+  }
 }
-@media screen and (min-width: 768px) {
-  .idea-logo {
-    width: 60px;
-    height: 60px;
-    margin-left: 10px;
+.idea {
+  &-logo {
+    width: 50px;
+    height: 50px;
   }
-  .idea-container {
-    width: 700px;
-    margin: auto;
-    font-size: 18px;
+  &-container {
+    box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
   }
-  .idea-title {
+  &-title {
     text-align: center;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+  }
+  &-content {
+    padding: 20px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .idea {
+    &-logo {
+      width: 60px;
+      height: 60px;
+      margin-left: 10px;
+    }
+    &-container {
+      width: 700px;
+      margin: auto;
+      font-size: 18px;
+    }
+    &-title {
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 }
 </style>

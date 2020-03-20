@@ -25,20 +25,14 @@
         </nuxt-link>
       </div>
     </div>
-    <div v-if="!showAll" class="container">
-      <button
-        class="dark-blue-background more-ideas-button"
-        @click="getAllIdeas()"
-      >
-        VOIR PLUS D'IDÉES
+    <div v-if="!showAll" class="nv-container">
+      <button class="button is-dark-blue is-normal" @click="getAllIdeas()">
+        Voir plus d'idées
       </button>
     </div>
-    <div v-else class="container">
-      <button
-        class="dark-blue-background more-ideas-button"
-        @click="getSomeIdeas()"
-      >
-        VOIR MOINS D'IDÉES
+    <div v-else class="nv-container">
+      <button class="button is-dark-blue" @click="getSomeIdeas()">
+        Voir moins d'idées
       </button>
     </div>
   </div>
@@ -99,90 +93,84 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 a:-webkit-any-link {
   color: black;
 }
-.idea-box-header {
-  text-align: center;
-}
-.idea-box-title {
-  color: white;
-  font-weight: bold;
-  padding: 10px 0;
-}
-.idea-box-subtitle {
-  padding: 20px 0;
-  text-align: center;
-  font-style: italic;
-}
-.idea-tag {
-  color: white;
-  width: fit-content;
-  padding: 2px 10px;
-  font-size: 14px;
-}
-.idea-container {
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 5px 12px 0 rgba(217, 226, 233);
-  margin: 10px 0 20px 0;
-}
-.idea-description {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px 20px 20px;
-}
-.idea-logo {
-  width: 40px;
-  height: 40px;
-  margin-right: 15px;
-}
-.idea-summary {
-  font-size: 14px;
+.idea {
+  &-box {
+    &-header {
+      text-align: center;
+    }
+    &-title {
+      color: white;
+      font-weight: bold;
+      padding: 10px 0;
+    }
+    &-subtitle {
+      padding: 20px 0;
+      text-align: center;
+      font-style: italic;
+    }
+  }
+  &-tag {
+    color: white;
+    width: fit-content;
+    padding: 2px 10px;
+    font-size: 14px;
+  }
+  &-container {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 12px 0 rgb(217, 226, 233);
+    margin: 10px 0 20px 0;
+  }
+  &-description {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px 20px 20px;
+  }
+  &-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+  }
+  &-summary {
+    font-size: 14px;
+  }
 }
 .chevron {
-  width: 5px;
+  width: 10px;
   height: 10px;
   padding-left: 5px;
 }
-.container {
+.nv-container {
+  padding-top: 15px;
   flex-direction: row;
-}
-.more-ideas-button {
-  margin-top: 15px;
-  cursor: pointer;
-  align-items: center;
-  border-radius: 4px;
-  color: white;
-  width: 170px;
-  height: 40px;
-  font-size: 12px;
-  line-height: 18px;
-  letter-spacing: 1.5px;
-}
-.more-ideas-button:focus {
-  outline: 0;
 }
 
 @media screen and (min-width: 768px) {
-  .idea-logo {
-    width: 50px;
-    height: 50px;
-  }
-  .idea-container:hover {
-    background-color: #efefef;
-  }
-  .idea-description {
-    padding: 10px 30px 20px;
-  }
-  .idea-box-subtitle {
-    font-size: 18px;
-  }
-  .idea-box-container {
-    width: 700px;
-    margin: auto;
-    font-size: 18px;
+  .idea {
+    &-logo {
+      width: 50px;
+      height: 50px;
+    }
+    &-container:hover {
+      background-color: #efefef;
+    }
+    &-description {
+      padding: 10px 30px 20px;
+    }
+    &-box {
+      &-subtitle {
+        font-size: 18px;
+      }
+      &-container {
+        width: 700px;
+        margin: auto;
+        font-size: 18px;
+      }
+    }
   }
   .chevron {
     display: none;

@@ -1,0 +1,44 @@
+%button-shared {
+  border-color: transparent;
+  color: white;
+  &:hover {
+    border-color: transparent;
+    color: white;
+  }
+  &:focus {
+    color: white;
+  }
+  &:active {
+    color: white;
+  }
+}
+
+button {
+  &.is-dark-blue {
+    @extend %button-shared;
+    background-color: $dark-blue;
+    &:hover {
+      background-color: $dark-blue;
+    }
+  }
+  &.is-green-blue {
+    @extend %button-shared;
+    background-color: $green-blue;
+    &:hover {
+      background-color: $green-blue;
+    }
+  }
+  &.is-blue {
+    @extend %button-shared;
+    background-color: $blue;
+    &:hover {
+      background-color: $blue;
+    }
+  }&.is-green {
+    @extend %button-shared;
+    background-color: $green;
+    &:hover {
+      background-color: $green;
+    }
+  }
+}

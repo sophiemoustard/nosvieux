@@ -1,3 +1,7 @@
+@import '~bulma';
+@import 'variables.scss';
+@import 'buttons.scss';
+
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
   font-size: 16px;
@@ -9,6 +13,24 @@ body {
 h1 {
   font-weight: 500;
   font-size: 20px;
+  margin: 13px 0;
+}
+
+p {
+  margin: 18px 0;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 40px;
+  margin: 18px 0;
+  li {
+    display: list-item;
+  }
+}
+
+strong {
+  color: inherit;
 }
 
 @media screen and (min-width: 768px) {
@@ -24,9 +46,9 @@ h1 {
 
 a:-webkit-any-link {
   text-decoration: none;
-  color: #515151;
+  color: $grey;
 }
-.container {
+.nv-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -68,37 +90,34 @@ a:-webkit-any-link {
 }
 
 .blue-text {
-  color: #00B8F1
+  color: $blue;
 }
 .dark-blue-text {
-  color: #0073C0
+  color: $dark-blue;
 }
 .green-blue-text {
-  color: #23BEB9
+  color: $green-blue;
 }
 .green-text {
-  color: #87C846
+  color: $green;
 }
 .grey-text {
-  color: #4A4A4A;
+  color: $grey;
 }
 .light-green-background {
-  background-color: #00CA9D
+  background-color: $light-green;
 }
 .green-background {
-  background-color: #87C846
+  background-color: $green;
 }
 .blue-background {
-  background-color: #00B8F1
+  background-color: $blue;
 }
 .green-blue-background {
-  background-color: #23BEB9
+  background-color: $green-blue;
 }
 .dark-blue-background {
-  background-color: #0073C0
-}
-.grey-text {
-  color: #515151
+  background-color: $dark-blue;
 }
 
 .idea-tag {

@@ -7,7 +7,7 @@
       <div class="steps">
         <div class="steps-container">
           <img class="steps-image" src="~/assets/step1.png" />
-          <div class="container ml-sm">
+          <div class="nv-container ml-sm">
             <div class="grey-text steps-title">Agis</div>
             <div class="green-text">
               Réalise une action de solidarité en respect des consignes en
@@ -17,7 +17,7 @@
         </div>
         <div class="steps-container" style="align-self: flex-end">
           <img class="steps-image" src="~/assets/step2.png" />
-          <div class="container ml-sm">
+          <div class="nv-container ml-sm">
             <div class="grey-text steps-title">Capture l'instant</div>
             <div class="green-text">
               Prends une photo ou une vidéo pour raconter ton histoire.
@@ -26,7 +26,7 @@
         </div>
         <div class="steps-container">
           <img class="steps-image" src="~/assets/step3.png" />
-          <div class="container ml-sm">
+          <div class="nv-container ml-sm">
             <div class="grey-text steps-title">Partage</div>
             <div class="green-text">
               Poste la sur les réseaux sociaux avec
@@ -46,19 +46,21 @@ export default {
 }
 </script>
 
-<style scoped>
-.steps-image {
-  height: 50px;
-}
-.steps-container {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  margin: 10px 0;
-  padding: 10px 0;
-}
-.steps-title {
-  text-decoration: underline #0073c0;
+<style lang="scss" scoped>
+.steps {
+  &-image {
+    height: 50px;
+  }
+  &-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 10px 0;
+    padding: 10px 0;
+  }
+  &-title {
+    text-decoration: underline $dark-blue;
+  }
 }
 
 @media screen and (min-width: 768px) {

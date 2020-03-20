@@ -32,14 +32,14 @@ export default {
 }
 </script>
 
-<style scoped>
-.social-logo {
-  width: 35px;
-  margin: 0 15px;
-}
+<style lang="scss" scoped>
 .social {
   display: flex;
   align-items: center;
   flex-direction: column;
+  &-logo {
+    width: 35px;
+    margin: 0 15px;
+  }
 }
 </style>

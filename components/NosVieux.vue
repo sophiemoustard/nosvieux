@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .description {
   text-align: center;
 }
@@ -48,10 +48,10 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .punchline-text {
-    width: 80%;
-    line-height: 35px;
+    &-text {
+      width: 80%;
+      line-height: 35px;
+    }
   }
 }
 </style>

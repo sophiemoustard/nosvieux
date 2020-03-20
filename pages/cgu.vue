@@ -1,5 +1,5 @@
 <template>
-  <div class="container bloc">
+  <div class="nv-container bloc">
     <nuxt-link to="/">
       <img class="logo mb-sm" src="~/assets/logo.png" />
     </nuxt-link>
@@ -96,7 +96,7 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 a:-webkit-any-link {
   color: white;
 }
