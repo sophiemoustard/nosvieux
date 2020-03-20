@@ -1,4 +1,6 @@
 import Butter from 'buttercms'
+import { CAT_BOITE_A_IDEE } from './helpers/constants'
+
 require('dotenv').config()
 
 export default {
@@ -39,7 +41,10 @@ export default {
   generate: {
     async routes() {
       const butter = Butter(process.env.BUTTER_CMS_TOKEN)
-      const ideas = await butter.post.list()
+      const ideas = await butter.post.list({
+        category_slug: CAT_BOITE_A_IDEE,
+        page_size: 30
+      })
       return ideas.data.data.map((id) => `/idee/${id.slug}`)
     }
   },
