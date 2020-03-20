@@ -12,7 +12,7 @@
         Lavons nous les mains mais ne nous tournons pas les pouces !
       </div>
     </div>
-    <div class="daily-challenge-button-container">
+    <div v-if="dailyChallenge" class="daily-challenge-button-container">
       <nuxt-link :to="`idee/${dailyChallenge.slug}`">
         <button class="button is-normal is-social-network-color">
           Voir le défi du jour
@@ -29,7 +29,7 @@ export default {
   name: 'NosVieux',
   components: { NiHeader },
   props: {
-    dailyChallenge: { type: Object, default: () => ({}) }
+    dailyChallenge: { type: Object, default: () => null }
   }
 }
 </script>
