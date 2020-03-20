@@ -110,6 +110,7 @@ export default {
   height: -webkit-fill-available;
   :not(:last-child) {
     margin-right: 10px;
+    margin-bottom: 5px;
   }
 }
 .idea {
@@ -150,6 +151,11 @@ export default {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+    }
+  }
+  .tags_container {
+    :not(:last-child) {
+      margin-bottom: 0px;
     }
   }
 }
