@@ -14,14 +14,14 @@
       <div class="columns idea-box-filter">
         <div class="column is-2">Je suis</div>
         <nv-select
-          v-model="personTag"
+          v-model="tags.person"
           class="is-2"
           :options="filter.personOptions"
         />
         <div>,&nbsp;j' ai</div>
-        <nv-select v-model="timeTag" :options="filter.timeOptions" />
+        <nv-select v-model="tags.time" :options="filter.timeOptions" />
         <div>j'ai besoin de&nbsp;</div>
-        <nv-select v-model="needTag" :options="filter.needsOptions" />
+        <nv-select v-model="tags.need" :options="filter.needsOptions" />
       </div>
       <card
         v-for="idea of ideasArray"
@@ -51,7 +51,6 @@ import {
   MAIN_TAG_CONTACT,
   MAIN_TAG_ACTIVITE,
   MAIN_TAG_TRAINING,
-  CAT_BOITE_A_IDEE,
   DAILY_CHALLENGE,
   AIDE,
   CONTACT,
@@ -97,10 +96,7 @@ export default {
         name: 'Garder contact',
         color: tagColors[MAIN_TAG_CONTACT]
       },
-      CAT_BOITE_A_IDEE,
-      personTag: '',
-      timeTag: '',
-      needTag: '',
+      tags: { person: '', time: '', need: '' },
       filter: {
         personOptions: [
           { label: CITIZEN, value: TAG_CITIZEN },
@@ -124,7 +120,18 @@ export default {
   },
   computed: {
     ideasArray() {
-      return this.showAll ? this.ideas : this.ideas.slice(0, 6)
+      return this.showAll ? this.filteredIdeas : this.filteredIdeas.slice(0, 6)
+    },
+    filterTagsArray() {
+      return Object.values(this.tags).filter((tag) => !!tag)
+    },
+    filteredIdeas() {
+      if (this.filterTagsArray.every((tag) => !tag)) return this.ideas
+      return this.ideas.filter((idea) => {
+        return this.filterTagsArray.every((tag) =>
+          idea.tags.some((ideaTag) => ideaTag.slug === tag)
+        )
+      })
     }
   },
   methods: {
