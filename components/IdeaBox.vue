@@ -1,8 +1,10 @@
 <template>
   <div>
-    <div id="boite-a-idees" class="idea-box-header mb-sm">
-      <div class="dark-blue-background idea-box-title">La boîte à idées</div>
-    </div>
+    <nuxt-link :to="{ path: '/', hash: CAT_BOITE_A_IDEE }">
+      <div :id="CAT_BOITE_A_IDEE" class="idea-box-header mb-sm">
+        <div class="dark-blue-background idea-box-title">La boîte à idées</div>
+      </div>
+    </nuxt-link>
     <div class="idea-box-container">
       <div class="idea-box-subtitle">
         Tu veux agir mais ne sais pas encore comment ? Cette boite à idées est
@@ -42,7 +44,8 @@
 import {
   MAIN_TAG_AIDE,
   MAIN_TAG_CONTACT,
-  MAIN_TAG_ACTIVITE
+  MAIN_TAG_ACTIVITE,
+  CAT_BOITE_A_IDEE
 } from '~/helpers/constants'
 
 export default {
@@ -62,7 +65,8 @@ export default {
       defaultMainTag: {
         name: 'Garder contact',
         color: tagColors[MAIN_TAG_CONTACT]
-      }
+      },
+      CAT_BOITE_A_IDEE
     }
   },
   computed: {

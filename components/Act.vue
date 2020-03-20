@@ -1,9 +1,11 @@
 <template>
   <div class="bloc">
     <div class="step-bloc">
-      <div id="act" class="dark-blue-text mb-sm">
-        En 3 étapes, c'est facile :
-      </div>
+      <nuxt-link :to="{ path: '/', hash: 'act' }">
+        <div id="act" class="dark-blue-text mb-sm">
+          En 3 étapes, c'est facile :
+        </div>
+      </nuxt-link>
       <div class="steps">
         <div class="steps-container">
           <img class="steps-image" src="~/assets/step1.png" />
