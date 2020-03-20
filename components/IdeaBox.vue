@@ -115,6 +115,17 @@ export default {
           { label: AIDE, value: MAIN_TAG_AIDE },
           { label: CONTACT, value: MAIN_TAG_CONTACT }
         ]
+      },
+      timeTagsFilter: {
+        [TAG_FEW_MINUTES]: [TAG_FEW_MINUTES],
+        [TAG_ONE_HOUR]: [TAG_FEW_MINUTES, TAG_ONE_HOUR],
+        [TAG_HALF_DAY]: [TAG_FEW_MINUTES, TAG_ONE_HOUR, TAG_HALF_DAY],
+        [TAG_ALL_MY_TIME]: [
+          TAG_FEW_MINUTES,
+          TAG_ONE_HOUR,
+          TAG_HALF_DAY,
+          TAG_ALL_MY_TIME
+        ]
       }
     }
   },
@@ -128,9 +139,13 @@ export default {
     filteredIdeas() {
       if (this.filterTagsArray.every((tag) => !tag)) return this.ideas
       return this.ideas.filter((idea) => {
-        return this.filterTagsArray.every((tag) =>
-          idea.tags.some((ideaTag) => ideaTag.slug === tag)
-        )
+        return this.filterTagsArray.every((tag) => {
+          return idea.tags.some((ideaTag) => {
+            return tag.startsWith('time-')
+              ? this.timeTagsFilter[tag].includes(ideaTag.slug)
+              : ideaTag.slug === tag
+          })
+        })
       })
     }
   },
