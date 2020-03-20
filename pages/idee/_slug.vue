@@ -112,6 +112,9 @@ export default {
     margin-right: 10px;
   }
 }
+.tags_container > button {
+  cursor: default;
+}
 .idea {
   &-logo {
     width: 50px;
