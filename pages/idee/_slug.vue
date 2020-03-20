@@ -61,13 +61,13 @@ export default {
   },
   data() {
     const tagColors = {
-      [MAIN_TAG_AIDE]: 'is-grey',
-      [MAIN_TAG_CONTACT]: 'is-grey',
-      [MAIN_TAG_ACTIVITE]: 'is-grey',
+      [MAIN_TAG_AIDE]: 'is-light-grey',
+      [MAIN_TAG_CONTACT]: 'is-light-grey',
+      [MAIN_TAG_ACTIVITE]: 'is-light-grey',
       [TAG_1_HOUR]: 'is-green',
       [TAG_HALF_DAY]: 'is-green',
       [TAG_FEW_HOURS]: 'is-green',
-      [TAG_ALL_MY_TIME]: 'is-blue',
+      [TAG_ALL_MY_TIME]: 'is-green',
       [TAG_CITOYEN]: 'is-blue',
       [TAG_CHILD]: 'is-blue',
       [TAG_RELATIVE]: 'is-blue'
