@@ -1,5 +1,5 @@
 // CATEGORIES
-export const CAT_BOITE_A_IDEE = 'test-boite-a-idee'
+export const CAT_BOITE_A_IDEE = 'boite-a-idee'
 
 // MAIN TAGS
 export const MAIN_TAG_AIDE = 'main-aide-organisationnelle'
