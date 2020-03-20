@@ -107,7 +107,6 @@ export default {
   flex-direction: row;
   margin-top: 37px;
   flex-wrap: wrap;
-  height: -webkit-fill-available;
   :not(:last-child) {
     margin-right: 10px;
     margin-bottom: 5px;
