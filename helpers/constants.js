@@ -14,3 +14,5 @@ export const TAG_ALL_MY_TIME = 'time-tout-mon-temps'
 export const TAG_CITOYEN = 'someone-un-citoyen-concerne'
 export const TAG_CHILD = 'someone-un-enfant'
 export const TAG_RELATIVE = 'someone-un-proche-dune-personne-agee'
+
+export const DAILY_CHALLENGE = 'defi-du-jour'

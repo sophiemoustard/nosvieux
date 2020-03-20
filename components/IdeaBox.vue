@@ -45,7 +45,8 @@ import {
   MAIN_TAG_AIDE,
   MAIN_TAG_CONTACT,
   MAIN_TAG_ACTIVITE,
-  CAT_BOITE_A_IDEE
+  CAT_BOITE_A_IDEE,
+  DAILY_CHALLENGE
 } from '~/helpers/constants'
 
 export default {
@@ -57,7 +58,8 @@ export default {
     const tagColors = {
       [MAIN_TAG_AIDE]: 'green-background',
       [MAIN_TAG_CONTACT]: 'blue-background',
-      [MAIN_TAG_ACTIVITE]: 'green-blue-background'
+      [MAIN_TAG_ACTIVITE]: 'green-blue-background',
+      [DAILY_CHALLENGE]: 'social-network-color-background'
     }
     return {
       showAll: false,
@@ -78,7 +80,16 @@ export default {
     getMainTag(idea) {
       if (!idea.tags || idea.tags.length === 0) return this.defaultMainTag
 
-      const mainTag = idea.tags.find((tg) => tg.slug.startsWith('main-'))
+      const dailyChallengeTag = idea.tags.find(
+        (tag) => tag.slug === DAILY_CHALLENGE
+      )
+      if (dailyChallengeTag) {
+        return {
+          name: dailyChallengeTag.name,
+          color: this.tagColors[DAILY_CHALLENGE]
+        }
+      }
+      const mainTag = idea.tags.find((tag) => tag.slug.startsWith('main-'))
       if (!mainTag) return this.defaultMainTag
 
       return {

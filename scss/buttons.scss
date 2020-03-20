@@ -7,6 +7,7 @@
   }
   &:focus {
     color: white;
+    outline: 0;
   }
   &:active {
     color: white;
@@ -47,6 +48,17 @@ button {
     background-color: $light-grey;
     &:hover {
       background-color: $light-grey;
+    }
+  }
+  &.is-social-network-color {
+    @extend %button-shared;
+    border: solid 1px $social-network-color;
+    color: $social-network-color;
+    background-color: transparent;
+    &:hover {
+      border: solid 1px $social-network-color;
+      color: $social-network-color;
+      background-color: transparent;
     }
   }
 }

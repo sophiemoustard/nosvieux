@@ -36,6 +36,7 @@ export default {
   padding: 8px 15px;
   text-align: center;
 }
+
 @media screen and (min-width: 768px) {
   .description {
     width: 780px;
