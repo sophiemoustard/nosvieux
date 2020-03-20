@@ -63,9 +63,11 @@ a:-webkit-any-link {
 .footer-container > div,
 .footer-container > nuxt-link {
   display: flex;
-  flex-basis: 0;
   flex-grow: 1;
   justify-content: center;
+}
+a {
+  color: white;
 }
 .credits-container {
   color: white;
@@ -80,6 +82,10 @@ a:-webkit-any-link {
   padding-bottom: 20px;
 }
 @media screen and (min-width: 768px) {
+  .footer-container > div,
+  .footer-container > nuxt-link {
+    flex-basis: 0;
+  }
   .footer-container {
     flex-direction: row;
     justify-content: space-around;
