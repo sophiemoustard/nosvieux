@@ -71,6 +71,7 @@ import {
   MAIN_TAG_ACTIVITE,
   MAIN_TAG_TRAINING,
   DAILY_CHALLENGE,
+  CAT_BOITE_A_IDEE,
   AIDE,
   CONTACT,
   ACTIVITE,
@@ -110,6 +111,7 @@ export default {
       [DAILY_CHALLENGE]: 'social-network-color-background'
     }
     return {
+      CAT_BOITE_A_IDEE,
       showAll: false,
       tagColors,
       defaultMainTag: {

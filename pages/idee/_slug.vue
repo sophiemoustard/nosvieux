@@ -28,7 +28,13 @@
           <button
             v-for="tag of idea.tags"
             :key="tag.name"
-            :class="['button', 'is-rounded', 'is-small', getTagColor(tag.slug)]"
+            :class="[
+              'button',
+              'is-rounded',
+              { 'is-outlined': tag.slug === DAILY_CHALLENGE },
+              'is-small',
+              getTagColor(tag.slug)
+            ]"
           >
             {{ tag.name }}
           </button>

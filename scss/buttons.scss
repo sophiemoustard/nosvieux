@@ -1,3 +1,9 @@
+@mixin nv-button-outlined($color) {
+  border: solid 1px map-get($map: $nv-colors, $key: $color);
+  color: map-get($map: $nv-colors, $key: $color);
+  background-color: transparent;
+}
+
 @mixin nv-button($color) {
   &.is-#{$color} {
     border-color: transparent;
@@ -14,6 +20,18 @@
       &:active {
         color: white;
       }
+  }
+  &.is-outlined {
+    @include nv-button-outlined($color);
+    &:hover {
+      @include nv-button-outlined($color);
+    }
+    &:focus {
+      @include nv-button-outlined($color);
+    }
+    &:active {
+      @include nv-button-outlined($color);
+    }
   }
 }
 
