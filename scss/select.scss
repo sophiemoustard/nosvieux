@@ -1,0 +1,23 @@
+@mixin nv-select($color) {
+  &.is-#{$color} {
+    border: map-get($map: $nv-colors, $key: $color);
+    &:not(:hover)::after {
+      border-color: map-get($map: $nv-colors, $key: $color);
+    }
+    &:focus {
+      border-color: map-get($map: $nv-colors, $key: $color);
+      color: map-get($map: $nv-colors, $key: $color);
+      outline: thin dotted;
+    }
+    &:active {
+      color: map-get($map: $nv-colors, $key: $color);
+      outline: thin dotted;
+    }
+  }
+}
+
+.select {
+  @include nv-select(light-grey);
+  @include nv-select(green);
+  @include nv-select(blue);
+}
