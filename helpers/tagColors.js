@@ -23,5 +23,5 @@ export const tagColors = {
   [TAG_CITIZEN]: 'is-blue',
   [TAG_CHILD]: 'is-blue',
   [TAG_RELATIVE]: 'is-blue',
-  [DAILY_CHALLENGE]: 'is-social-network'
+  [DAILY_CHALLENGE]: 'is-social-network-color'
 }
