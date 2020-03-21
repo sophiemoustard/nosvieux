@@ -1,5 +1,5 @@
 <template>
-  <div :class="['select', { 'is-small': small }]">
+  <div :class="computedClasses">
     <select :value="value" @input="$emit('input', $event.target.value)">
       <option value="">...</option>
       <option
@@ -19,7 +19,17 @@ export default {
   props: {
     value: { type: String, default: '' },
     options: { type: Array, default: () => [] },
-    small: { type: Boolean, default: false }
+    small: { type: Boolean, default: false },
+    selectClass: { type: String, default: '' }
+  },
+  computed: {
+    computedClasses() {
+      return [
+        'select',
+        { 'is-small': this.small },
+        ...this.selectClass.split(' ')
+      ]
+    }
   }
 }
 </script>

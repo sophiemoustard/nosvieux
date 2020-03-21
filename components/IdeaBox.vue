@@ -18,6 +18,7 @@
             <nv-select
               v-model="tags.person"
               :options="filter.personOptions"
+              :select-class="filterColorClass.person"
               small
             />
           </div>
@@ -26,6 +27,7 @@
             <nv-select
               v-model="tags.time"
               :options="filter.timeOptions"
+              :select-class="filterColorClass.time"
               small
             />
           </div>
@@ -34,6 +36,7 @@
             <nv-select
               v-model="tags.need"
               :options="filter.needsOptions"
+              :select-class="filterColorClass.need"
               small
             />
           </div>
@@ -87,6 +90,7 @@ import {
   TAG_RELATIVE,
   TAG_HEALTH_CARE_PROVIDER
 } from '~/helpers/constants'
+import { tagColors as filterColors } from '~/helpers/tagColors'
 import NvSelect from '~/components/form/Select'
 
 export default {
@@ -163,6 +167,15 @@ export default {
           })
         })
       })
+    },
+    filterColorClass() {
+      return Object.keys(this.tags).reduce((acc, filter) => {
+        const tag = this.tags[filter]
+        return {
+          ...acc,
+          [filter]: tag ? filterColors[tag] : 'is-dark-blue'
+        }
+      }, {})
     }
   },
   methods: {
