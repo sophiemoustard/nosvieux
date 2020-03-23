@@ -43,13 +43,11 @@ export default {
         page_size: 30
       })
       return {
-        ideas: ideas.data.data
-          .sort((a, b) => {
-            if (a.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return -1
-            if (b.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return 1
-            return new Date(a.published) - new Date(b.published)
-          })
-          .slice(0, 6),
+        ideas: ideas.data.data.sort((a, b) => {
+          if (a.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return -1
+          if (b.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return 1
+          return new Date(a.published) - new Date(b.published)
+        }),
         dailyChallenge: ideas.data.data.find((el) =>
           el.tags.some((tag) => {
             return tag.slug === DAILY_CHALLENGE

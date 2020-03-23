@@ -47,16 +47,18 @@
         :tag="getMainTag(idea)"
         :content="idea"
       />
-      <div v-if="!showAll" class="nv-container">
-        <button class="button is-dark-blue is-normal" @click="getAllIdeas()">
-          Voir plus d'idées
-        </button>
-      </div>
-      <div v-else class="nv-container">
-        <button class="button is-dark-blue" @click="getSomeIdeas()">
-          Voir moins d'idées
-        </button>
-      </div>
+      <template v-if="ideasArray.length >= 6">
+        <div v-if="!showAll" class="nv-container">
+          <button class="button is-dark-blue is-normal" @click="getAllIdeas()">
+            Voir plus d'idées
+          </button>
+        </div>
+        <div v-else class="nv-container">
+          <button class="button is-dark-blue" @click="getSomeIdeas()">
+            Voir moins d'idées
+          </button>
+        </div>
+      </template>
     </div>
   </div>
 </template>
