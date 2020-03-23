@@ -84,8 +84,8 @@ export default {
 @media screen and (min-width: 768px) {
   .action {
     &-img {
-      width: 150px;
-      height: 150px;
+      width: 200px;
+      height: 200px;
       float: left;
       margin-right: 20px;
     }
