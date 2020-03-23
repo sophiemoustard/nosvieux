@@ -110,6 +110,10 @@ export default {
       ]
     }
   },
+  mounted() {
+    // eslint-disable-next-line no-console
+    console.log(this.$route.params)
+  },
   methods: {
     getMainTag(idea) {
       if (!idea.tags || idea.tags.length === 0) return this.defaultMainTag

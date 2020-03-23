@@ -25,19 +25,27 @@
           </div>
         </div>
         <div class="tags_container">
-          <button
+          <nuxt-link
             v-for="tag of idea.tags"
             :key="tag.name"
-            :class="[
-              'button',
-              'is-rounded',
-              { 'is-outlined': tag.slug === DAILY_CHALLENGE },
-              'is-small',
-              getTagColor(tag.slug)
-            ]"
+            :to="{
+              name: 'index',
+              params: { tag: tag },
+              hash: '#boite-a-idee'
+            }"
           >
-            {{ tag.name }}
-          </button>
+            <button
+              :class="[
+                'button',
+                'is-rounded',
+                { 'is-outlined': tag.slug === DAILY_CHALLENGE },
+                'is-small',
+                getTagColor(tag.slug)
+              ]"
+            >
+              {{ tag.name }}
+            </button>
+          </nuxt-link>
         </div>
       </div>
     </div>
