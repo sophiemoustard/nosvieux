@@ -4,21 +4,19 @@
     <div class="bloc">
       <ni-header />
       <div class="action-container">
-        <div class="action-content">
-          <div class="action-title mb-md">
-            <h1>{{ action.title }}</h1>
-          </div>
-          <div class="dark-blue-text">{{ action.summary }}</div>
-          <div v-if="showImage" class="content-container">
-            <img
-              class="action-img"
-              :src="action.featured_image"
-              :alt="action.featured_image_alt"
-            />
-            <div class="action-text" v-html="action.body" />
-          </div>
-          <div v-else class="content-iframe-container" v-html="action.body" />
+        <div class="action-title mb-md">
+          <h1>{{ action.title }}</h1>
         </div>
+        <div class="dark-blue-text">{{ action.summary }}</div>
+        <div v-if="showImage" class="content-container">
+          <img
+            class="action-img"
+            :src="action.featured_image"
+            :alt="action.featured_image_alt"
+          />
+          <div class="action-text" v-html="action.body" />
+        </div>
+        <div v-else class="content-iframe-container" v-html="action.body" />
       </div>
     </div>
     <ni-footer />
@@ -36,8 +34,12 @@ export default {
     NiFooter
   },
   async asyncData({ app, params }) {
-    const action = await app.$butter.post.retrieve(params.slug)
-    return { action: action.data.data }
+    try {
+      const action = await app.$butter.post.retrieve(params.slug)
+      return { action: action.data.data }
+    } catch (e) {
+      return { action: {} }
+    }
   },
   data() {
     return {
@@ -77,10 +79,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  &-content {
-    padding: 20px;
-    font-size: 18px;
   }
 }
 @media screen and (min-width: 768px) {

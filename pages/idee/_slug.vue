@@ -63,8 +63,12 @@ export default {
     NiFooter
   },
   async asyncData({ app, params }) {
-    const idea = await app.$butter.post.retrieve(params.slug)
-    return { idea: idea.data.data }
+    try {
+      const idea = await app.$butter.post.retrieve(params.slug)
+      return { idea: idea.data.data }
+    } catch (e) {
+      return { idea: {} }
+    }
   },
   data() {
     const tagColors = {
@@ -87,9 +91,13 @@ export default {
   },
   computed: {
     isDailyChallenge() {
-      return this.idea.tags.some((tag) => tag.slug === DAILY_CHALLENGE)
+      return (
+        !!this.idea.tags &&
+        this.idea.tags.some((tag) => tag.slug === DAILY_CHALLENGE)
+      )
     },
     getDailyChallengeName() {
+      if (!this.idea.tags) return ''
       const dailyChallengeTag = this.idea.tags.find(
         (tag) => tag.slug === DAILY_CHALLENGE
       )
