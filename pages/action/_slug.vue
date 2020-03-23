@@ -51,20 +51,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main_container {
-  display: flex;
-  flex-direction: column;
-}
-.content-container,
-.content-iframe-container {
-  margin-top: 30px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-p {
-  display: flex;
-  justify-content: center;
+.content {
+  &-container {
+    margin-top: 30px;
+  }
+  &-iframe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .action {
   &-img {
@@ -73,6 +68,9 @@ p {
   }
   &-container {
     box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
+    margin: auto;
+    padding: 20px;
+    font-size: 18px;
   }
   &-title {
     text-align: center;
@@ -86,14 +84,16 @@ p {
   }
 }
 @media screen and (min-width: 768px) {
-  .content-container {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-  .action-img {
-    width: 150px;
-    height: 150px;
-    margin-right: 20px;
+  .action {
+    &-img {
+      width: 150px;
+      height: 150px;
+      float: left;
+      margin-right: 20px;
+    }
+    &-container {
+      width: 750px;
+    }
   }
 }
 </style>
