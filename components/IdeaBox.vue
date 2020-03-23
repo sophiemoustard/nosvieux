@@ -159,7 +159,7 @@ export default {
       return Object.values(this.tags).filter((tag) => !!tag)
     },
     filteredIdeas() {
-      if (this.filterTagsArray.every((tag) => !tag)) return this.ideas
+      if (!this.filterTagsArray.length) return this.ideas
       return this.ideas.filter((idea) => {
         return this.filterTagsArray.every((tag) => {
           return idea.tags.some((ideaTag) => {

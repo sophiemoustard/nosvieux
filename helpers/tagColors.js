@@ -9,6 +9,7 @@ import {
   TAG_CITIZEN,
   TAG_CHILD,
   TAG_RELATIVE,
+  TAG_HEALTH_CARE_PROVIDER,
   DAILY_CHALLENGE
 } from '~/helpers/constants'
 
@@ -23,5 +24,6 @@ export const tagColors = {
   [TAG_CITIZEN]: 'is-blue',
   [TAG_CHILD]: 'is-blue',
   [TAG_RELATIVE]: 'is-blue',
+  [TAG_HEALTH_CARE_PROVIDER]: 'is-blue',
   [DAILY_CHALLENGE]: 'is-social-network-color'
 }

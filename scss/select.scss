@@ -3,6 +3,7 @@
     border: map-get($map: $nv-colors, $key: $color);
     select {
       border-color: map-get($map: $nv-colors, $key: $color);
+      color: map-get($map: $nv-colors, $key: $color);
     }
     &:not(:hover)::after {
       border-color: map-get($map: $nv-colors, $key: $color);
@@ -15,6 +16,9 @@
     &:active {
       color: map-get($map: $nv-colors, $key: $color);
       outline: thin dotted;
+    }
+    &:not(.is-multiple):not(.is-loading)::after {
+      border-color: map-get($map: $nv-colors, $key: $color);
     }
   }
 }
