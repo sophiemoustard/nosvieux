@@ -56,7 +56,6 @@ export default {
   components: {
     Card,
     IdeaFilter
-    // NvSelect
   },
   props: {
     ideas: { type: Array, default: () => [] }
