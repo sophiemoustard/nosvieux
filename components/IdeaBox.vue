@@ -95,20 +95,17 @@ export default {
         {
           label: 'Je suis',
           name: 'person',
-          options: personFilterOptions,
-          model: ''
+          options: personFilterOptions
         },
         {
           label: "J'ai",
           name: 'time',
-          options: timeFilterOptions,
-          model: ''
+          options: timeFilterOptions
         },
         {
           label: "J'ai besoin de",
           name: 'need',
-          options: needFilterOptions,
-          model: ''
+          options: needFilterOptions
         }
       ]
     }
