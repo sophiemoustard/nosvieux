@@ -49,7 +49,6 @@ import {
   needFilterOptions,
   timeTagsFilter
 } from '~/helpers/constants'
-import { tagColors as filterColors } from '~/helpers/tagColors'
 import IdeaFilter from '~/components/IdeaFilter'
 
 export default {
@@ -92,36 +91,24 @@ export default {
       if (!this.filterTagsArray.length) return this.ideas
       return this.ideas.filter(this.filterIdeas)
     },
-    filterColorClass() {
-      return Object.keys(this.tags).reduce((acc, filter) => {
-        const tag = this.tags[filter]
-        return {
-          ...acc,
-          [filter]: tag ? filterColors[tag] : 'is-dark-blue'
-        }
-      }, {})
-    },
     filters() {
       return [
         {
           label: 'Je suis',
           name: 'person',
           options: personFilterOptions,
-          class: this.filterColorClass.person,
           model: ''
         },
         {
           label: "J'ai",
           name: 'time',
           options: timeFilterOptions,
-          class: this.filterColorClass.time,
           model: ''
         },
         {
           label: "J'ai besoin de",
           name: 'need',
           options: needFilterOptions,
-          class: this.filterColorClass.need,
           model: ''
         }
       ]
