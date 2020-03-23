@@ -1,49 +1,47 @@
 <template>
-  <div class="bloc">
-    <div class="step-bloc">
-      <nuxt-link :to="{ path: '/', hash: 'agir' }">
-        <div id="agir" class="dark-blue-text mb-sm">
-          En 3 étapes, c'est facile :
-        </div>
-      </nuxt-link>
-      <div class="steps">
-        <div class="steps-container">
-          <img class="steps-image" src="~/assets/step1.png" />
-          <div class="nv-container ml-sm">
-            <div class="grey-text steps-title">Agis</div>
-            <div class="green-text">
-              Réalise une action de solidarité en respect des consignes en
-              vigueur.
-            </div>
+  <div class="bloc step-bloc">
+    <nuxt-link :to="{ path: '/', hash: 'agir' }">
+      <div id="agir" class="dark-blue-text mb-sm">
+        En 3 étapes, c'est facile :
+      </div>
+    </nuxt-link>
+    <div class="section-container">
+      <div class="steps-container">
+        <img class="steps-image" src="~/assets/step1.png" />
+        <div class="nv-container ml-sm">
+          <div class="grey-text steps-title">Agis</div>
+          <div class="green-text">
+            Réalise une action de solidarité en respect des consignes en
+            vigueur.
           </div>
         </div>
-        <div class="steps-container" style="align-self: flex-end">
-          <img class="steps-image" src="~/assets/step2.png" />
-          <div class="nv-container ml-sm">
-            <div class="grey-text steps-title">Capture l'instant</div>
-            <div class="green-text">
-              Prends une photo ou une vidéo pour raconter ton histoire.
-            </div>
+      </div>
+      <div class="steps-container" style="align-self: flex-end">
+        <img class="steps-image" src="~/assets/step2.png" />
+        <div class="nv-container ml-sm">
+          <div class="grey-text steps-title">Capture l'instant</div>
+          <div class="green-text">
+            Prends une photo ou une vidéo pour raconter ton histoire.
           </div>
         </div>
-        <div class="steps-container">
-          <img class="steps-image" src="~/assets/step3.png" />
-          <div class="nv-container ml-sm">
-            <div class="grey-text steps-title">Partage</div>
-            <div class="green-text">
-              Poste la sur les réseaux sociaux avec
-              <span class="blue-text">#NosVieux</span>
-              et défie deux amis de passer à l’action.
-            </div>
+      </div>
+      <div class="steps-container">
+        <img class="steps-image" src="~/assets/step3.png" />
+        <div class="nv-container ml-sm">
+          <div class="grey-text steps-title">Partage</div>
+          <div class="green-text">
+            Poste la sur les réseaux sociaux avec
+            <span class="blue-text">#NosVieux</span>
+            et défie deux amis de passer à l’action.
           </div>
         </div>
-        <div v-if="dailyChallenge" class="daily-challenge-button-container">
-          <nuxt-link :to="`idee/${dailyChallenge.slug}`">
-            <button class="button is-normal is-social-network-color">
-              Passe à l'action !
-            </button>
-          </nuxt-link>
-        </div>
+      </div>
+      <div v-if="dailyChallenge" class="daily-challenge-button-container">
+        <nuxt-link :to="`idee/${dailyChallenge.slug}`">
+          <button class="button is-normal is-social-network-color">
+            Passe à l'action !
+          </button>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -87,8 +85,7 @@ export default {
     align-items: center;
     font-size: 18px;
   }
-  .steps {
-    width: 750px;
+  .section-container {
     display: flex;
     flex-direction: column;
   }

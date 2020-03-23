@@ -2,8 +2,9 @@
   <div class="nv-container">
     <nos-vieux />
     <act :daily-challenge="dailyChallenge" />
-    <idea-box :ideas="ideas" @allIdeas="getAllIdeas()" />
+    <they-did-it v-if="actions.length" :actions="actions" />
     <social />
+    <idea-box :ideas="ideas" @allIdeas="getAllIdeas()" />
     <ni-footer />
   </div>
 </template>
@@ -14,7 +15,12 @@ import NiFooter from '~/components/Footer'
 import NosVieux from '~/components/NosVieux'
 import Social from '~/components/Social'
 import IdeaBox from '~/components/IdeaBox'
-import { CAT_BOITE_A_IDEE, DAILY_CHALLENGE } from '~/helpers/constants'
+import {
+  CAT_BOITE_A_IDEE,
+  DAILY_CHALLENGE,
+  CAT_ILS_LONT_FAIT
+} from '~/helpers/constants'
+import TheyDidIt from '~/components/TheyDidIt'
 
 export default {
   name: 'Index',
@@ -23,12 +29,16 @@ export default {
     NiFooter,
     NosVieux,
     Social,
-    IdeaBox
+    IdeaBox,
+    TheyDidIt
   },
   async asyncData({ app }) {
     const ideas = await app.$butter.post.list({
       category_slug: CAT_BOITE_A_IDEE,
       page_size: 30
+    })
+    const actions = await app.$butter.post.list({
+      category_slug: `test-${CAT_ILS_LONT_FAIT}`
     })
     return {
       ideas: ideas.data.data
@@ -42,7 +52,14 @@ export default {
         el.tags.some((tag) => {
           return tag.slug === DAILY_CHALLENGE
         })
-      )
+      ),
+      actions: [
+        ...actions.data.data,
+        ...actions.data.data,
+        ...actions.data.data,
+        ...actions.data.data,
+        ...actions.data.data
+      ]
     }
   },
   methods: {
