@@ -121,15 +121,7 @@ export default {
     },
     filteredIdeas() {
       if (!this.filterTagsArray.length) return this.ideas
-      return this.ideas.filter((idea) => {
-        return this.filterTagsArray.every((tag) => {
-          return idea.tags.some((ideaTag) => {
-            return tag.startsWith('time-')
-              ? this.timeTagsFilter[tag].includes(ideaTag.slug)
-              : ideaTag.slug === tag
-          })
-        })
-      })
+      return this.ideas.filter(this.filterIdeas)
     },
     filterColorClass() {
       return Object.keys(this.tags).reduce((acc, filter) => {
@@ -168,6 +160,18 @@ export default {
     },
     getSomeIdeas() {
       this.showAll = false
+    },
+    matchingTags(filterTag) {
+      return (ideaTag) => {
+        return filterTag.startsWith('time-')
+          ? this.timeTagsFilter[filterTag].includes(ideaTag.slug)
+          : ideaTag.slug === filterTag
+      }
+    },
+    filterIdeas(idea) {
+      return this.filterTagsArray.every((tag) => {
+        return idea.tags.some(this.matchingTags(tag))
+      })
     }
   }
 }
