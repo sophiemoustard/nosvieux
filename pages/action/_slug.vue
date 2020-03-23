@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="nv-container">
     <div class="bloc">
@@ -9,15 +10,15 @@
             <h1>{{ action.title }}</h1>
           </div>
           <div class="dark-blue-text">{{ action.summary }}</div>
-          <div class="content-container">
+          <div v-if="showImage" class="content-container">
             <img
               class="action-img"
               :src="action.featured_image"
               :alt="action.featured_image_alt"
             />
-            <!-- eslint-disable-next-line vue/no-v-html -->
             <div class="action-text" v-html="action.body" />
           </div>
+          <div v-else class="content-iframe-container" v-html="action.body" />
         </div>
       </div>
     </div>
@@ -38,6 +39,14 @@ export default {
   async asyncData({ app, params }) {
     const action = await app.$butter.post.retrieve(params.slug)
     return { action: action.data.data }
+  },
+  data() {
+    return {
+      showImage: false
+    }
+  },
+  mounted() {
+    if (!this.action.body.match('iframe')) this.showImage = true
   }
 }
 </script>
@@ -47,10 +56,16 @@ export default {
   display: flex;
   flex-direction: column;
 }
-.content-container {
+.content-container,
+.content-iframe-container {
   margin-top: 30px;
   display: flex;
+  align-items: center;
   flex-direction: column;
+}
+p {
+  display: flex;
+  justify-content: center;
 }
 .action-text {
   display: flex;
@@ -60,10 +75,6 @@ export default {
   &-img {
     width: --webkit-fill-available;
     border: solid 2px $dark-blue;
-  }
-  &-img-container {
-    display: flex;
-    justify-content: center;
   }
   &-container {
     box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
@@ -79,7 +90,6 @@ export default {
     font-size: 18px;
   }
 }
-
 @media screen and (min-width: 768px) {
   .content-container {
     flex-direction: row;

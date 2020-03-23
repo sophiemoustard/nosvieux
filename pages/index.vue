@@ -53,13 +53,7 @@ export default {
           return tag.slug === DAILY_CHALLENGE
         })
       ),
-      actions: [
-        ...actions.data.data,
-        ...actions.data.data,
-        ...actions.data.data,
-        ...actions.data.data,
-        ...actions.data.data
-      ]
+      actions: actions.data.data
     }
   },
   methods: {
