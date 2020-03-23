@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="`${path}${content.slug}`" class="content-container">
+  <nuxt-link :to="`${path}/${content.slug}`" class="content-container">
     <div v-if="tag" class="content-tag" :class="tag.color">
       {{ tag.name }}
     </div>
@@ -18,7 +18,7 @@
 export default {
   name: 'Card',
   props: {
-    path: { type: String, default: '/' },
+    path: { type: String, default: '' },
     tag: { type: Object, default: null },
     content: { type: Object, default: () => ({}) }
   }

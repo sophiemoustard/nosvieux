@@ -3,7 +3,6 @@
   <div class="nv-container">
     <div class="bloc">
       <ni-header />
-      <div class="main_container"></div>
       <div class="action-container">
         <div class="action-content">
           <div class="action-title mb-md">
@@ -46,7 +45,7 @@ export default {
     }
   },
   mounted() {
-    if (!this.action.body.match('iframe')) this.showImage = true
+    if (!/iframe/.test(this.action.body)) this.showImage = true
   }
 }
 </script>
@@ -66,10 +65,6 @@ export default {
 p {
   display: flex;
   justify-content: center;
-}
-.action-text {
-  display: flex;
-  align-items: center;
 }
 .action {
   &-img {
@@ -93,10 +88,11 @@ p {
 @media screen and (min-width: 768px) {
   .content-container {
     flex-direction: row;
+    align-items: flex-start;
   }
   .action-img {
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
     margin-right: 20px;
   }
 }
