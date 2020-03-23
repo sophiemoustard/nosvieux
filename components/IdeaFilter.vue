@@ -1,18 +1,16 @@
 <template>
-  <div class="section-filter columns is-multiline is-mobile justify-around">
-    <div
-      v-for="(filter, index) of filters"
-      :key="index"
-      class="column is-narrow"
-    >
-      <div class="mb-xs">{{ filter.label }}</div>
-      <nv-select
-        :value="value[filter.name] || ''"
-        :options="filter.options"
-        :select-class="filterColorClass[filter.name] || 'is-dark-blue'"
-        small
-        @input="inputHandler($event, filter.name)"
-      />
+  <div class="section-filter">
+    <div class="section-filter-container justify-around">
+      <div v-for="(filter, index) of filters" :key="index" class="filter">
+        <div class="mb-xs">{{ filter.label }}</div>
+        <nv-select
+          :value="value[filter.name] || ''"
+          :options="filter.options"
+          :select-class="filterColorClass[filter.name] || 'is-dark-blue'"
+          small
+          @input="inputHandler($event, filter.name)"
+        />
+      </div>
     </div>
   </div>
 </template>
