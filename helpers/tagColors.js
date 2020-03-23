@@ -8,7 +8,6 @@ import {
   TAG_FEW_MINUTES,
   TAG_ALL_MY_TIME,
   TAG_CITIZEN,
-  TAG_CHILD,
   TAG_RELATIVE,
   TAG_HEALTH_CARE_PROVIDER,
   DAILY_CHALLENGE
@@ -24,7 +23,6 @@ export const tagColors = {
   [TAG_FEW_MINUTES]: 'is-green',
   [TAG_ALL_MY_TIME]: 'is-green',
   [TAG_CITIZEN]: 'is-blue',
-  [TAG_CHILD]: 'is-blue',
   [TAG_RELATIVE]: 'is-blue',
   [TAG_HEALTH_CARE_PROVIDER]: 'is-blue',
   [DAILY_CHALLENGE]: 'is-social-network-color'

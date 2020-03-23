@@ -14,7 +14,6 @@ export const TAG_HALF_DAY = 'time-demi-journee'
 export const TAG_FEW_MINUTES = 'time-quelques-minutes'
 export const TAG_ALL_MY_TIME = 'time-tout-mon-temps'
 export const TAG_CITIZEN = 'someone-un-citoyen-concerne'
-export const TAG_CHILD = 'someone-un-enfant'
 export const TAG_RELATIVE = 'someone-un-proche-dune-personne-agee'
 export const TAG_HEALTH_CARE_PROVIDER = 'someone-un-professionnel-de-sante'
 
