@@ -30,7 +30,7 @@
             :key="tag.name"
             :to="{
               name: 'index',
-              params: { tag: tag },
+              params: { tag: tag.slug },
               hash: '#boite-a-idee'
             }"
           >

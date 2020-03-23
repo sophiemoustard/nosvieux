@@ -111,8 +111,14 @@ export default {
     }
   },
   mounted() {
-    // eslint-disable-next-line no-console
-    console.log(this.$route.params)
+    if (!this.$route.params.tag) return
+    if (personFilterOptions.some((el) => el.value === this.$route.params.tag))
+      this.tags = { ...this.tags, person: this.$route.params.tag }
+    if (timeFilterOptions.some((el) => el.value === this.$route.params.tag)) {
+      this.tags = { ...this.tags, time: this.$route.params.tag }
+    }
+    if (needFilterOptions.some((el) => el.value === this.$route.params.tag))
+      this.tags = { ...this.tags, need: this.$route.params.tag }
   },
   methods: {
     getMainTag(idea) {
