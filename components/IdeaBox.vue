@@ -110,8 +110,7 @@ export default {
         person: personFilterOptions,
         time: timeFilterOptions,
         needs: needFilterOptions
-      },
-      timeTagsFilter
+      }
     }
   },
   computed: {
@@ -166,7 +165,7 @@ export default {
     matchingTags(filterTag) {
       return (ideaTag) => {
         return filterTag.startsWith('time-')
-          ? this.timeTagsFilter[filterTag].includes(ideaTag.slug)
+          ? timeTagsFilter[filterTag].includes(ideaTag.slug)
           : ideaTag.slug === filterTag
       }
     },
