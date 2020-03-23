@@ -1,5 +1,5 @@
 import Butter from 'buttercms'
-import { CAT_BOITE_A_IDEE } from './helpers/constants'
+import { CAT_BOITE_A_IDEE, CAT_ILS_LONT_FAIT } from './helpers/constants'
 
 require('dotenv').config()
 
@@ -40,12 +40,23 @@ export default {
   },
   generate: {
     async routes() {
-      const butter = Butter(process.env.BUTTER_CMS_TOKEN)
-      const ideas = await butter.post.list({
-        category_slug: CAT_BOITE_A_IDEE,
-        page_size: 30
-      })
-      return ideas.data.data.map((id) => `/idee/${id.slug}`)
+      try {
+        const butter = Butter(process.env.BUTTER_CMS_TOKEN)
+        const ideas = await butter.post.list({
+          category_slug: CAT_BOITE_A_IDEE,
+          page_size: 30
+        })
+        const ideasRoutes = ideas.data.data.map((id) => `/idee/${id.slug}`)
+
+        const actions = await butter.post.list({
+          category_slug: CAT_ILS_LONT_FAIT,
+          page_size: 20
+        })
+        const actionsRoutes = actions.data.data.map((id) => `/idee/${id.slug}`)
+        return ideasRoutes.concat(actionsRoutes)
+      } catch (e) {
+        return []
+      }
     }
   },
   axios: {},

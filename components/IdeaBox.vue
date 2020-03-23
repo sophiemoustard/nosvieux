@@ -14,7 +14,7 @@
       <card
         v-for="idea of ideasArray"
         :key="idea.id"
-        path="idea/"
+        path="idee"
         :tag="getMainTag(idea)"
         :content="idea"
       />

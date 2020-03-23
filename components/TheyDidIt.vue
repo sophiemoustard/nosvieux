@@ -9,7 +9,7 @@
       <card
         v-for="action of actions"
         :key="action.id"
-        path="action/"
+        path="action"
         :content="action"
         class="action"
       />
