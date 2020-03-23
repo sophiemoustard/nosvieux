@@ -1,7 +1,7 @@
 <template>
   <div>
-    <nuxt-link :to="{ path: '/', hash: CAT_BOITE_A_IDEE }">
-      <div :id="CAT_BOITE_A_IDEE" class="section-header mb-sm">
+    <nuxt-link :to="{ path: '/', hash: CAT_ILS_LONT_FAIT }">
+      <div :id="CAT_ILS_LONT_FAIT" class="section-header mb-sm">
         <div class="blue-background section-title">Ils l'ont fait</div>
       </div>
     </nuxt-link>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { CAT_BOITE_A_IDEE } from '~/helpers/constants'
+import { CAT_ILS_LONT_FAIT } from '~/helpers/constants'
 
 export default {
   name: 'TheyDidIt',
@@ -26,7 +26,7 @@ export default {
     actions: { type: Array, default: () => [] }
   },
   data() {
-    return { CAT_BOITE_A_IDEE }
+    return { CAT_ILS_LONT_FAIT }
   }
 }
 </script>
@@ -61,8 +61,8 @@ export default {
     }
   }
   .action {
-    width: 200px;
-    margin: 10px;
+    width: 240px;
+    margin: 5px;
     &-container {
       flex-direction: column;
       padding: 0;
@@ -71,8 +71,8 @@ export default {
       }
     }
     &-logo {
-      width: 200px;
-      height: 200px;
+      width: 240px;
+      height: 240px;
       margin-right: 0;
     }
     &-title {

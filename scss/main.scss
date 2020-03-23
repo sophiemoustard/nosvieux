@@ -70,7 +70,7 @@ a:-webkit-any-link {
 }
 @media screen and (min-width: 768px) {
   .bloc {
-    padding: 40px 70px;
+    padding: 30px 70px;
   }
 }
 
@@ -88,6 +88,9 @@ a:-webkit-any-link {
     text-align: center;
     font-style: italic;
   }
+  &-container {
+    padding: 20px 0;
+  }
 }
 @media screen and (min-width: 768px) {
   .section {
@@ -95,7 +98,7 @@ a:-webkit-any-link {
       font-size: 18px;
     }
     &-container {
-      width: 700px;
+      width: 750px;
       margin: auto;
       font-size: 18px;
     }
