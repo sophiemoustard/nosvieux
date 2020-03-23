@@ -95,7 +95,6 @@ a:-webkit-any-link {
   &-filter {
     margin: 10px 0 40px 0;
     padding: 10px 0;
-    box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 1);
   }
 }
 @media screen and (min-width: 768px) {
@@ -205,4 +204,8 @@ a:-webkit-any-link {
   display: inline-block;
   height: 27px;
   font-size: 14px;
+}
+
+.justify-around {
+  justify-content: space-around;
 }

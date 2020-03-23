@@ -11,35 +11,33 @@
         faite pour toi ! N'oublie pas de bien respecter les consignes en
         vigueur.
       </div>
-      <div class="idea-box-filter">
-        <div class="columns is-multiline is-mobile is-centered">
-          <div class="column is-narrow">
-            <div class="mb-xs">Je suis</div>
-            <nv-select
-              v-model="tags.person"
-              :options="filter.personOptions"
-              :select-class="filterColorClass.person"
-              small
-            />
-          </div>
-          <div class="column is-narrow">
-            <div class="mb-xs">J'ai</div>
-            <nv-select
-              v-model="tags.time"
-              :options="filter.timeOptions"
-              :select-class="filterColorClass.time"
-              small
-            />
-          </div>
-          <div class="column is-narrow">
-            <div class="mb-xs">J'ai besoin de</div>
-            <nv-select
-              v-model="tags.need"
-              :options="filter.needsOptions"
-              :select-class="filterColorClass.need"
-              small
-            />
-          </div>
+      <div class="section-filter columns is-multiline is-mobile justify-around">
+        <div class="column is-narrow">
+          <div class="mb-xs">Je suis</div>
+          <nv-select
+            v-model="tags.person"
+            :options="filter.personOptions"
+            :select-class="filterColorClass.person"
+            small
+          />
+        </div>
+        <div class="column is-narrow">
+          <div class="mb-xs">J'ai</div>
+          <nv-select
+            v-model="tags.time"
+            :options="filter.timeOptions"
+            :select-class="filterColorClass.time"
+            small
+          />
+        </div>
+        <div class="column is-narrow">
+          <div class="mb-xs">J'ai besoin de</div>
+          <nv-select
+            v-model="tags.need"
+            :options="filter.needsOptions"
+            :select-class="filterColorClass.need"
+            small
+          />
         </div>
       </div>
       <card
