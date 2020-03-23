@@ -38,7 +38,7 @@ export default {
       page_size: 30
     })
     const actions = await app.$butter.post.list({
-      category_slug: CAT_ILS_LONT_FAIT
+      category_slug: `test-${CAT_ILS_LONT_FAIT}`
     })
     return {
       ideas: ideas.data.data
