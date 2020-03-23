@@ -15,12 +15,12 @@ import NiFooter from '~/components/Footer'
 import NosVieux from '~/components/NosVieux'
 import Social from '~/components/Social'
 import IdeaBox from '~/components/IdeaBox'
+import TheyDidIt from '~/components/TheyDidIt'
 import {
   CAT_BOITE_A_IDEE,
   DAILY_CHALLENGE,
   CAT_ILS_LONT_FAIT
 } from '~/helpers/constants'
-import TheyDidIt from '~/components/TheyDidIt'
 
 export default {
   name: 'Index',

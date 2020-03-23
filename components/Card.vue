@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="`idee/${content.slug}`" class="content-container">
+  <nuxt-link :to="`${path}${content.slug}`" class="content-container">
     <div v-if="tag" class="content-tag" :class="tag.color">
       {{ tag.name }}
     </div>
