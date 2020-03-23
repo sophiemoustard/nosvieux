@@ -21,12 +21,12 @@
       />
       <template v-if="ideasArray.length >= 6">
         <div v-if="!showAll" class="nv-container">
-          <button class="button is-dark-blue is-normal" @click="getAllIdeas()">
+          <button class="button is-dark-blue is-normal" @click="showAll = true">
             Voir plus d'idées
           </button>
         </div>
         <div v-else class="nv-container">
-          <button class="button is-dark-blue" @click="getSomeIdeas()">
+          <button class="button is-dark-blue" @click="showAll = false">
             Voir moins d'idées
           </button>
         </div>
@@ -130,13 +130,6 @@ export default {
         ...mainTag,
         color: this.tagColors[mainTag.slug] || 'dark-blue-background'
       }
-    },
-    getAllIdeas() {
-      this.showAll = true
-      this.$emit('allIdeas')
-    },
-    getSomeIdeas() {
-      this.showAll = false
     },
     matchingTags(filterTag) {
       return (ideaTag) => {
