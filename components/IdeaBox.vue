@@ -11,35 +11,7 @@
         faite pour toi ! N'oublie pas de bien respecter les consignes en
         vigueur.
       </div>
-      <div class="section-filter columns is-multiline is-mobile justify-around">
-        <div class="column is-narrow">
-          <div class="mb-xs">Je suis</div>
-          <nv-select
-            v-model="tags.person"
-            :options="filterOptions.person"
-            :select-class="filterColorClass.person"
-            small
-          />
-        </div>
-        <div class="column is-narrow">
-          <div class="mb-xs">J'ai</div>
-          <nv-select
-            v-model="tags.time"
-            :options="filterOptions.time"
-            :select-class="filterColorClass.time"
-            small
-          />
-        </div>
-        <div class="column is-narrow">
-          <div class="mb-xs">J'ai besoin de</div>
-          <nv-select
-            v-model="tags.need"
-            :options="filterOptions.needs"
-            :select-class="filterColorClass.need"
-            small
-          />
-        </div>
-      </div>
+      <idea-filter v-model="tags" :filters="filters" />
       <card
         v-for="idea of ideasArray"
         :key="idea.id"
@@ -78,13 +50,14 @@ import {
   timeTagsFilter
 } from '~/helpers/constants'
 import { tagColors as filterColors } from '~/helpers/tagColors'
-import NvSelect from '~/components/form/Select'
+import IdeaFilter from '~/components/IdeaFilter'
 
 export default {
   name: 'IdeaBox',
   components: {
     Card,
-    NvSelect
+    IdeaFilter
+    // NvSelect
   },
   props: {
     ideas: { type: Array, default: () => [] }
@@ -105,12 +78,7 @@ export default {
         name: 'Garder contact',
         color: tagColors[MAIN_TAG_CONTACT]
       },
-      tags: { person: '', time: '', need: '' },
-      filterOptions: {
-        person: personFilterOptions,
-        time: timeFilterOptions,
-        needs: needFilterOptions
-      }
+      tags: {}
     }
   },
   computed: {
@@ -132,6 +100,31 @@ export default {
           [filter]: tag ? filterColors[tag] : 'is-dark-blue'
         }
       }, {})
+    },
+    filters() {
+      return [
+        {
+          label: 'Je suis',
+          name: 'person',
+          options: personFilterOptions,
+          class: this.filterColorClass.person,
+          model: ''
+        },
+        {
+          label: "J'ai",
+          name: 'time',
+          options: timeFilterOptions,
+          class: this.filterColorClass.time,
+          model: ''
+        },
+        {
+          label: "J'ai besoin de",
+          name: 'need',
+          options: needFilterOptions,
+          class: this.filterColorClass.need,
+          model: ''
+        }
+      ]
     }
   },
   methods: {
