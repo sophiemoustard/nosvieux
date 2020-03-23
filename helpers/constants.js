@@ -31,4 +31,34 @@ export const CONTACT = 'Garder le contact'
 export const ACTIVITE = 'Activité'
 export const TRAINING = 'Formation'
 
+// TAGS FILTER OPTIONS
+export const personFilterOptions = [
+  { label: CITIZEN, value: TAG_CITIZEN },
+  { label: RELATIVE, value: TAG_RELATIVE },
+  { label: HEALTH_CARE_PROVIDER, value: TAG_HEALTH_CARE_PROVIDER }
+]
+export const timeFilterOptions = [
+  { label: FEW_MINUTES, value: TAG_FEW_MINUTES },
+  { label: ONE_HOUR, value: TAG_ONE_HOUR },
+  { label: HALF_DAY, value: TAG_HALF_DAY },
+  { label: ALL_MY_TIME, value: TAG_ALL_MY_TIME }
+]
+export const needFilterOptions = [
+  { label: TRAINING, value: MAIN_TAG_TRAINING },
+  { label: ACTIVITE, value: MAIN_TAG_ACTIVITE },
+  { label: AIDE, value: MAIN_TAG_AIDE },
+  { label: CONTACT, value: MAIN_TAG_CONTACT }
+]
+export const timeTagsFilter = {
+  [TAG_FEW_MINUTES]: [TAG_FEW_MINUTES],
+  [TAG_ONE_HOUR]: [TAG_FEW_MINUTES, TAG_ONE_HOUR],
+  [TAG_HALF_DAY]: [TAG_FEW_MINUTES, TAG_ONE_HOUR, TAG_HALF_DAY],
+  [TAG_ALL_MY_TIME]: [
+    TAG_FEW_MINUTES,
+    TAG_ONE_HOUR,
+    TAG_HALF_DAY,
+    TAG_ALL_MY_TIME
+  ]
+}
+
 export const DAILY_CHALLENGE = 'defi-du-jour'

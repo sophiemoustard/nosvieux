@@ -16,7 +16,7 @@
           <div class="mb-xs">Je suis</div>
           <nv-select
             v-model="tags.person"
-            :options="filter.personOptions"
+            :options="filterOptions.person"
             :select-class="filterColorClass.person"
             small
           />
@@ -25,7 +25,7 @@
           <div class="mb-xs">J'ai</div>
           <nv-select
             v-model="tags.time"
-            :options="filter.timeOptions"
+            :options="filterOptions.time"
             :select-class="filterColorClass.time"
             small
           />
@@ -34,7 +34,7 @@
           <div class="mb-xs">J'ai besoin de</div>
           <nv-select
             v-model="tags.need"
-            :options="filter.needsOptions"
+            :options="filterOptions.needs"
             :select-class="filterColorClass.need"
             small
           />
@@ -70,24 +70,10 @@ import {
   MAIN_TAG_TRAINING,
   DAILY_CHALLENGE,
   CAT_BOITE_A_IDEE,
-  AIDE,
-  CONTACT,
-  ACTIVITE,
-  TRAINING,
-  CITIZEN,
-  RELATIVE,
-  HEALTH_CARE_PROVIDER,
-  FEW_MINUTES,
-  HALF_DAY,
-  ALL_MY_TIME,
-  ONE_HOUR,
-  TAG_FEW_MINUTES,
-  TAG_HALF_DAY,
-  TAG_ALL_MY_TIME,
-  TAG_ONE_HOUR,
-  TAG_CITIZEN,
-  TAG_RELATIVE,
-  TAG_HEALTH_CARE_PROVIDER
+  personFilterOptions,
+  timeFilterOptions,
+  needFilterOptions,
+  timeTagsFilter
 } from '~/helpers/constants'
 import { tagColors as filterColors } from '~/helpers/tagColors'
 import NvSelect from '~/components/form/Select'
@@ -106,6 +92,7 @@ export default {
       [MAIN_TAG_AIDE]: 'green-background',
       [MAIN_TAG_CONTACT]: 'blue-background',
       [MAIN_TAG_ACTIVITE]: 'green-blue-background',
+      [MAIN_TAG_TRAINING]: 'dark-blue-background',
       [DAILY_CHALLENGE]: 'social-network-color-background'
     }
     return {
@@ -117,36 +104,12 @@ export default {
         color: tagColors[MAIN_TAG_CONTACT]
       },
       tags: { person: '', time: '', need: '' },
-      filter: {
-        personOptions: [
-          { label: CITIZEN, value: TAG_CITIZEN },
-          { label: RELATIVE, value: TAG_RELATIVE },
-          { label: HEALTH_CARE_PROVIDER, value: TAG_HEALTH_CARE_PROVIDER }
-        ],
-        timeOptions: [
-          { label: FEW_MINUTES, value: TAG_FEW_MINUTES },
-          { label: ONE_HOUR, value: TAG_ONE_HOUR },
-          { label: HALF_DAY, value: TAG_HALF_DAY },
-          { label: ALL_MY_TIME, value: TAG_ALL_MY_TIME }
-        ],
-        needsOptions: [
-          { label: TRAINING, value: MAIN_TAG_TRAINING },
-          { label: ACTIVITE, value: MAIN_TAG_ACTIVITE },
-          { label: AIDE, value: MAIN_TAG_AIDE },
-          { label: CONTACT, value: MAIN_TAG_CONTACT }
-        ]
+      filterOptions: {
+        person: personFilterOptions,
+        time: timeFilterOptions,
+        needs: needFilterOptions
       },
-      timeTagsFilter: {
-        [TAG_FEW_MINUTES]: [TAG_FEW_MINUTES],
-        [TAG_ONE_HOUR]: [TAG_FEW_MINUTES, TAG_ONE_HOUR],
-        [TAG_HALF_DAY]: [TAG_FEW_MINUTES, TAG_ONE_HOUR, TAG_HALF_DAY],
-        [TAG_ALL_MY_TIME]: [
-          TAG_FEW_MINUTES,
-          TAG_ONE_HOUR,
-          TAG_HALF_DAY,
-          TAG_ALL_MY_TIME
-        ]
-      }
+      timeTagsFilter
     }
   },
   computed: {
