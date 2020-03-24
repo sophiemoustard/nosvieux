@@ -1,56 +1,62 @@
 <template>
   <div>
     <nuxt-link :to="{ path: '/', hash: CAT_BOITE_A_IDEE }">
-      <div :id="CAT_BOITE_A_IDEE" class="idea-box-header mb-sm">
-        <div class="dark-blue-background idea-box-title">La boîte à idées</div>
+      <div :id="CAT_BOITE_A_IDEE" class="section-header mb-sm">
+        <div class="dark-blue-background section-title">La boîte à idées</div>
       </div>
     </nuxt-link>
-    <div class="idea-box-container">
-      <div class="idea-box-subtitle">
+    <div class="section-container">
+      <div class="section-subtitle">
         Tu veux agir mais ne sais pas encore comment ? Cette boite à idées est
         faite pour toi ! N'oublie pas de bien respecter les consignes en
         vigueur.
       </div>
-      <div v-for="idea of ideasArray" :key="idea.id">
-        <nuxt-link :to="`idee/${idea.slug}`" class="idea-container">
-          <div class="idea-tag" :class="getMainTag(idea).color">
-            {{ getMainTag(idea).name }}
-          </div>
-          <div class="idea-description">
-            <img class="idea-logo" :src="idea.featured_image" />
-            <div>
-              <div>{{ idea.title }}</div>
-              <div class="idea-summary grey-text">{{ idea.summary }}</div>
-            </div>
-            <img src="~/assets/chevron_right.png" class="chevron" />
-          </div>
-        </nuxt-link>
-      </div>
-    </div>
-    <div v-if="!showAll" class="nv-container">
-      <button class="button is-dark-blue is-normal" @click="getAllIdeas()">
-        Voir plus d'idées
-      </button>
-    </div>
-    <div v-else class="nv-container">
-      <button class="button is-dark-blue" @click="getSomeIdeas()">
-        Voir moins d'idées
-      </button>
+      <idea-filter v-model="tags" :filters="filters" />
+      <card
+        v-for="idea of ideasArray"
+        :key="idea.id"
+        path="idee"
+        :tag="getMainTag(idea)"
+        :content="idea"
+      />
+      <template v-if="filteredIdeas.length > 6">
+        <div v-if="!showAll" class="nv-container">
+          <button class="button is-dark-blue is-normal" @click="showAll = true">
+            Voir plus d'idées
+          </button>
+        </div>
+        <div v-else class="nv-container">
+          <button class="button is-dark-blue" @click="showAll = false">
+            Voir moins d'idées
+          </button>
+        </div>
+      </template>
     </div>
   </div>
 </template>
 
 <script>
+import Card from '~/components/Card'
 import {
   MAIN_TAG_AIDE,
   MAIN_TAG_CONTACT,
   MAIN_TAG_ACTIVITE,
+  MAIN_TAG_TRAINING,
+  DAILY_CHALLENGE,
   CAT_BOITE_A_IDEE,
-  DAILY_CHALLENGE
+  personFilterOptions,
+  timeFilterOptions,
+  needFilterOptions,
+  timeTagsFilter
 } from '~/helpers/constants'
+import IdeaFilter from '~/components/IdeaFilter'
 
 export default {
   name: 'IdeaBox',
+  components: {
+    Card,
+    IdeaFilter
+  },
   props: {
     ideas: { type: Array, default: () => [] }
   },
@@ -59,21 +65,56 @@ export default {
       [MAIN_TAG_AIDE]: 'green-background',
       [MAIN_TAG_CONTACT]: 'blue-background',
       [MAIN_TAG_ACTIVITE]: 'green-blue-background',
+      [MAIN_TAG_TRAINING]: 'dark-blue-background',
       [DAILY_CHALLENGE]: 'social-network-color-background'
     }
     return {
+      CAT_BOITE_A_IDEE,
       showAll: false,
       tagColors,
       defaultMainTag: {
         name: 'Garder contact',
         color: tagColors[MAIN_TAG_CONTACT]
       },
-      CAT_BOITE_A_IDEE
+      tags: {}
     }
   },
   computed: {
     ideasArray() {
-      return this.showAll ? this.ideas : this.ideas.slice(0, 6)
+      return this.showAll ? this.filteredIdeas : this.filteredIdeas.slice(0, 6)
+    },
+    filterTagsArray() {
+      return Object.values(this.tags).filter((tag) => !!tag)
+    },
+    filteredIdeas() {
+      if (!this.filterTagsArray.length) return this.ideas
+      return this.ideas.filter(this.filterIdeas)
+    },
+    filters() {
+      return [
+        {
+          label: 'Je suis',
+          name: 'person',
+          options: personFilterOptions
+        },
+        {
+          label: "J'ai",
+          name: 'time',
+          options: timeFilterOptions
+        },
+        {
+          label: "J'ai besoin de",
+          name: 'need',
+          options: needFilterOptions
+        }
+      ]
+    }
+  },
+  mounted() {
+    if (!this.$route.query.filter || !this.$route.query.tag) return
+    this.tags = {
+      ...this.tags,
+      [this.$route.query.filter]: this.$route.query.tag
     }
   },
   methods: {
@@ -97,98 +138,28 @@ export default {
         color: this.tagColors[mainTag.slug] || 'dark-blue-background'
       }
     },
-    getAllIdeas() {
-      this.showAll = true
-      this.$emit('allIdeas')
+    matchingTags(filterTag) {
+      return (ideaTag) => {
+        return filterTag.startsWith('time-')
+          ? timeTagsFilter[filterTag].includes(ideaTag.slug)
+          : ideaTag.slug === filterTag
+      }
     },
-    getSomeIdeas() {
-      this.showAll = false
+    filterIdeas(idea) {
+      return this.filterTagsArray.every((tag) => {
+        return idea.tags.some(this.matchingTags(tag))
+      })
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-a:-webkit-any-link {
-  color: black;
-}
-.idea {
-  &-box {
-    &-header {
-      text-align: center;
-    }
-    &-title {
-      color: white;
-      font-weight: bold;
-      padding: 10px 0;
-    }
-    &-subtitle {
-      padding: 20px 0;
-      text-align: center;
-      font-style: italic;
-    }
-  }
-  &-tag {
-    color: white;
-    width: fit-content;
-    padding: 2px 10px;
-    font-size: 14px;
-  }
-  &-container {
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 5px 12px 0 rgb(217, 226, 233);
-    margin: 10px 0 20px 0;
-  }
-  &-description {
-    display: flex;
-    align-items: center;
-    padding: 10px 15px 20px 20px;
-  }
-  &-logo {
-    width: 40px;
-    height: 40px;
-    margin-right: 15px;
-  }
-  &-summary {
-    font-size: 14px;
-  }
-}
-.chevron {
-  width: 10px;
-  height: 10px;
-  padding-left: 5px;
-}
 .nv-container {
   padding-top: 15px;
   flex-direction: row;
 }
-
-@media screen and (min-width: 768px) {
-  .idea {
-    &-logo {
-      width: 50px;
-      height: 50px;
-    }
-    &-container:hover {
-      background-color: #efefef;
-    }
-    &-description {
-      padding: 10px 30px 20px;
-    }
-    &-box {
-      &-subtitle {
-        font-size: 18px;
-      }
-      &-container {
-        width: 700px;
-        margin: auto;
-        font-size: 18px;
-      }
-    }
-  }
-  .chevron {
-    display: none;
-  }
+.section-subtitle {
+  margin: 0px 10px;
 }
 </style>

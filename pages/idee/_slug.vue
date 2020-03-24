@@ -25,13 +25,29 @@
           </div>
         </div>
         <div class="tags_container">
-          <button
+          <nuxt-link
             v-for="tag of idea.tags"
             :key="tag.name"
-            :class="['button', 'is-rounded', 'is-small', getTagColor(tag.slug)]"
+            :to="{
+              path: '/',
+              query: { filter: getTagCategory(tag), tag: tag.slug },
+              hash: 'boite-a-idee'
+            }"
+            :event="isDailyChallengeTag(tag) ? '' : 'click'"
           >
-            {{ tag.name }}
-          </button>
+            <button
+              :class="[
+                'button',
+                'is-rounded',
+                { 'is-outlined': isDailyChallengeTag(tag) },
+                { disabled: isDailyChallengeTag(tag) },
+                'is-small',
+                getTagColor(tag.slug)
+              ]"
+            >
+              {{ tag.name }}
+            </button>
+          </nuxt-link>
         </div>
       </div>
     </div>
@@ -43,18 +59,12 @@
 import NiHeader from '~/components/Header'
 import NiFooter from '~/components/Footer'
 import {
-  MAIN_TAG_AIDE,
-  MAIN_TAG_CONTACT,
-  MAIN_TAG_ACTIVITE,
-  TAG_1_HOUR,
-  TAG_HALF_DAY,
-  TAG_FEW_HOURS,
-  TAG_ALL_MY_TIME,
-  TAG_CITOYEN,
-  TAG_CHILD,
-  TAG_RELATIVE,
-  DAILY_CHALLENGE
+  DAILY_CHALLENGE,
+  personFilterOptions,
+  timeFilterOptions,
+  needFilterOptions
 } from '~/helpers/constants'
+import { tagColors } from '~/helpers/tagColors'
 
 export default {
   name: 'IdeaProfile',
@@ -63,23 +73,14 @@ export default {
     NiFooter
   },
   async asyncData({ app, params }) {
-    const idea = await app.$butter.post.retrieve(params.slug)
-    return { idea: idea.data.data }
+    try {
+      const idea = await app.$butter.post.retrieve(params.slug)
+      return { idea: idea.data.data }
+    } catch (e) {
+      return { idea: {} }
+    }
   },
   data() {
-    const tagColors = {
-      [MAIN_TAG_AIDE]: 'is-light-grey',
-      [MAIN_TAG_CONTACT]: 'is-light-grey',
-      [MAIN_TAG_ACTIVITE]: 'is-light-grey',
-      [TAG_1_HOUR]: 'is-green',
-      [TAG_HALF_DAY]: 'is-green',
-      [TAG_FEW_HOURS]: 'is-green',
-      [TAG_ALL_MY_TIME]: 'is-green',
-      [TAG_CITOYEN]: 'is-blue',
-      [TAG_CHILD]: 'is-blue',
-      [TAG_RELATIVE]: 'is-blue',
-      [DAILY_CHALLENGE]: 'is-social-network-color'
-    }
     return {
       DAILY_CHALLENGE,
       tagColors
@@ -87,9 +88,13 @@ export default {
   },
   computed: {
     isDailyChallenge() {
-      return this.idea.tags.some((tag) => tag.slug === DAILY_CHALLENGE)
+      return (
+        !!this.idea.tags &&
+        this.idea.tags.some((tag) => tag.slug === DAILY_CHALLENGE)
+      )
     },
     getDailyChallengeName() {
+      if (!this.idea.tags) return ''
       const dailyChallengeTag = this.idea.tags.find(
         (tag) => tag.slug === DAILY_CHALLENGE
       )
@@ -99,6 +104,16 @@ export default {
   methods: {
     getTagColor(slug) {
       return this.tagColors[slug] || 'is-dark-blue'
+    },
+    isDailyChallengeTag(tag) {
+      return tag.slug === DAILY_CHALLENGE
+    },
+    getTagCategory(tag) {
+      if (personFilterOptions.some((el) => el.value === tag.slug))
+        return 'person'
+      if (timeFilterOptions.some((el) => el.value === tag.slug)) return 'time'
+      if (needFilterOptions.some((el) => el.value === tag.slug)) return 'need'
+      return ''
     }
   },
   head() {
@@ -153,6 +168,9 @@ export default {
     padding: 20px;
     font-size: 18px;
   }
+}
+/deep/.disabled {
+  cursor: default;
 }
 
 @media screen and (min-width: 768px) {
