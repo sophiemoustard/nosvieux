@@ -69,6 +69,8 @@ export default {
         )
       } catch (e) {
         this.ideas = []
+        this.actions = []
+        this.dailyChallenge = {}
       }
     }
   }
