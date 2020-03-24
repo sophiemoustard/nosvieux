@@ -6,7 +6,7 @@
     <div class="content-description">
       <img class="content-logo" :src="content.featured_image" />
       <div>
-        <div>{{ content.title }}</div>
+        <div class="content-title">{{ content.title }}</div>
         <div class="content-summary grey-text">{{ content.summary }}</div>
       </div>
       <img src="~/assets/chevron_right.png" class="chevron" />
@@ -26,9 +26,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a:-webkit-any-link {
-  color: black;
-}
 .content {
   &-tag {
     color: white;
@@ -54,6 +51,9 @@ a:-webkit-any-link {
   }
   &-summary {
     font-size: 14px;
+  }
+  &-title {
+    color: black;
   }
 }
 @media screen and (min-width: 768px) {
