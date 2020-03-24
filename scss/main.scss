@@ -92,15 +92,13 @@ a:-webkit-any-link {
   &-container {
     padding: 20px 0;
   }
-  &-filter {
-    margin: 30px 0 40px 0;
-    &-container {
-      display: flex;
-      flex-wrap: wrap;
-      margin: -10px;
-      & > .filter {
-        margin: 10px;
-      }
+  &-filters {
+    justify-content: space-between;
+    margin: 30px 10px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    & > .filter {
+      margin: 5px;
     }
   }
 }
@@ -114,14 +112,8 @@ a:-webkit-any-link {
       margin: auto;
       font-size: 18px;
     }
-    &-filter {
-      margin: 50px 0 60px 0;
-      &-container {
-        margin: 0;
-        & > .filter {
-          margin: 0;
-        }
-      }
+    &-filters {
+      justify-content: space-around;
     }
   }
 }
@@ -216,8 +208,4 @@ a:-webkit-any-link {
   display: inline-block;
   height: 27px;
   font-size: 14px;
-}
-
-.justify-around {
-  justify-content: space-around;
 }
