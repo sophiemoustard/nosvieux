@@ -19,7 +19,7 @@
         :tag="getMainTag(idea)"
         :content="idea"
       />
-      <template v-if="ideasArray.length >= 6">
+      <template v-if="filteredIdeas.length > 6">
         <div v-if="!showAll" class="nv-container">
           <button class="button is-dark-blue is-normal" @click="showAll = true">
             Voir plus d'idées
