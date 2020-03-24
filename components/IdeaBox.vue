@@ -111,14 +111,11 @@ export default {
     }
   },
   mounted() {
-    if (!this.$route.params.tag) return
-    if (personFilterOptions.some((el) => el.value === this.$route.params.tag))
-      this.tags = { ...this.tags, person: this.$route.params.tag }
-    if (timeFilterOptions.some((el) => el.value === this.$route.params.tag)) {
-      this.tags = { ...this.tags, time: this.$route.params.tag }
+    if (!this.$route.query.filter || !this.$route.query.tag) return
+    this.tags = {
+      ...this.tags,
+      [this.$route.query.filter]: this.$route.query.tag
     }
-    if (needFilterOptions.some((el) => el.value === this.$route.params.tag))
-      this.tags = { ...this.tags, need: this.$route.params.tag }
   },
   methods: {
     getMainTag(idea) {

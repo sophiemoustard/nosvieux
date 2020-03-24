@@ -1,6 +1,6 @@
 // CATEGORIES
 export const CAT_BOITE_A_IDEE = 'boite-a-idee'
-export const CAT_ILS_LONT_FAIT = 'ils-lont-fait'
+export const CAT_ILS_LONT_FAIT = 'test-ils-lont-fait'
 
 // MAIN TAGS
 export const MAIN_TAG_AIDE = 'main-aide-organisationnelle'
