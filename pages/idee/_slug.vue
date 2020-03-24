@@ -29,9 +29,9 @@
             v-for="tag of idea.tags"
             :key="tag.name"
             :to="{
-              path: `/?filter=${getTagCategory(tag)}&tag=${
-                tag.slug
-              }#boite-a-idee`
+              path: '/',
+              query: { filter: getTagCategory(tag), tag: tag.slug },
+              hash: 'boite-a-idee'
             }"
             :event="isDailyChallengeTag(tag) ? '' : 'click'"
           >
