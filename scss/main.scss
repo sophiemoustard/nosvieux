@@ -1,6 +1,7 @@
 @import '~bulma';
 @import 'variables.scss';
 @import 'buttons.scss';
+@import 'select.scss';
 
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
@@ -84,12 +85,23 @@ a:-webkit-any-link {
     text-align: center;
   }
   &-subtitle {
-    padding: 20px 0;
+    margin: 20px 0;
     text-align: center;
     font-style: italic;
   }
   &-container {
     padding: 20px 0;
+  }
+  &-filter {
+    margin: 30px 0 40px 0;
+    &-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -10px;
+      & > .filter {
+        margin: 10px;
+      }
+    }
   }
 }
 @media screen and (min-width: 768px) {
@@ -101,6 +113,15 @@ a:-webkit-any-link {
       width: 750px;
       margin: auto;
       font-size: 18px;
+    }
+    &-filter {
+      margin: 50px 0 60px 0;
+      &-container {
+        margin: 0;
+        & > .filter {
+          margin: 0;
+        }
+      }
     }
   }
 }
@@ -117,6 +138,9 @@ a:-webkit-any-link {
   }
 }
 
+.mb-xs {
+  margin-bottom: 5px;
+}
 .ml-sm {
   margin-left: 10px;
 }
@@ -192,4 +216,8 @@ a:-webkit-any-link {
   display: inline-block;
   height: 27px;
   font-size: 14px;
+}
+
+.justify-around {
+  justify-content: space-around;
 }

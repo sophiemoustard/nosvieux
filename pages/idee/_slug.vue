@@ -28,7 +28,13 @@
           <button
             v-for="tag of idea.tags"
             :key="tag.name"
-            :class="['button', 'is-rounded', 'is-small', getTagColor(tag.slug)]"
+            :class="[
+              'button',
+              'is-rounded',
+              { 'is-outlined': tag.slug === DAILY_CHALLENGE },
+              'is-small',
+              getTagColor(tag.slug)
+            ]"
           >
             {{ tag.name }}
           </button>
@@ -42,19 +48,8 @@
 <script>
 import NiHeader from '~/components/Header'
 import NiFooter from '~/components/Footer'
-import {
-  MAIN_TAG_AIDE,
-  MAIN_TAG_CONTACT,
-  MAIN_TAG_ACTIVITE,
-  TAG_1_HOUR,
-  TAG_HALF_DAY,
-  TAG_FEW_HOURS,
-  TAG_ALL_MY_TIME,
-  TAG_CITOYEN,
-  TAG_CHILD,
-  TAG_RELATIVE,
-  DAILY_CHALLENGE
-} from '~/helpers/constants'
+import { DAILY_CHALLENGE } from '~/helpers/constants'
+import { tagColors } from '~/helpers/tagColors'
 
 export default {
   name: 'IdeaProfile',
@@ -71,19 +66,6 @@ export default {
     }
   },
   data() {
-    const tagColors = {
-      [MAIN_TAG_AIDE]: 'is-light-grey',
-      [MAIN_TAG_CONTACT]: 'is-light-grey',
-      [MAIN_TAG_ACTIVITE]: 'is-light-grey',
-      [TAG_1_HOUR]: 'is-green',
-      [TAG_HALF_DAY]: 'is-green',
-      [TAG_FEW_HOURS]: 'is-green',
-      [TAG_ALL_MY_TIME]: 'is-green',
-      [TAG_CITOYEN]: 'is-blue',
-      [TAG_CHILD]: 'is-blue',
-      [TAG_RELATIVE]: 'is-blue',
-      [DAILY_CHALLENGE]: 'is-social-network-color'
-    }
     return {
       DAILY_CHALLENGE,
       tagColors

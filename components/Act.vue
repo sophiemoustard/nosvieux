@@ -38,7 +38,7 @@
       </div>
       <div v-if="dailyChallenge" class="daily-challenge-button-container">
         <nuxt-link :to="`idee/${dailyChallenge.slug}`">
-          <button class="button is-normal is-social-network-color">
+          <button class="button is-normal is-outlined is-social-network-color">
             Passe à l'action !
           </button>
         </nuxt-link>

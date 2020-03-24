@@ -1,64 +1,46 @@
-%button-shared {
-  border-color: transparent;
-  color: white;
-  &:hover {
+@mixin nv-button-outlined($color) {
+  border: solid 1px map-get($map: $nv-colors, $key: $color);
+  color: map-get($map: $nv-colors, $key: $color);
+  background-color: transparent;
+}
+
+@mixin nv-button($color) {
+  &.is-#{$color} {
     border-color: transparent;
+    background-color: map-get($map: $nv-colors, $key: $color );
     color: white;
+    &:hover {
+      background-color: map-get($map: $nv-colors, $key: $color );
+      border-color: transparent;
+      color: white;
+    }
+    &:focus {
+      color: white;
+    }
+    &:active {
+      color: white;
+    }
+    &.is-outlined {
+      @include nv-button-outlined($color);
+      &:hover {
+        @include nv-button-outlined($color);
+      }
+      &:focus {
+        @include nv-button-outlined($color);
+      }
+      &:active {
+        @include nv-button-outlined($color);
+      }
+    }
   }
-  &:focus {
-    color: white;
-    outline: 0;
-  }
-  &:active {
-    color: white;
-  }
+  
 }
 
 button {
-  &.is-dark-blue {
-    @extend %button-shared;
-    background-color: $dark-blue;
-    &:hover {
-      background-color: $dark-blue;
-    }
-  }
-  &.is-green-blue {
-    @extend %button-shared;
-    background-color: $green-blue;
-    &:hover {
-      background-color: $green-blue;
-    }
-  }
-  &.is-blue {
-    @extend %button-shared;
-    background-color: $blue;
-    &:hover {
-      background-color: $blue;
-    }
-  }
-  &.is-green {
-    @extend %button-shared;
-    background-color: $green;
-    &:hover {
-      background-color: $green;
-    }
-  }
-  &.is-light-grey {
-    @extend %button-shared;
-    background-color: $light-grey;
-    &:hover {
-      background-color: $light-grey;
-    }
-  }
-  &.is-social-network-color {
-    @extend %button-shared;
-    border: solid 1px $social-network-color;
-    color: $social-network-color;
-    background-color: transparent;
-    &:hover {
-      border: solid 1px $social-network-color;
-      color: $social-network-color;
-      background-color: transparent;
-    }
-  }
+  @include nv-button(dark-blue);
+  @include nv-button(green-blue);
+  @include nv-button(blue);
+  @include nv-button(green);
+  @include nv-button(light-grey);
+  @include nv-button(social-network-color);
 }

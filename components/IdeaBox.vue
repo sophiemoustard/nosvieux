@@ -11,6 +11,7 @@
         faite pour toi ! N'oublie pas de bien respecter les consignes en
         vigueur.
       </div>
+      <idea-filter v-model="tags" :filters="filters" />
       <card
         v-for="idea of ideasArray"
         :key="idea.id"
@@ -18,16 +19,18 @@
         :tag="getMainTag(idea)"
         :content="idea"
       />
-      <div v-if="!showAll" class="nv-container">
-        <button class="button is-dark-blue is-normal" @click="getAllIdeas()">
-          Voir plus d'idées
-        </button>
-      </div>
-      <div v-else class="nv-container">
-        <button class="button is-dark-blue" @click="getSomeIdeas()">
-          Voir moins d'idées
-        </button>
-      </div>
+      <template v-if="ideasArray.length >= 6">
+        <div v-if="!showAll" class="nv-container">
+          <button class="button is-dark-blue is-normal" @click="showAll = true">
+            Voir plus d'idées
+          </button>
+        </div>
+        <div v-else class="nv-container">
+          <button class="button is-dark-blue" @click="showAll = false">
+            Voir moins d'idées
+          </button>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -38,14 +41,21 @@ import {
   MAIN_TAG_AIDE,
   MAIN_TAG_CONTACT,
   MAIN_TAG_ACTIVITE,
+  MAIN_TAG_TRAINING,
+  DAILY_CHALLENGE,
   CAT_BOITE_A_IDEE,
-  DAILY_CHALLENGE
+  personFilterOptions,
+  timeFilterOptions,
+  needFilterOptions,
+  timeTagsFilter
 } from '~/helpers/constants'
+import IdeaFilter from '~/components/IdeaFilter'
 
 export default {
   name: 'IdeaBox',
   components: {
-    Card
+    Card,
+    IdeaFilter
   },
   props: {
     ideas: { type: Array, default: () => [] }
@@ -55,21 +65,49 @@ export default {
       [MAIN_TAG_AIDE]: 'green-background',
       [MAIN_TAG_CONTACT]: 'blue-background',
       [MAIN_TAG_ACTIVITE]: 'green-blue-background',
+      [MAIN_TAG_TRAINING]: 'dark-blue-background',
       [DAILY_CHALLENGE]: 'social-network-color-background'
     }
     return {
+      CAT_BOITE_A_IDEE,
       showAll: false,
       tagColors,
       defaultMainTag: {
         name: 'Garder contact',
         color: tagColors[MAIN_TAG_CONTACT]
       },
-      CAT_BOITE_A_IDEE
+      tags: {}
     }
   },
   computed: {
     ideasArray() {
-      return this.showAll ? this.ideas : this.ideas.slice(0, 6)
+      return this.showAll ? this.filteredIdeas : this.filteredIdeas.slice(0, 6)
+    },
+    filterTagsArray() {
+      return Object.values(this.tags).filter((tag) => !!tag)
+    },
+    filteredIdeas() {
+      if (!this.filterTagsArray.length) return this.ideas
+      return this.ideas.filter(this.filterIdeas)
+    },
+    filters() {
+      return [
+        {
+          label: 'Je suis',
+          name: 'person',
+          options: personFilterOptions
+        },
+        {
+          label: "J'ai",
+          name: 'time',
+          options: timeFilterOptions
+        },
+        {
+          label: "J'ai besoin de",
+          name: 'need',
+          options: needFilterOptions
+        }
+      ]
     }
   },
   methods: {
@@ -93,12 +131,17 @@ export default {
         color: this.tagColors[mainTag.slug] || 'dark-blue-background'
       }
     },
-    getAllIdeas() {
-      this.showAll = true
-      this.$emit('allIdeas')
+    matchingTags(filterTag) {
+      return (ideaTag) => {
+        return filterTag.startsWith('time-')
+          ? timeTagsFilter[filterTag].includes(ideaTag.slug)
+          : ideaTag.slug === filterTag
+      }
     },
-    getSomeIdeas() {
-      this.showAll = false
+    filterIdeas(idea) {
+      return this.filterTagsArray.every((tag) => {
+        return idea.tags.some(this.matchingTags(tag))
+      })
     }
   }
 }

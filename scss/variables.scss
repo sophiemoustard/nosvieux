@@ -6,3 +6,12 @@ $grey: #515151;
 $light-grey: #a1a1a1;
 $light-green: #00CA9D;
 $social-network-color: #00ACA4;
+
+$nv-colors: (
+  light-grey: $light-grey,
+  green: $green,
+  blue: $blue,
+  dark-blue: $dark-blue,
+  green-blue: $green-blue,
+  social-network-color: $social-network-color
+);
