@@ -110,6 +110,13 @@ export default {
       ]
     }
   },
+  mounted() {
+    if (!this.$route.query.filter || !this.$route.query.tag) return
+    this.tags = {
+      ...this.tags,
+      [this.$route.query.filter]: this.$route.query.tag
+    }
+  },
   methods: {
     getMainTag(idea) {
       if (!idea.tags || idea.tags.length === 0) return this.defaultMainTag

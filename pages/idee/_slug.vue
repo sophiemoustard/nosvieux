@@ -25,19 +25,29 @@
           </div>
         </div>
         <div class="tags_container">
-          <button
+          <nuxt-link
             v-for="tag of idea.tags"
             :key="tag.name"
-            :class="[
-              'button',
-              'is-rounded',
-              { 'is-outlined': tag.slug === DAILY_CHALLENGE },
-              'is-small',
-              getTagColor(tag.slug)
-            ]"
+            :to="{
+              path: '/',
+              query: { filter: getTagCategory(tag), tag: tag.slug },
+              hash: 'boite-a-idee'
+            }"
+            :event="isDailyChallengeTag(tag) ? '' : 'click'"
           >
-            {{ tag.name }}
-          </button>
+            <button
+              :class="[
+                'button',
+                'is-rounded',
+                { 'is-outlined': isDailyChallengeTag(tag) },
+                { disabled: isDailyChallengeTag(tag) },
+                'is-small',
+                getTagColor(tag.slug)
+              ]"
+            >
+              {{ tag.name }}
+            </button>
+          </nuxt-link>
         </div>
       </div>
     </div>
@@ -48,7 +58,12 @@
 <script>
 import NiHeader from '~/components/Header'
 import NiFooter from '~/components/Footer'
-import { DAILY_CHALLENGE } from '~/helpers/constants'
+import {
+  DAILY_CHALLENGE,
+  personFilterOptions,
+  timeFilterOptions,
+  needFilterOptions
+} from '~/helpers/constants'
 import { tagColors } from '~/helpers/tagColors'
 
 export default {
@@ -89,6 +104,16 @@ export default {
   methods: {
     getTagColor(slug) {
       return this.tagColors[slug] || 'is-dark-blue'
+    },
+    isDailyChallengeTag(tag) {
+      return tag.slug === DAILY_CHALLENGE
+    },
+    getTagCategory(tag) {
+      if (personFilterOptions.some((el) => el.value === tag.slug))
+        return 'person'
+      if (timeFilterOptions.some((el) => el.value === tag.slug)) return 'time'
+      if (needFilterOptions.some((el) => el.value === tag.slug)) return 'need'
+      return ''
     }
   },
   head() {
@@ -143,6 +168,9 @@ export default {
     padding: 20px;
     font-size: 18px;
   }
+}
+/deep/.disabled {
+  cursor: default;
 }
 
 @media screen and (min-width: 768px) {
