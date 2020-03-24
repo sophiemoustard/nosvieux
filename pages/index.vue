@@ -36,11 +36,11 @@ export default {
     try {
       const ideas = await app.$butter.post.list({
         category_slug: CAT_BOITE_A_IDEE,
-        page_size: 30
+        page_size: 6
       })
       const actions = await app.$butter.post.list({
         category_slug: CAT_ILS_LONT_FAIT,
-        page_size: 30
+        page_size: 6
       })
       return {
         ideas: ideas.data.data.sort((a, b) => {
@@ -60,6 +60,26 @@ export default {
         ideas: [],
         dailyChallenge: {},
         actions: []
+      }
+    }
+  },
+  async mounted() {
+    await this.getAllIdeas()
+  },
+  methods: {
+    async getAllIdeas() {
+      try {
+        const ideas = await this.$butter.post.list({
+          category_slug: CAT_BOITE_A_IDEE,
+          page_size: 30
+        })
+        this.ideas = ideas.data.data.sort((a, b) => {
+          if (a.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return -1
+          if (b.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return 1
+          return new Date(a.published) - new Date(b.published)
+        })
+      } catch (e) {
+        this.ideas = []
       }
     }
   }
