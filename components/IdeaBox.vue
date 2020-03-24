@@ -159,4 +159,7 @@ export default {
   padding-top: 15px;
   flex-direction: row;
 }
+.section-subtitle {
+  margin: 0px 10px;
+}
 </style>
