@@ -32,35 +32,11 @@ export default {
     IdeaBox,
     TheyDidIt
   },
-  async asyncData({ app }) {
-    try {
-      const ideas = await app.$butter.post.list({
-        category_slug: CAT_BOITE_A_IDEE,
-        page_size: 6
-      })
-      const actions = await app.$butter.post.list({
-        category_slug: CAT_ILS_LONT_FAIT,
-        page_size: 6
-      })
-      return {
-        ideas: ideas.data.data.sort((a, b) => {
-          if (a.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return -1
-          if (b.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return 1
-          return new Date(a.published) - new Date(b.published)
-        }),
-        dailyChallenge: ideas.data.data.find((el) =>
-          el.tags.some((tag) => {
-            return tag.slug === DAILY_CHALLENGE
-          })
-        ),
-        actions: actions.data.data
-      }
-    } catch (e) {
-      return {
-        ideas: [],
-        dailyChallenge: {},
-        actions: []
-      }
+  data() {
+    return {
+      ideas: [],
+      actions: [],
+      dailyChallenge: {}
     }
   },
   async mounted() {
@@ -70,14 +46,27 @@ export default {
     async getAllIdeas() {
       try {
         const ideas = await this.$butter.post.list({
-          category_slug: CAT_BOITE_A_IDEE,
-          page_size: 30
+          category_slug: [CAT_BOITE_A_IDEE, CAT_ILS_LONT_FAIT],
+          page_size: 50
         })
-        this.ideas = ideas.data.data.sort((a, b) => {
-          if (a.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return -1
-          if (b.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return 1
-          return new Date(a.published) - new Date(b.published)
-        })
+
+        this.ideas = ideas.data.data
+          .filter((idea) =>
+            idea.categories.some((cat) => cat.slug === CAT_BOITE_A_IDEE)
+          )
+          .sort((a, b) => {
+            if (a.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return -1
+            if (b.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return 1
+            return new Date(a.published) - new Date(b.published)
+          })
+
+        this.actions = ideas.data.data.filter((idea) =>
+          idea.categories.some((cat) => cat.slug === CAT_ILS_LONT_FAIT)
+        )
+
+        this.dailyChallenge = ideas.data.data.find((el) =>
+          el.tags.some((tag) => tag.slug === DAILY_CHALLENGE)
+        )
       } catch (e) {
         this.ideas = []
       }
