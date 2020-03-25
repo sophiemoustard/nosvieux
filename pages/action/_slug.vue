@@ -5,18 +5,23 @@
       <ni-header />
       <div class="action-container">
         <div class="action-title mb-md">
-          <h1>{{ action.title }}</h1>
+          <h1 v-if="!loading">{{ action.title }}</h1>
         </div>
-        <div class="dark-blue-text">{{ action.summary }}</div>
-        <div v-if="showImage" class="content-container">
+        <div v-if="!loading" class="dark-blue-text">{{ action.summary }}</div>
+        <div v-if="showImage && !loading" class="content-container">
           <img
+            v-if="!loading"
             class="action-img"
             :src="action.featured_image"
             :alt="action.featured_image_alt"
           />
-          <div class="action-text" v-html="action.body" />
+          <div v-if="!loading" class="action-text" v-html="action.body" />
         </div>
-        <div v-else class="content-iframe-container" v-html="action.body" />
+        <div
+          v-else-if="!loading"
+          class="content-iframe-container"
+          v-html="action.body"
+        />
       </div>
     </div>
     <ni-footer />
@@ -33,21 +38,24 @@ export default {
     NiHeader,
     NiFooter
   },
-  async asyncData({ app, params }) {
-    try {
-      const action = await app.$butter.post.retrieve(params.slug)
-      return { action: action.data.data }
-    } catch (e) {
-      return { action: {} }
-    }
-  },
   data() {
     return {
-      showImage: false
+      showImage: false,
+      loading: false
     }
   },
-  mounted() {
-    if (!/iframe/.test(this.action.body)) this.showImage = true
+  async mounted() {
+    try {
+      this.loading = true
+      const action = await this.$butter.post.retrieve(this.$route.params.slug)
+      this.action = action.data.data
+      if (!/iframe/.test(this.action.body)) this.showImage = true
+    } catch (e) {
+      return { action: {} }
+    } finally {
+      this.loading = false
+      this.showImage = false
+    }
   }
 }
 </script>
