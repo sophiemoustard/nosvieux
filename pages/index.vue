@@ -5,17 +5,16 @@
     <they-did-it v-if="actions.length" :actions="actions" />
     <social />
     <idea-box :ideas="ideas" />
-    <ni-footer />
   </div>
 </template>
 
 <script>
 import Act from '~/components/Act'
-import NiFooter from '~/components/Footer'
 import NosVieux from '~/components/NosVieux'
 import Social from '~/components/Social'
 import IdeaBox from '~/components/IdeaBox'
 import TheyDidIt from '~/components/TheyDidIt'
+import ButterCMS from '~/api/ButterCMS'
 import {
   CAT_BOITE_A_IDEE,
   DAILY_CHALLENGE,
@@ -26,7 +25,6 @@ export default {
   name: 'Index',
   components: {
     Act,
-    NiFooter,
     NosVieux,
     Social,
     IdeaBox,
@@ -45,27 +43,21 @@ export default {
   methods: {
     async getAllIdeas() {
       try {
-        const ideas = await this.$butter.post.list({
-          category_slug: [CAT_BOITE_A_IDEE, CAT_ILS_LONT_FAIT],
-          page_size: 50
-        })
-
-        this.ideas = ideas.data.data
-          .filter((idea) =>
-            idea.categories.some((cat) => cat.slug === CAT_BOITE_A_IDEE)
-          )
-          .sort((a, b) => {
-            if (a.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return -1
-            if (b.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return 1
-            return new Date(a.published) - new Date(b.published)
-          })
-
-        this.actions = ideas.data.data.filter((idea) =>
-          idea.categories.some((cat) => cat.slug === CAT_ILS_LONT_FAIT)
+        const ideas = await ButterCMS.retrievePostsFromCategory(
+          CAT_BOITE_A_IDEE
         )
 
-        this.dailyChallenge = ideas.data.data.find((el) =>
+        this.ideas = ideas.sort((a, b) => {
+          if (a.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return -1
+          if (b.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return 1
+          return new Date(a.published) - new Date(b.published)
+        })
+        this.dailyChallenge = ideas.find((el) =>
           el.tags.some((tag) => tag.slug === DAILY_CHALLENGE)
+        )
+
+        this.actions = await ButterCMS.retrievePostsFromCategory(
+          CAT_ILS_LONT_FAIT
         )
       } catch (e) {
         this.ideas = []

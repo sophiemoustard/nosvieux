@@ -1,11 +1,20 @@
 <template>
-  <div>
-    <nuxt />
+  <div class="nv-container">
+    <ni-header />
+    <nuxt class="nuxt-container" />
+    <ni-footer />
   </div>
 </template>
 
 <script>
+import NiHeader from '~/components/Header'
+import NiFooter from '~/components/Footer'
+
 export default {
+  components: {
+    NiHeader,
+    NiFooter
+  },
   async mounted() {
     const anchor = this.$router.currentRoute.hash
     await this.$nextTick()
@@ -26,4 +35,11 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.nv-container {
+  min-height: 100%;
+}
+.nuxt-container {
+  flex: 1;
+}
+</style>

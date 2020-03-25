@@ -1,63 +1,56 @@
 <template>
   <div class="nv-container">
-    <div class="bloc">
-      <ni-header />
-      <div class="main_container">
-        <div class="idea-container">
-          <div
-            v-if="isDailyChallenge"
-            class="idea-tag social-network-color-background"
-          >
-            {{ getDailyChallengeName }}
-          </div>
-          <div class="idea-content">
-            <div class="idea-title mb-md">
-              <h1>{{ idea.title }}</h1>
-              <img
-                class="idea-logo"
-                :src="idea.featured_image"
-                :alt="idea.featured_image_alt"
-              />
-            </div>
-            <div class="dark-blue-text">{{ idea.summary }}</div>
-            <!-- eslint-disable-next-line vue/no-v-html -->
-            <div v-html="idea.body" />
-          </div>
+    <div v-if="!loading" class="idea-container">
+      <div
+        v-if="isDailyChallenge && !loading"
+        class="idea-tag social-network-color-background"
+      >
+        {{ getDailyChallengeName }}
+      </div>
+      <div class="idea-content">
+        <div class="idea-title mb-md">
+          <h1>{{ idea.title }}</h1>
+          <img
+            class="idea-logo"
+            :src="idea.featured_image"
+            :alt="idea.featured_image_alt"
+          />
         </div>
-        <div class="tags_container">
-          <nuxt-link
-            v-for="tag of idea.tags"
-            :key="tag.name"
-            :to="{
-              path: '/',
-              query: { filter: getTagCategory(tag), tag: tag.slug },
-              hash: 'boite-a-idee'
-            }"
-            :event="isDailyChallengeTag(tag) ? '' : 'click'"
-          >
-            <button
-              :class="[
-                'button',
-                'is-rounded',
-                { 'is-outlined': isDailyChallengeTag(tag) },
-                { disabled: isDailyChallengeTag(tag) },
-                'is-small',
-                getTagColor(tag.slug)
-              ]"
-            >
-              {{ tag.name }}
-            </button>
-          </nuxt-link>
-        </div>
+        <div class="dark-blue-text">{{ idea.summary }}</div>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div v-html="idea.body" />
       </div>
     </div>
-    <ni-footer />
+    <div class="tags_container">
+      <nuxt-link
+        v-for="tag of idea.tags"
+        :key="tag.name"
+        :to="{
+          path: '/',
+          query: { filter: getTagCategory(tag), tag: tag.slug },
+          hash: 'boite-a-idee'
+        }"
+        :event="isDailyChallengeTag(tag) ? '' : 'click'"
+      >
+        <button
+          :class="[
+            'button',
+            'is-rounded',
+            { 'is-outlined': isDailyChallengeTag(tag) },
+            { disabled: isDailyChallengeTag(tag) },
+            'is-small',
+            getTagColor(tag.slug)
+          ]"
+        >
+          {{ tag.name }}
+        </button>
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
 <script>
-import NiHeader from '~/components/Header'
-import NiFooter from '~/components/Footer'
+import ButterCMS from '~/api/ButterCMS'
 import {
   DAILY_CHALLENGE,
   personFilterOptions,
@@ -68,22 +61,12 @@ import { tagColors } from '~/helpers/tagColors'
 
 export default {
   name: 'IdeaProfile',
-  components: {
-    NiHeader,
-    NiFooter
-  },
-  async asyncData({ app, params }) {
-    try {
-      const idea = await app.$butter.post.retrieve(params.slug)
-      return { idea: idea.data.data }
-    } catch (e) {
-      return { idea: {} }
-    }
-  },
   data() {
     return {
       DAILY_CHALLENGE,
-      tagColors
+      tagColors,
+      idea: {},
+      loading: false
     }
   },
   computed: {
@@ -99,6 +82,16 @@ export default {
         (tag) => tag.slug === DAILY_CHALLENGE
       )
       return dailyChallengeTag.name || ''
+    }
+  },
+  async created() {
+    try {
+      this.loading = true
+      this.idea = await ButterCMS.retrievePost(this.$route.params.slug)
+    } catch (e) {
+      this.idea = {}
+    } finally {
+      this.loading = false
     }
   },
   methods: {
@@ -132,15 +125,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main_container {
-  display: flex;
-  flex-direction: column;
-}
 .tags_container {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin-top: 37px;
+  margin: 37px 0;
   flex-wrap: wrap;
   :not(:last-child) {
     margin-right: 10px;
@@ -157,6 +146,8 @@ export default {
   }
   &-container {
     box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
+    display: flex;
+    flex-direction: column;
   }
   &-title {
     text-align: center;

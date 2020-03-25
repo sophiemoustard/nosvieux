@@ -1,8 +1,5 @@
 <template>
   <div class="nv-container bloc">
-    <nuxt-link to="/">
-      <img class="logo mb-sm" src="~/assets/logo.png" />
-    </nuxt-link>
     <div class="big-title dark-blue-text">Mentions légales & RGPD</div>
     <span class="title green-text">
       Le site Internet nosvieux est édité par :
@@ -108,6 +105,7 @@ a:-webkit-any-link {
   justify-content: center;
   font-weight: bold;
   margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .title {
@@ -116,5 +114,15 @@ a:-webkit-any-link {
   font-weight: bold;
   margin-top: 20px;
   margin-bottom: 10px;
+  font-size: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .big-title {
+    font-size: 24px;
+  }
+  .title {
+    font-size: 24px;
+  }
 }
 </style>
