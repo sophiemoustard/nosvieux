@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="header">
     <nuxt-link to="/">
       <img class="logo mb-sm" src="~/assets/logo.png" />
     </nuxt-link>
-    <div class="hashtag-container mb-xl">
+    <div class="hashtag-container">
       <div class="hashtag">
         <div class="blue-text">#</div>
         <div class="green-text">Nos</div>
@@ -21,6 +21,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.header {
+  padding: 20px;
+}
 .logo {
   width: 60px;
 }
@@ -36,6 +39,9 @@ export default {
 }
 
 @media screen and (min-width: 768px) {
+  .header {
+    padding: 30px 70px;
+  }
   .logo {
     width: 100px;
   }

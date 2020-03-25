@@ -1,47 +1,38 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="nv-container">
-    <div v-if="!loading" class="bloc">
-      <ni-header />
-      <div class="action-container">
-        <div class="action-title mb-md">
-          <h1>{{ action.title }}</h1>
-        </div>
-        <div class="dark-blue-text">{{ action.summary }}</div>
-        <div v-if="showImage && !loading" class="content-container">
-          <img
-            class="action-img"
-            :src="action.featured_image"
-            :alt="action.featured_image_alt"
-          />
-          <div class="action-text" v-html="action.body" />
-        </div>
-        <div
-          v-else-if="!loading"
-          class="content-iframe-container"
-          v-html="action.body"
-        />
+    <div v-if="!loading" class="action-container">
+      <div class="action-title mb-md">
+        <h1>{{ action.title }}</h1>
       </div>
+      <div class="dark-blue-text">{{ action.summary }}</div>
+      <div v-if="showImage && !loading" class="content-container">
+        <img
+          class="action-img"
+          :src="action.featured_image"
+          :alt="action.featured_image_alt"
+        />
+        <div class="action-text" v-html="action.body" />
+      </div>
+      <div
+        v-else-if="!loading"
+        class="content-iframe-container"
+        v-html="action.body"
+      />
     </div>
-    <ni-footer />
   </div>
 </template>
 
 <script>
-import NiHeader from '~/components/Header'
-import NiFooter from '~/components/Footer'
 import ButterCMS from '~/api/ButterCMS'
 
 export default {
   name: 'ActionProfile',
-  components: {
-    NiHeader,
-    NiFooter
-  },
   data() {
     return {
       showImage: false,
-      loading: false
+      loading: false,
+      action: {}
     }
   },
   async created() {
@@ -53,7 +44,6 @@ export default {
       this.action = {}
     } finally {
       this.loading = false
-      this.showImage = false
     }
   }
 }
@@ -74,6 +64,7 @@ export default {
   &-img {
     width: --webkit-fill-available;
     border: solid 2px $dark-blue;
+    margin: 10px 0;
   }
   &-container {
     box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);
