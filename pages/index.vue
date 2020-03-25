@@ -16,6 +16,7 @@ import NosVieux from '~/components/NosVieux'
 import Social from '~/components/Social'
 import IdeaBox from '~/components/IdeaBox'
 import TheyDidIt from '~/components/TheyDidIt'
+import ButterCMS from '~/api/ButterCMS'
 import {
   CAT_BOITE_A_IDEE,
   DAILY_CHALLENGE,
@@ -45,24 +46,22 @@ export default {
   methods: {
     async getAllIdeas() {
       try {
-        const ideas = await this.$butter.post.list({
-          category_slug: CAT_BOITE_A_IDEE,
-          page_size: 30
-        })
+        const ideas = await ButterCMS.retrievePostsFromCategory(
+          CAT_BOITE_A_IDEE
+        )
 
-        this.ideas = ideas.data.data.sort((a, b) => {
+        this.ideas = ideas.sort((a, b) => {
           if (a.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return -1
           if (b.tags.some((tag) => tag.slug === DAILY_CHALLENGE)) return 1
           return new Date(a.published) - new Date(b.published)
         })
-        this.dailyChallenge = ideas.data.data.find((el) =>
+        this.dailyChallenge = ideas.find((el) =>
           el.tags.some((tag) => tag.slug === DAILY_CHALLENGE)
         )
 
-        this.actions = await this.$butter.post.list({
-          category_slug: CAT_ILS_LONT_FAIT,
-          page_size: 30
-        })
+        this.actions = await ButterCMS.retrievePostsFromCategory(
+          CAT_ILS_LONT_FAIT
+        )
       } catch (e) {
         this.ideas = []
         this.actions = []

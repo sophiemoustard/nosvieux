@@ -2,7 +2,7 @@
   <div class="nv-container">
     <div class="bloc">
       <ni-header />
-      <div class="main_container">
+      <div v-if="!loading" class="main_container">
         <div class="idea-container">
           <div
             v-if="isDailyChallenge && !loading"
@@ -12,20 +12,19 @@
           </div>
           <div class="idea-content">
             <div class="idea-title mb-md">
-              <h1 v-if="!loading">{{ idea.title }}</h1>
+              <h1>{{ idea.title }}</h1>
               <img
-                v-if="!loading"
                 class="idea-logo"
                 :src="idea.featured_image"
                 :alt="idea.featured_image_alt"
               />
             </div>
-            <div v-if="!loading" class="dark-blue-text">{{ idea.summary }}</div>
+            <div class="dark-blue-text">{{ idea.summary }}</div>
             <!-- eslint-disable-next-line vue/no-v-html -->
-            <div v-if="!loading" v-html="idea.body" />
+            <div v-html="idea.body" />
           </div>
         </div>
-        <div v-if="!loading" class="tags_container">
+        <div class="tags_container">
           <nuxt-link
             v-for="tag of idea.tags"
             :key="tag.name"
@@ -59,6 +58,7 @@
 <script>
 import NiHeader from '~/components/Header'
 import NiFooter from '~/components/Footer'
+import ButterCMS from '~/api/ButterCMS'
 import {
   DAILY_CHALLENGE,
   personFilterOptions,
@@ -96,13 +96,12 @@ export default {
       return dailyChallengeTag.name || ''
     }
   },
-  async mounted() {
+  async created() {
     try {
       this.loading = true
-      const idea = await this.$butter.post.retrieve(this.$route.params.slug)
-      this.idea = idea.data.data
+      this.idea = await ButterCMS.retrievePost(this.$route.params.slug)
     } catch (e) {
-      return { idea: {} }
+      this.idea = {}
     } finally {
       this.loading = false
     }

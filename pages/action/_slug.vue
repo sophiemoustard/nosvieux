@@ -1,21 +1,20 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="nv-container">
-    <div class="bloc">
+    <div v-if="!loading" class="bloc">
       <ni-header />
       <div class="action-container">
         <div class="action-title mb-md">
-          <h1 v-if="!loading">{{ action.title }}</h1>
+          <h1>{{ action.title }}</h1>
         </div>
-        <div v-if="!loading" class="dark-blue-text">{{ action.summary }}</div>
+        <div class="dark-blue-text">{{ action.summary }}</div>
         <div v-if="showImage && !loading" class="content-container">
           <img
-            v-if="!loading"
             class="action-img"
             :src="action.featured_image"
             :alt="action.featured_image_alt"
           />
-          <div v-if="!loading" class="action-text" v-html="action.body" />
+          <div class="action-text" v-html="action.body" />
         </div>
         <div
           v-else-if="!loading"
@@ -31,6 +30,7 @@
 <script>
 import NiHeader from '~/components/Header'
 import NiFooter from '~/components/Footer'
+import ButterCMS from '~/api/ButterCMS'
 
 export default {
   name: 'ActionProfile',
@@ -44,14 +44,13 @@ export default {
       loading: false
     }
   },
-  async mounted() {
+  async created() {
     try {
       this.loading = true
-      const action = await this.$butter.post.retrieve(this.$route.params.slug)
-      this.action = action.data.data
+      this.action = await ButterCMS.retrievePost(this.$route.params.slug)
       if (!/iframe/.test(this.action.body)) this.showImage = true
     } catch (e) {
-      return { action: {} }
+      this.action = {}
     } finally {
       this.loading = false
       this.showImage = false
