@@ -3,12 +3,34 @@
 @import 'buttons.scss';
 @import 'select.scss';
 
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
   font-size: 16px;
   line-height: 24px;
-  margin: 0;
   background-color: #F5F5F5;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#__nuxt {
+  height: inherit;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#__layout {
+  height: inherit;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -63,6 +85,7 @@ a:-webkit-any-link {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  background-color: #F5F5F5;
 }
 
 .bloc {
@@ -154,7 +177,7 @@ a:-webkit-any-link {
 
 @media screen and (min-width: 768px) {
   .mb-xl {
-    margin-bottom: 60px;
+    margin-bottom: 50px;
   }
   iframe {
     width: 500px !important;

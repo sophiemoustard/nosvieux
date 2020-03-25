@@ -1,53 +1,50 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="nv-container">
-    <div class="bloc">
-      <ni-header />
-      <div class="action-container">
-        <div class="action-title mb-md">
-          <h1>{{ action.title }}</h1>
-        </div>
-        <div class="dark-blue-text">{{ action.summary }}</div>
-        <div v-if="showImage" class="content-container">
-          <img
-            class="action-img"
-            :src="action.featured_image"
-            :alt="action.featured_image_alt"
-          />
-          <div class="action-text" v-html="action.body" />
-        </div>
-        <div v-else class="content-iframe-container" v-html="action.body" />
+    <div v-if="!loading" class="action-container">
+      <div class="action-title mb-md">
+        <h1>{{ action.title }}</h1>
       </div>
+      <div class="dark-blue-text">{{ action.summary }}</div>
+      <div v-if="showImage && !loading" class="content-container">
+        <img
+          class="action-img"
+          :src="action.featured_image"
+          :alt="action.featured_image_alt"
+        />
+        <div class="action-text" v-html="action.body" />
+      </div>
+      <div
+        v-else-if="!loading"
+        class="content-iframe-container"
+        v-html="action.body"
+      />
     </div>
-    <ni-footer />
   </div>
 </template>
 
 <script>
-import NiHeader from '~/components/Header'
-import NiFooter from '~/components/Footer'
+import ButterCMS from '~/api/ButterCMS'
 
 export default {
   name: 'ActionProfile',
-  components: {
-    NiHeader,
-    NiFooter
-  },
-  async asyncData({ app, params }) {
-    try {
-      const action = await app.$butter.post.retrieve(params.slug)
-      return { action: action.data.data }
-    } catch (e) {
-      return { action: {} }
-    }
-  },
   data() {
     return {
-      showImage: false
+      showImage: false,
+      loading: false,
+      action: {}
     }
   },
-  mounted() {
-    if (!/iframe/.test(this.action.body)) this.showImage = true
+  async created() {
+    try {
+      this.loading = true
+      this.action = await ButterCMS.retrievePost(this.$route.params.slug)
+      if (!/iframe/.test(this.action.body)) this.showImage = true
+    } catch (e) {
+      this.action = {}
+    } finally {
+      this.loading = false
+    }
   }
 }
 </script>
@@ -67,6 +64,7 @@ export default {
   &-img {
     width: --webkit-fill-available;
     border: solid 2px $dark-blue;
+    margin: 10px 0;
   }
   &-container {
     box-shadow: 0 5px 12px 0 rgba(217, 226, 233, 0.5);

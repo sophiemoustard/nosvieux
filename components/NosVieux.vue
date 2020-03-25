@@ -1,6 +1,5 @@
 <template>
   <div class="bloc">
-    <ni-header />
     <div class="dark-blue-text mb-xl description">
       « Nous changeons nos habitudes pour protéger nos aînés et les personnes
       vulnérables. Mais <b>confinement ne doit pas rimer avec isolement</b> !
@@ -16,11 +15,8 @@
 </template>
 
 <script>
-import NiHeader from '~/components/Header'
-
 export default {
-  name: 'NosVieux',
-  components: { NiHeader }
+  name: 'NosVieux'
 }
 </script>
 
