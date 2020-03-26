@@ -52,7 +52,9 @@ export default {
           category_slug: CAT_ILS_LONT_FAIT,
           page_size: 20
         })
-        const actionsRoutes = actions.data.data.map((id) => `/idee/${id.slug}`)
+        const actionsRoutes = actions.data.data.map(
+          (id) => `/action/${id.slug}`
+        )
         return ideasRoutes.concat(actionsRoutes)
       } catch (e) {
         return []
