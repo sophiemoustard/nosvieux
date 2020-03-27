@@ -38,8 +38,10 @@
       </div>
       <div v-if="dailyChallenge" class="daily-challenge-button-container">
         <nuxt-link :to="`idee/${dailyChallenge.slug}`">
-          <button class="button is-normal is-outlined is-social-network-color">
-            Passe à l'action !
+          <button class="button is-social-network-color">
+            Je passe à l'action :
+            <br />
+            découvrir le défi du jour !
           </button>
         </nuxt-link>
       </div>
@@ -61,6 +63,11 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 40px;
+}
+.daily-challenge-button-container button {
+  height: auto;
+  font-size: 20px !important;
+  box-shadow: 0 5px 12px 0 #c0c0c0;
 }
 .steps {
   &-image {
