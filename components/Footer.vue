@@ -5,7 +5,7 @@
         <div>#NosVieux</div>
         <nuxt-link to="/cgu">Mentions Légales</nuxt-link>
         <div>
-          <a href="mailto:contact@nosvieux.com">contact@nosvieux.org</a>
+          <a href="mailto:contact@nosvieux.org">contact@nosvieux.org</a>
         </div>
       </div>
       <div class="credits-container">
