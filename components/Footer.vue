@@ -8,6 +8,9 @@
           <a href="mailto:contact@nosvieux.org">contact@nosvieux.org</a>
         </div>
       </div>
+      <div class="buttercms-container">
+        Ce site a été fait à l'aide de <img src="../static/butter-w.png" />
+      </div>
       <div class="credits-container">
         <div>
           Icons made by
@@ -74,13 +77,24 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 15px;
   line-height: 1.3;
   font-size: 14px;
 }
 .bloc {
   padding-bottom: 20px;
 }
+.buttercms-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  color: white;
+  font-size: 14px;
+}
+.buttercms-container img {
+  width: 200px;
+}
+
 @media screen and (min-width: 768px) {
   .footer-container > div,
   .footer-container > nuxt-link {
