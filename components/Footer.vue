@@ -9,7 +9,12 @@
         </div>
       </div>
       <div class="buttercms-container">
-        Ce site a été fait à l'aide de <img src="../static/butter-w.png" />
+        Ce site a été fait à l'aide de<a
+          href="https://buttercms.com/"
+          target="_blank"
+        >
+          <img src="../static/butter-w.png" />
+        </a>
       </div>
       <div class="credits-container">
         <div>
